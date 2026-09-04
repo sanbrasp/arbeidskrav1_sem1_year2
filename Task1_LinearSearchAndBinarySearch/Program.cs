@@ -9,9 +9,9 @@ class Program
         int[] array = [8, 3, 11, 7, 2, 9, 5];
 
         Console.WriteLine(Search.LinearSearch(array, 7));
-        Console.WriteLine(Search.GetComparisons());
-        Search.ResetComparisons();
+        Console.WriteLine(Search.Comparisons);
+        // Search.ResetComparisons();
         Console.WriteLine(Search.LinearSearch(array, 42));
-        Console.WriteLine(Search.GetComparisons());
+        Console.WriteLine(Search.Comparisons);
     }
 }
