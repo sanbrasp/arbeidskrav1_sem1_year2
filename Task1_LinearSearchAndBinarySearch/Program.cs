@@ -10,7 +10,7 @@ class Program
 
         Console.WriteLine(Search.LinearSearch(array, 7));
         Console.WriteLine(Search.Comparisons);
-        // Search.ResetComparisons();
+        
         Console.WriteLine(Search.LinearSearch(array, 42));
         Console.WriteLine(Search.Comparisons);
     }
