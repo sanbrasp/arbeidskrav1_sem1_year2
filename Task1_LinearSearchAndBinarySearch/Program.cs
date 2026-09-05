@@ -8,6 +8,11 @@ class Program
     {
         int[] linearSearchArray = [8, 3, 11, 7, 2, 9, 5];
         int[] binarySearchArray = [2, 5, 7, 9, 11, 13, 17];
+        int[] duplicateValuesArray = [2, 5, 5, 7, 9, 9, 11, 13, 17, 20, 24, 27, 31, 36, 38];
+
+        Console.WriteLine("Array with duplicate values test (BinarySearch)");
+        Console.WriteLine($"BinarySearch index for target '9': {Search.BinarySearch(duplicateValuesArray, 9)}");
+        Console.WriteLine($"BinarySearch number of comparisons: {Search.BinaryComparisons}");
 
         // This part belongs to Linear Search - along with the array:
         Console.WriteLine("\nLINEAR SEARCH!");
