@@ -62,4 +62,40 @@ As with `LinearSearch`, the same encapsulation convention is used for `BinarySea
 and the backing field for the counter is `private` with an internal getter for displaying value, and a `private` 
 helper for resetting the counter from within the class (called from the start of `BinarySearch`).
 
+**Guarantee The Leftmost Occurrence**  
+In a test array `int[] binarySearchArray = [2, 5, 5, 7, 9, 9, 11, 13, 17, 20, 24, 27, 31, 36, 38];`  
+when the target is `9`, hand trace to prove guarantee:
+
+```text
+left = 0, right = 14 (array.Length - 1)
+
+Iteration 1:
+mid = 0 + (14-0) / 2 = 7 -> array[7] = 13
+    Comparison: 13 == 9 ? No. (Counter: 1)
+    Comparison: 13 < 9? No. -> else: right = mid - 1 = 6 (Counter: 2)
+
+Iteration 2:
+left = 0, right = 6
+mid = 0 + (6-0) / 2 = 3 -> array[3] = 7
+    Comparison: 7 == 9? No. (Counter: 3)
+    Comparison: 7 < 9? Yes. -> left = mid + 1 = 4 (Counter: 4)
+
+Iteration 3:
+left = 4, right = 6
+mid = 4 + (6-4) / 2 = 5 -> array[5] = 9
+    Comparison: 9 == 9? Yes -> store -> right = mid - 1 = 4 (Counter: 5)
+
+Iteration 4:
+left = 4, right = 4
+mid = 4 + (4-4) / 2 = 4 -> array[4] = 9
+    Comparison: 9 == 9? Yes -> store -> right = mid - 1 = 3 (Counter: 6)
+
+left = 4, right = 3 -> left <= right = false -> loop ends
+
+return lowestMatchResult.
+```
+The algorithm first hits index 5, which is not the leftmost (lowest) target value 9.  
+It then stores that "hit", and keeps looking, and eventually finds the actual leftmost target value
+9 at index 4.
+
 ---
