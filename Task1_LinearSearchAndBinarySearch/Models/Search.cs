@@ -5,11 +5,18 @@
 /// </summary>
 internal static class Search
 {
-    private static int _comparisons = 0;
+    private static int _linearComparisons = 0;
+    private static int _binaryComparisons = 0;
+    
     /// <summary>
-    /// Getter for displaying the number of comparisons made after a search has completed.
+    /// Getter for displaying the number of comparisons made after a linear search has completed.
     /// </summary>
-    internal static int Comparisons => _comparisons;
+    internal static int LinearComparisons => _linearComparisons;
+    /// <summary>
+    /// Getter for displaying the number of comparisons after a binary search has completed.
+    /// </summary>
+    internal static int BinaryComparisons => _binaryComparisons;
+    
     
     /// <summary>
     /// Runs a linear search for a target in an array.
@@ -19,10 +26,10 @@ internal static class Search
     /// <returns></returns>
     internal static int LinearSearch(int[] array, int target)
     {
-        ResetComparisons();
+        ResetLinearComparisons();
         for (int i = 0; i < array.Length; i++)
         {
-            _comparisons++;
+            _linearComparisons++;
             if (array[i] == target)
             {
                 return i;
@@ -31,8 +38,53 @@ internal static class Search
         return -1;
     }
     
-    private static void ResetComparisons()
+    /// <summary>
+    /// Private method belonging to the class <see cref="Search"/>
+    /// allowing the class access to reset the <see cref="LinearComparisons"/> counter.
+    /// </summary>
+    private static void ResetLinearComparisons()
     {
-        _comparisons = 0;
+        _linearComparisons = 0;
+    }
+
+
+    /// <summary>
+    /// Runs a binary search for a target in a sorted array.
+    /// </summary>
+    /// <param name="array">The array to search in.</param>
+    /// <param name="target">The target to search for.</param>
+    /// <returns></returns>
+    internal static int BinarySearch(int[] array, int target)
+    {
+        ResetBinaryComparisons();
+
+        int left = 0;
+        int right = array.Length - 1;
+
+        while (left <= right)
+        {
+            int mid = left + (right - left) / 2;
+            
+            _binaryComparisons++;
+            if (array[mid] == target)
+                return mid;
+            
+            _binaryComparisons++;
+            if (array[mid] < target)
+                left = mid + 1;
+            
+            else
+                right = mid - 1;
+        }
+        return -1;
+    }
+    
+    /// <summary>
+    /// Private method belonging to the class <see cref="Search"/>
+    /// allowing the class access to reset the <see cref="BinaryComparisons"/> counter.
+    /// </summary>
+    private static void ResetBinaryComparisons()
+    {
+        _binaryComparisons = 0;
     }
 }
