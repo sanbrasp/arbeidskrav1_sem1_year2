@@ -18,4 +18,8 @@
         <Using Include="Xunit"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Task1_LinearSearchAndBinarySearch\Task1_LinearSearchAndBinarySearch.csproj" />
+    </ItemGroup>
+
 </Project>
