@@ -60,6 +60,7 @@ internal static class Search
 
         int left = 0;
         int right = array.Length - 1;
+        int lowestMatchResult = -1; // initialized with sentinel value.
 
         while (left <= right)
         {
@@ -67,16 +68,24 @@ internal static class Search
             
             _binaryComparisons++;
             if (array[mid] == target)
-                return mid;
-            
-            _binaryComparisons++;
-            if (array[mid] < target)
-                left = mid + 1;
-            
-            else
+            {
+                lowestMatchResult = mid;
                 right = mid - 1;
+            }
+            
+            else if (array[mid] < target)
+            {
+                _binaryComparisons++;
+                left = mid + 1;
+            }
+                
+            else
+            {
+                _binaryComparisons++;
+                right = mid - 1;
+            }
         }
-        return -1;
+        return lowestMatchResult;
     }
     
     /// <summary>
