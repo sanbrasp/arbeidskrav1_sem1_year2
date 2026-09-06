@@ -3,17 +3,18 @@
 ## LinearSearch():
 
 The class that contains `LinearSearch()`:  
-[Search.LinearSearch(int[] array, int target)](Task1_LinearSearchAndBinarySearch/Models/Search.cs)  
+[Search.LinearSearch()](Task1_LinearSearchAndBinarySearch/Models/Search.cs)  
 
 **Naming Choice**  
 The name `Search` was chosen for the file, as opposed to `LinearSearch`, to avoid ambiguous naming.  
-The method name is `LinearSearch`, so the call would be `Search.LinearSearch(array, target);`  
+The method name is `LinearSearch()`, so the call would be `Search.LinearSearch(array, target);`  
 I later decided to group both `LinearSearch()` and `BinarySearch()` in the same class due to being similar
 in nature (regardless of differences in how they operate). This follows how many of the built-in methods are set up 
 as well (similar use case, same class).
 
 **Loop Decision**  
-I decided to use a `for loop` in my Linear Search, because the for loop hands me the index "for free".  
+I decided to use a `for loop` in my Linear Search, because the for loop hands me the index "for free", omitting 
+the need to initialize a variable for storing the index.
 
 **Comparison Counter**  
 I added a `linearSearchComparisons` counter that gives me the exact number of comparisons processed before 
@@ -31,16 +32,16 @@ approach.
 
 **Resetting the Comparison Counter**  
 Initially I had a method accessor for resetting the counter. After some thinking, I decided that this was an 
-unneccessary risk - forgetting to manually reset the counter would produce the wrong result, and nothing outside 
+unnecessary risk - forgetting to manually reset the counter would produce the wrong result, and nothing outside 
 of the class should bear that responsibility; not the developer, not Program.cs.  
-I instead wrote `LinearSearch` to call `ResetComparisons` at the very start of the method, ensuring the counter 
-always starts with a state of 0. The method `ResetComparisons` was then set to its appropriate access modifier: `private`.
+I instead wrote `LinearSearch()` to call `ResetComparisons()` at the very start of the method, ensuring the counter 
+always starts with a state of 0. The method `ResetComparisons()` was then set to its appropriate access modifier: `private`.
 
 ---
 
 ## BinarySearch():
 The class that contains method `BinarySearch()`:  
-[Search.BinarySearch(int[] array, int target)](Task1_LinearSearchAndBinarySearch/Models/Search.cs)
+[Search.BinarySearch()](Task1_LinearSearchAndBinarySearch/Models/Search.cs)
 
 **Naming Choice**  
 Refer to the same paragraph of `LinearSearch()`.  
@@ -51,16 +52,19 @@ to use the while loop for this algorithm. It runs on the condition set being tru
 condition is no longer true (`while (left <= right)` => keep iterating).
 
 **Comparison Counter**  
-`BinarySearch` has its own `binarySearchComparisons` counter to keep track of the number of comparisons made.  
+`BinarySearch()` has its own `binarySearchComparisons` counter to keep track of the number of comparisons made.  
 
-**What Is It Counting**  
-While `LinearSearch` only asks once per element, `BinarySearch` has two different points of comparison questions.  
-`is mid == target?` and the directional one `is mid < target?`. Both of these are counted on purpose.
+**What It Is Counting**  
+While `LinearSearch()` only asks once per element, `BinarySearch()` has three different comparison branches.  
+`is mid == target?` is counted during every iteration, and the directional `is mid < target?` is counted if the first 
+check is false. Directional `is mid > target` runs only if the two first ones are false. All of these are counted on purpose as they 
+occur in the code execution.
+This is because an `else if` chain was used to control the flow of the algorithm.
 
 **Encapsulation**  
-As with `LinearSearch`, the same encapsulation convention is used for `BinarySearch`. The method is `internal` 
+As with `LinearSearch()`, the same encapsulation convention is used for `BinarySearch()`. The method is `internal` 
 and the backing field for the counter is `private` with an internal getter for displaying value, and a `private` 
-helper for resetting the counter from within the class (called from the start of `BinarySearch`).
+helper for resetting the counter from within the class (called from the start of `BinarySearch()`).
 
 **Guarantee The Leftmost Occurrence**  
 In a test array `int[] binarySearchArray = [2, 5, 5, 7, 9, 9, 11, 13, 17, 20, 24, 27, 31, 36, 38];`  
@@ -94,8 +98,10 @@ left = 4, right = 3 -> left <= right = false -> loop ends
 
 return lowestMatchResult.
 ```
-The algorithm first hits index 5, which is not the leftmost (lowest) target value 9.  
-It then stores that "hit", and keeps looking, and eventually finds the actual leftmost target value
-9 at index 4.
+
+The algorithm first finds a hit at index 5, which is not the leftmost (lowest) target value 9.  
+It then stores that "hit", keeps looking, and eventually finds the actual leftmost target value
+9 at index 4.  
+It returns the value of the variable that holds the target: `lowestMatchResult`, or the sentinel `-1` if not found.
 
 ---
