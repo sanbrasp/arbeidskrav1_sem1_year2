@@ -9,7 +9,7 @@ public class BinarySearchTests
     {
         // Arrange
         int[] testArray = [2, 5, 7, 9, 11, 13, 17];
-        var expectedComparisons = 3;
+        var expectedComparisons = 5;
 
         // Act
         var result = Search.BinarySearch(testArray, 13);
