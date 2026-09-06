@@ -78,4 +78,30 @@ public class BinarySearchTests
         Assert.Equal(6, result);
         Assert.Equal(expectedComparisons, Search.BinaryComparisons);
     }
+
+    [Fact]
+    public void BinarySearch_MayAccidentallySucceed_OnCertainUnsortedArray()
+    {
+        // Arrange
+        int[] luckyArray = { 3, 25, 7, 19, 12 };
+
+        // Act
+        var result = Search.BinarySearch(luckyArray, 7);
+
+        // Assert
+        Assert.Equal(2, result);
+    }
+
+    [Fact]
+    public void BinarySearch_MayFail_OnDifferentUnsortedArray_WithSameTarget()
+    {
+        // Arrange
+        int[] unluckyArray = { 25, 3, 19, 7, 12 };
+
+        // Act
+        var result = Search.BinarySearch(unluckyArray, 7);
+
+        // Assert
+        Assert.Equal(-1, result);
+    }
 }
