@@ -203,7 +203,7 @@ Requirements:
 Test data and edge cases:
 - Run linear search on `[8, 3, 11, 7, 2, 9, 5]`. Search for `7` and `42`.
 - Run binary search on `[2, 5, 7, 9, 11, 13, 17]`. Search for `13` and `4`.
-- Run binary search on an _unsorted_ **copy** of the dataset, observe the result, and explain 
+- Run binary search on an _unsorted_ **copy** of a dataset, observe the result, and explain 
   why the result isn't reliable. This experiment must not change the contract that the method requires
   sorted input.
 - Test an empty array, a single-element array, a target value outside the range, and duplicates. For duplicates,
