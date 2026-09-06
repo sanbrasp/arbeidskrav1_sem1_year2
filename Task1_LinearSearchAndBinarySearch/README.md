@@ -12,7 +12,7 @@
 ---
 
 ## Implementation
-## LinearSearch():
+### LinearSearch():
 
 The class that contains `LinearSearch()`:  
 [Search.LinearSearch()](Task1_LinearSearchAndBinarySearch/Models/Search.cs)
@@ -51,7 +51,7 @@ always starts with a state of 0. The method `ResetComparisons()` was then set to
 
 ---
 
-## BinarySearch():
+### BinarySearch():
 The class that contains method `BinarySearch()`:  
 [Search.BinarySearch()](Task1_LinearSearchAndBinarySearch/Models/Search.cs)
 
@@ -66,11 +66,13 @@ condition is no longer true (`while (left <= right)` => keep iterating).
 **Comparison Counter**  
 `BinarySearch()` has its own `binarySearchComparisons` counter to keep track of the number of comparisons made.
 
-**What It Is Counting**  
-While `LinearSearch()` only asks once per element, `BinarySearch()` has three different comparison branches.  
-`is mid == target?` is counted during every iteration, and the directional `is mid < target?` is counted if the first
-check is false. Directional `is mid > target` runs only if the two first ones are false. All of these are counted on purpose as they
-occur in the code execution.
+**What Is It Counting**  
+While `LinearSearch()` only asks once per element, `BinarySearch()` has three different code branches, but only two of 
+them perform comparisons.  
+`is mid == target?` is counted during every iteration, and the directional  
+`is mid < target?` is counted if the first
+check is false.  
+Directional `is mid > target` runs only if the two first are false and does not perform a comparison.
 This is because an `else if` chain was used to control the flow of the algorithm.
 
 **Encapsulation**  
@@ -120,17 +122,62 @@ It returns the value of the variable that holds the target: `lowestMatchResult`,
 ---
 
 ## Test Results
-Brief about the test results, add some output screenshots and such.
+The tests were written to cover the specified edge cases and searches.  
+The tests also assert number of comparisons using the respective counters per algorithm 
+are consistent with the actual number of counts.
+
+**LinearSearch():**  
+- `LinearSearch_DoesNotFindTarget42()`
+- `LinearSearch_FindsFirstOccurrence_WhenDuplicateValuesInArray()`
+- `LinearSearch_FindsTarget7_InTestArray()`
+- `LinearSearch_ReturnSingleValue_InSingleElementArray()`
+- `LinearSearch_ReturnsNotFound_WhenCollectionIsEmpty()`
+
+**BinarySearch():**  
+- `BinarySearch_DoesNotFindTarget4()`
+- `BinarySearch_FindsFirstOccurrence_WhenDuplicateValuesInArray()`
+- `BinarySearch_FindsTarget13()`
+- `BinarySearch_ReturnSingleValue_InSingleElementArray()`
+- `BinarySearch_ReturnsNotFound_WhenCollectionIsEmpty()`
+
+In addition, I also wrote two more tests for `BinarySearch()` proving how a search on an
+unsorted array _might_ coincidentally succeed, and how it most likely will now:
+- `BinarySearch_MayAccidentallySucceed_OnCertainUnsortedArray()`
+- `BinarySearch_MayFail_OnDifferentUnsortedArray_WithSameTarget()`
+
+![Tests Run Successfully](Images/img.png)
 
 ---
 
 ## Analysis
-- Big-O explanation for both algorithms
-- My definition of "what counts as one comparison".
-- My reflection on the unsorted-binary-experiment. Why is it not trustworthy?
-- My reflection on when sorting-then-binary-searching is worth the upfront cost vs just linear searching
+**Big-O explanation for both algorithms**  
+`LinearSearch()` -  
+`BinarySearch()` -  
+
+**My definition of what counts as one comparison**  
+For `BinarySearch()`:
+  - Whenever a comparison is made:  
+    "`is mid == target?`" every iteration.  
+    If this is `false`, then   
+    "`is mid < target?`".   
+
+For `LinearSearch()`:
+  - For every iteration of every element. 
+
+
+**My reflection on the unsorted-binary-experiment**  
+Why is it not trustworthy?
+
+
+**My reflection on when sorting-then-binary-searching is worth the upfront cost vs just linear searching**
 
 ---
+
+
+
+---
+
+Below is just the task description for reference:
 
 ## Task Description
 
