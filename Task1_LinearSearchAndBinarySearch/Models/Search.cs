@@ -81,7 +81,6 @@ internal static class Search
                 
             else
             {
-                _binaryComparisons++;
                 right = mid - 1;
             }
         }
