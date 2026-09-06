@@ -52,9 +52,36 @@ dotnet run --project Task1_LinearSearchAndBinarySearch
 ---
 
 ## Test Overview
-- Test names  
-- What they test  
-- Why they test it
+
+[Test Suite xUnit Project](Arbeidskrav1_year2_sem1.Tests)
+
+  **LinearSearch():**
+- `LinearSearch_DoesNotFindTarget42()`
+- `LinearSearch_FindsFirstOccurrence_WhenDuplicateValuesInArray()`
+- `LinearSearch_FindsTarget7_InTestArray()`
+- `LinearSearch_ReturnSingleValue_InSingleElementArray()`
+- `LinearSearch_ReturnsNotFound_WhenCollectionIsEmpty()`
+
+**BinarySearch():**
+- `BinarySearch_DoesNotFindTarget4()`
+- `BinarySearch_FindsFirstOccurrence_WhenDuplicateValuesInArray()`
+- `BinarySearch_FindsTarget13()`
+- `BinarySearch_ReturnSingleValue_InSingleElementArray()`
+- `BinarySearch_ReturnsNotFound_WhenCollectionIsEmpty()`
+
+- `BinarySearch_MayAccidentallySucceed_OnCertainUnsortedArray()`
+- `BinarySearch_MayFail_OnDifferentUnsortedArray_WithSameTarget()`
+
+
+**Test Cases**   
+- `LinearSearch()` and `BinarySearch()` searching task specified arrays for  
+  specified targets. Both "Found" and "Not Found".
+- `BinarySearch()` on unsorted array, empty array, single element array, target outside of range, duplicate values.
+- `LinearSearch()` on empty array, single element array, target outside of range, duplicate values.
+
+
+**Why Test For This**
+- To ensure the logic is sound and methods return the expected results
 
 ---
 
