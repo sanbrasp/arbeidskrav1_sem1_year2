@@ -10,12 +10,13 @@ Overview
 - [Leftmost Occurrence Algorithm Structure](#leftmost-occurrence-algorithm-structure)
 - [Hand Trace of Binary Search With Duplicated Values](#hand-trace-of-binary-search-on-array-with-duplicated-values)
 - [Spectre.Console](#spectreconsole-assistance)
+- [Break-Even Calculation](#break-even-point-calculation)
 - [Git Commands](#git-command-assistance)
 
 ---
 
 ## Conceptual Discussion
-(_Conversations with no direct impact on the project_)
+(_Conversations with no direct impact on the project_)   
 Various discussions about encapsulation, best-practice, brainstorming, quizzing, referencing to readable sources, etc.
 
 ---
@@ -48,6 +49,49 @@ Claude.ai to show me the steps of the hand trace so that I could study them and 
 ## Spectre.Console Assistance
 Needed some initial help setting up the columns and rows.  
 Also watched a youtube video for some inspiration.
+
+---
+
+## Break-Even Point Calculation
+Google Notebook (Gemini Notebook, NotebookLM) helped me calculate the number of operations using two scenarios 
+to find where Linear Search would be more efficient than Binary Search and vice versa.  
+The calculation were made from numbers in my own study notes - I lacked the knowledge of the formulas 
+and where to insert the data. 
+
+This is a snippet from Google Notebook (also present in [Task 1 README](Task1_LinearSearchAndBinarySearch/README.md).)
+lightly rewritten by me as a way of following the steps:
+```text
+Collection of n = 1000 elements
+k number of searches
+
+Scenario 1: k = 2 searches
+
+Strategy A (Linear): k = 2 (searches)
+    2 x 1000 = 2000 operations
+
+Strategy B (Sort + Binary):
+    Sorting cost: 1000 log2(1000) = roughly 10 000 operations
+    Searching cost: 2 x log2(1000) = roughly 20 operations
+    Total: 10 000 + 20 = 10 020 operations
+
+Winner: Linear, about 5x faster, the sorting cost was wasted
+==================================
+Scenario 2: k = 100 searches
+
+Strategy A (Linear): k = 100 searches
+    100 x 1000 = 100 000 operations
+
+Strategy B (Sort and Binary): 
+    Sorting cost: roughly 10 000 operations
+    Searching cost: 100 x 10 = roughly 1000 operations
+    Total: 10 000 + 1000 = 11 000 operations
+
+Winner: Binary, 9x faster, the sorting cost paid for itself.
+```
+It also showed me how to calculate the exact point of searches where the Binary Search + Sort becomes more effective 
+than the Linear Search, but since I was not able to follow the algebra and therefore chose not to include that 
+in my submission.  
+That is however something I will look deeper into on the side of this project, and learn, since it is a very useful skill to have.
 
 ---
 
