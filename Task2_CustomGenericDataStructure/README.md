@@ -23,6 +23,7 @@ _Tip: Choose an internal representation that makes it possible to explain why th
 ---
 
 ## Implementation
+_I decided to go with `Stack` simply because that's the one I find most challenging to understand._
 - Code implementation
 - Choices
 
