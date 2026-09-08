@@ -16,6 +16,7 @@ internal static class DisplayResult
         table.AddColumn("Target");
         table.AddColumn("Index Found");
         table.AddColumn("Comparisons");
+        table.AddColumn("Sorted input?");
 
         foreach (var result in results)
         {
@@ -23,7 +24,8 @@ internal static class DisplayResult
                 result.AlgorithmName,
                 result.Target.ToString(),
                 result.Index.ToString(),
-                result.Comparisons.ToString()
+                result.Comparisons.ToString(),
+                result.ArrayIsSorted ? "Yes" : "No"
             );
         }
         AnsiConsole.Write(table);
