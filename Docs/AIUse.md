@@ -9,11 +9,14 @@ Overview
 - [Project Name Generation](#project-name-generation)
 - [Leftmost Occurrence Algorithm Structure](#leftmost-occurrence-algorithm-structure)
 - [Hand Trace of Binary Search With Duplicated Values](#hand-trace-of-binary-search-on-array-with-duplicated-values)
+- [Spectre.Console](#spectreconsole-assistance)
 - [Git Commands](#git-command-assistance)
 
 ---
 
 ## Conceptual Discussion
+(_Conversations with no direct impact on the project_)
+Various discussions about encapsulation, best-practice, brainstorming, quizzing, referencing to readable sources, etc.
 
 ---
 
@@ -28,7 +31,10 @@ I identified the problem myself, and thought out the pseudo code for what needed
 Claude.ai assisted me with returning my own list of steps in a tidy format, organized some erroneous ordered steps 
 for me, and corrected my sentinel value choice for the counter variable. All code was written by me, and none was given 
 to me by Claude.ai per my own instructions at the top of the 
-conversation where I stated: Do not give me any code or any easy answers. Challenge me and make me think.
+conversation where I stated: Do not give me any code or any easy answers. Challenge me and make me think.  
+It also helped me uncover an increment bug in the third branch of the algorithm - I was incrementing on a branch that made 
+no comparisons, and found the bug as I was hand tracing and unable to get the same number of counts as the program 
+did.
 
 ---
 
@@ -36,6 +42,12 @@ conversation where I stated: Do not give me any code or any easy answers. Challe
 To ensure a correct read, I had Claude.ai assist me with hand tracing the adjusted `BinarySearch()` algorith
 (for ensuring the return of the leftmost occurrence of the target), and when I kept making mistakes, I asked 
 Claude.ai to show me the steps of the hand trace so that I could study them and see where I went wrong.
+
+---
+
+## Spectre.Console Assistance
+Needed some initial help setting up the columns and rows.  
+Also watched a youtube video for some inspiration.
 
 ---
 
