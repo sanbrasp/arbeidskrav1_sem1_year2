@@ -2,15 +2,19 @@
 
 internal class CustomNode<T>
 {
-    private T _value;
-    private CustomNode<T> _next;
+    private CustomNode<T>? _next;
     
-    public T Value  => _value;
-    public CustomNode<T> Next { get; internal set; }
+    internal T Value { get; }
+
+    internal CustomNode<T>? Next
+    {
+        get => _next;
+        set => _next = value;
+    }
 
     public CustomNode(T value)
     {
-        _value = value;
+        Value = value;
         _next = null;
     }
 }
