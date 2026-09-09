@@ -6,7 +6,7 @@ internal class CustomNode<T>
     private CustomNode<T> _next;
     
     public T Value  => _value;
-    public CustomNode<T> Next => _next;
+    public CustomNode<T> Next { get; internal set; }
 
     public CustomNode(T value)
     {
