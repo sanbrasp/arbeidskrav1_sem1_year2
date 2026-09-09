@@ -52,28 +52,35 @@ dotnet run --project Task1_LinearSearchAndBinarySearch
 ---
 
 ## Test Overview
+TODO: SHRINK THIS SECTION IN THE SOLUTION README!!  
 
 [Test Suite xUnit Project](Arbeidskrav1_year2_sem1.Tests)
 
-  **LinearSearch() Test Names:**
-- `LinearSearch_DoesNotFindTarget42()`
-- `LinearSearch_FindsFirstOccurrence_WhenDuplicateValuesInArray()`
-- `LinearSearch_FindsTarget7_InTestArray()`
-- `LinearSearch_ReturnSingleValue_InSingleElementArray()`
-- `LinearSearch_ReturnsNotFound_WhenCollectionIsEmpty()`
+### Contents
+**Task 1 Tests**  
+ **LinearSearch() Test Names:**
+  - `LinearSearch_DoesNotFindTarget42()`
+  - `LinearSearch_FindsFirstOccurrence_WhenDuplicateValuesInArray()`
+  - `LinearSearch_FindsTarget7_InTestArray()`
+  - `LinearSearch_ReturnSingleValue_InSingleElementArray()`
+  - `LinearSearch_ReturnsNotFound_WhenCollectionIsEmpty()`
 
 **BinarySearch() Test Names:**
-- `BinarySearch_DoesNotFindTarget4()`
-- `BinarySearch_FindsFirstOccurrence_WhenDuplicateValuesInArray()`
-- `BinarySearch_FindsTarget13()`
-- `BinarySearch_ReturnSingleValue_InSingleElementArray()`
-- `BinarySearch_ReturnsNotFound_WhenCollectionIsEmpty()`
+  - `BinarySearch_DoesNotFindTarget4()`
+  - `BinarySearch_FindsFirstOccurrence_WhenDuplicateValuesInArray()`
+  - `BinarySearch_FindsTarget13()`
+  - `BinarySearch_ReturnSingleValue_InSingleElementArray()`
+  - `BinarySearch_ReturnsNotFound_WhenCollectionIsEmpty()`
 
 **BinarySearch() Tests Demonstrating Unstability on Unsorted Arrays**
-- `BinarySearch_MayAccidentallySucceed_OnCertainUnsortedArray()`
-- `BinarySearch_MayFail_OnDifferentUnsortedArray_WithSameTarget()`
+  - `BinarySearch_MayAccidentallySucceed_OnCertainUnsortedArray()`
+  - `BinarySearch_MayFail_OnDifferentUnsortedArray_WithSameTarget()`  
 
-**Test Cases**   
+
+**Task 2 Tests**  
+  - [Test Name]()
+
+**Test Cases Task 1**   
 - `LinearSearch()` and `BinarySearch()` searching task specified arrays for specified targets. Both "Found" and "Not Found".
 - `BinarySearch()` on unsorted array, empty array, single element array, target outside of range, duplicate values.
 - `LinearSearch()` on empty array, single element array, target outside of range, duplicate values.
