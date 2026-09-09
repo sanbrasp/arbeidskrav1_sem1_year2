@@ -30,8 +30,13 @@ internal class CustomStack<T>
         return node.Value;
     }
 
-    internal void Peek(out T value)
+    internal T Peek()
     {
-        throw new NotImplementedException();
+        if (IsEmpty)
+        {
+            throw new InvalidOperationException("Stack is empty");
+        }
+        
+        return _top.Value;
     }
 }
