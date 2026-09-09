@@ -29,14 +29,16 @@ _In order to properly demonstrate it, I also wrote a Node class to compliment it
 [CustomNode class](Models/CustomStack.cs)  
 [CustomStack class](Models/CustomStack.cs)  
 
-- Code implementation
-- Choices
+**Code implementation**
+
+
+**Choices**
 
 ---
 
 ## Tests
 - Test names
-- What they are testing
+- Test cases
 - Why they are testing it
 
 ---
