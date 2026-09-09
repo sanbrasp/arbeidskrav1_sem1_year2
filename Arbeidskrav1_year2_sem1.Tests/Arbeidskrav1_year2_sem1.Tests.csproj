@@ -20,6 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Task1_LinearSearchAndBinarySearch\Task1_LinearSearchAndBinarySearch.csproj" />
+      <ProjectReference Include="..\Task2_CustomGenericDataStructure\Task2_CustomGenericDataStructure.csproj" />
     </ItemGroup>
 
 </Project>
