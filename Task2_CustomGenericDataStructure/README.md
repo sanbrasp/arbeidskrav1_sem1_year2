@@ -23,7 +23,7 @@ _Tip: Choose an internal representation that makes it possible to explain why th
 ---
 
 ## Implementation
-_I decided to go with `Stack` simply because that's the one I find most challenging to understand._  
+_I decided to go with a `node-based` `Stack` simply because that's the one I find most challenging to understand._  
 _In order to properly demonstrate it, I also wrote a Node class to compliment it._
 
 [CustomNode class](Models/CustomStack.cs)  
