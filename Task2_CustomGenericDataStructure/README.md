@@ -196,7 +196,30 @@ and allows values that are valid.
 ---
 
 ## Explanation
-- Complexity (time complexity)
-- Use Cases (Use example with graph traversal?)
+- Principle:  
+  - The `Stack` uses `LIFO`, which means `Last in, first out`. It can be visualized by a stack of pancakes: 
+    First the tray is empty. Then you put (`Push`) one pancake on the tray. Then let's say you put (`Push`) another pancake on `_top` 
+    of the first one. The last pancake is now on `_top`. When you want to eat one, you grab (`Pop`) the pancake that is on `_top`.  
+    If you look (`Peek`) at the tray of pancakes after grabbing one from the `_top`, the pancake under the one you grabbed is 
+    now on `_top` and is the `Next` one up for grabs (`Pop`).  
+    The `Stack` works with the opposite order of a `Queue`, where `FIFO` rules (first one in, first one out, like in a line 
+    at the grocery store).
+
+
+- Use Cases (Use example with graph traversal?):  
+
+
+
+- Internal representation:
+
+
+- Complexity (time complexity):
+  - `void Push()` has Constant Time Complexity, `O(1)`, because every step it performs happens only once with 
+    a fixed and unchanging amount of work. It is independent of how many items are already in the stack because it doesn't
+    have to do anything about those.
+  - `T Pop()` also has Constant Time Complexity, `O(1)`, for the same reason that `Push()` does:  
+    every step is fixed and unchanged, it happens exactly once, regardless of the elements in the `Stack`.
+  - `T Peek()` follows suit with Constant Time Complexity, `O(1)`, running its steps only once independently of 
+    the contents of the `Stack`. It only does a check (once), and returns a value (once).
 
 ---
