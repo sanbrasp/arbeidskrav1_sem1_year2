@@ -6,6 +6,10 @@
 - [Implementation](#implementation)
 - [Tests](#tests)
 - [Explanation](#explanation)
+  - [Principle](#principle)
+  - [Use Cases](#use-cases)
+  - [Internal Representation](#internal-representation)
+  - [Time Complexity](#complexity)
 
 ---
 
@@ -183,7 +187,7 @@ and allows values that are valid.
 ---
 
 ## Explanation
-- Principle:  
+### Principle:
   - The `Stack` uses `LIFO`, which means `Last in, first out`. It can be visualized by a stack of pancakes: 
     First the tray is empty. Then you put (`Push`) one pancake on the tray. Then let's say you put (`Push`) another pancake on `top` 
     of the first one. The last pancake is now on `top`. When you want to eat one, you grab (`Pop`) the pancake that is on `top`.  
@@ -193,17 +197,17 @@ and allows values that are valid.
     at the grocery store).
 
 
-- Use Cases:  
+### Use Cases:
   - `DFS`, which relies on a `Stack` and `LIFO` ordering for backtracking, and is able to find "all possible paths" by
     using this mechanism, which makes it useful when solving various tasks that have more than one possible path to solution. 
     For example finding every possible move in a game of Chess, or solving a Sudoku puzzle.  
 
 
-- Internal representation:
+### Internal representation:
 `Node Based` (see [Implementation](#implementation) for details)
 
 
-- Complexity (time complexity):
+### Complexity:
   - `void Push()` has Constant Time Complexity, `O(1)`, because every step it performs happens only once with 
     a fixed and unchanging amount of work. It is independent of how many items are already in the stack because it doesn't
     have to do anything about those.
