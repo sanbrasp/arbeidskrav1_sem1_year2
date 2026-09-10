@@ -23,23 +23,138 @@ _Tip: Choose an internal representation that makes it possible to explain why th
 ---
 
 ## Implementation
-_I decided to go with a `node-based` `Stack` simply because that's the one I find most challenging to understand._  
-_In order to properly demonstrate it, I also wrote a Node class to compliment it._
 
 [CustomNode class](Models/CustomStack.cs)  
 [CustomStack class](Models/CustomStack.cs)  
 
-**Code implementation**
+**Code implementation**  
+`CustomNode<T>` is written as an internal class, following the convention of the rest of the solution.  
+It is not `static` because nodes need to be initialized.  
+The class is `Generic` so that it can be used by any `type`.  
+This is a basic representation of a `node`, that holds a reference to a `Value` and the node's `_next` node.  
 
+The `_next` field is nullable for when the `Stack` is empty (at creation, and when the last element has been `Pop()`-ed).  
+The `Value` holds the value of the node. Is not nullable, because if the `Stack` is empty, there are no more nodes as well.  
+`Next` is encapsulated so that it cannot be manipulated into an invalid state.  
+The constructor initializes an object with a `Value` and `_next` set to `null`.
+```csharp
+namespace Task2_CustomGenericDataStructure.Models;
 
-**Choices**
+internal class CustomNode<T>
+{
+    private CustomNode<T>? _next;
+    
+    internal T Value { get; }
+    
+    internal CustomNode<T>? Next
+    {
+        get => _next;
+        set => _next = value;
+    }
+    
+    internal CustomNode(T value)
+    {
+        Value = value;
+        _next = null;
+    }
+}
+```
+
+`CustomStack` is written as an internal class, following the convention of the project.  
+It holds a reference to `CustomNode<T>`'s `_top` value so that it can perform its actions.  
+`CustomNode<T>? Top` is encapsulated to avoid invalid states, and nullable for when there is nothing at the top (empty).  
+The internal bool `IsEmpty` is `true` if `_top` is empty, and allows us to check for that in the methods and tests.  
+
+Method `void Push(T value)` takes a `T` argument.  
+It creates a new node for that `value`.  
+It then uses the `Next` to see what `value` is up next (and also first).  
+It then assigns that value to `_top` (`_top = newNode`)
+
+Method `T Pop()` takes no arguments.  
+If first checks whether the `Stack` is empty by using the internal bool `IsEmpty`. If `IsEmpty = true`, it throw 
+an `InvalidOperationException` with an error message.  
+If the `Stack` is not empty, it continues.  
+It creates a variable for storing the value of `_top`.  
+It then stores the value of the next node in `var nextNode`, using `node.Next`.  
+Then it assigns that value to `_top` (`_top = nextNode`), before returning the `node.Value`.
+
+Method `T Peek()` takes no arguments.  
+It first checks whether the `Stack` is empty, using the same logic as `T Pop()`, and throws the 
+same exception if `IsEmpty = true`.  
+It then simply returns `_top.Value` directly, with no need for storing anything prior.  
+It changes nothing, it only reads the value of the top element in the `Stack`, and therefore doesn't need 
+to do any other operations than returning the value.
+
+```csharp
+using Task2_CustomGenericDataStructure.Models;
+
+namespace Task2_CustomGenericDataStructure.Models;
+
+internal class CustomStack<T>
+{
+    private CustomNode<T>? _top = null;
+    
+    internal CustomNode<T>? Top => _top;
+    
+    internal bool IsEmpty => _top == null;
+    
+    internal void Push(T value)
+    {
+        var newNode = new CustomNode<T>(value); // store the node's value in newNode
+        newNode.Next = _top; // assign the next value in the currently empty _top
+        _top = newNode; // assign newNode to _top
+    }
+    
+    internal T Pop()
+    {
+        if (IsEmpty)
+        {
+            throw new InvalidOperationException("Stack is empty");
+        }
+        var node = _top;
+        var nextNode = node.Next;
+        _top = nextNode;
+        
+        return node.Value;
+    }
+    
+    internal T Peek()
+    {
+        if (IsEmpty)
+        {
+            throw new InvalidOperationException("Stack is empty");
+        }
+        
+        return _top.Value;
+    }
+}
+```
+
+**Choices**  
+During the work on this task, it took me a while to understand that I needed a separate `Node` class in order 
+to be able to write and demonstrate the `Stack` class.  
+For encapsulation and consistency, I opted to follow the rules from Task 1 and use mostly `internal` access modifiers, 
+and `private` where nothing looser was needed.  
+To allow controlled access, the `test suite` has a reference to the `Task 2` project, and the `Task 2` project 
+shows its internals to the `test suite`.
+
+I decided to go with a `node-based` `Stack` for this task, simply because that's the one I find most challenging to understand.  
+Choosing this gave me a great opportunity to learn more about something I found difficult to wrap my head around, and during 
+the development I have been able to learn a lot more than I would if I had chosen something that seemed simpler to me.  
+This was a calculated risk from my end, and what offered the most learning value.
+
+I also opted to use one collective `xUnit` `test suite` for the entire solution.  
+The test collections are names in a non-ambiguous way so that they are respectively easy to locate both by file name 
+and test names naming convention (`BinarySearchTests`, `CustomNodeTests`, etc).
 
 ---
 
 ## Tests
-- Test names
-- Test cases
-- Why they are testing it
+**Test names**  
+
+**Test cases**  
+
+**Why**  
 
 ---
 
