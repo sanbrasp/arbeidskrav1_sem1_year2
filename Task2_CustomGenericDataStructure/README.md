@@ -1,18 +1,5 @@
 # Task 2 - Custom Generic Data Structure
 
-DELETE LATER:  
-_Tip: Choose an internal representation that makes it possible to explain why the operations have the complexity you state._
-
-- ✅ Choose one structure (stack, queue, circular queue, linked list)
-- ✅ Design generic type (`MyStructure<T>`)
-- ✅ Design small, focused API (central operations for my chosen structure)
-- ✅ Decide on internal representation (array based, node based, that everything depends on)
-- ✅ Handle empty-structure case consistently across every relevant operation
-- ✅ Identify and handle structure-specific edge cases
-- ✅ Write a short demonstration of its actual use
-- ✅ Write systematic tests (normal cases, edge cases, same principles from task 1)
-- Write the explanation (principle, use case, internal representation, time complexity per operation)
-
 ---
 
 ## Overview
@@ -198,19 +185,22 @@ and allows values that are valid.
 ## Explanation
 - Principle:  
   - The `Stack` uses `LIFO`, which means `Last in, first out`. It can be visualized by a stack of pancakes: 
-    First the tray is empty. Then you put (`Push`) one pancake on the tray. Then let's say you put (`Push`) another pancake on `_top` 
-    of the first one. The last pancake is now on `_top`. When you want to eat one, you grab (`Pop`) the pancake that is on `_top`.  
-    If you look (`Peek`) at the tray of pancakes after grabbing one from the `_top`, the pancake under the one you grabbed is 
-    now on `_top` and is the `Next` one up for grabs (`Pop`).  
+    First the tray is empty. Then you put (`Push`) one pancake on the tray. Then let's say you put (`Push`) another pancake on `top` 
+    of the first one. The last pancake is now on `top`. When you want to eat one, you grab (`Pop`) the pancake that is on `top`.  
+    If you look (`Peek`) at the tray of pancakes after grabbing one from the `top`, the pancake under the one you grabbed is 
+    now on `top` and is the `Next` one up for grabs (`Pop`).  
     The `Stack` works with the opposite order of a `Queue`, where `FIFO` rules (first one in, first one out, like in a line 
     at the grocery store).
 
 
-- Use Cases (Use example with graph traversal?):  
-
+- Use Cases:  
+  - `DFS`, which relies on a `Stack` and `LIFO` ordering for backtracking, and is able to find "all possible paths" by
+    using this mechanism, which makes it useful when solving various tasks that have more than one possible path to solution. 
+    For example finding every possible move in a game of Chess, or solving a Sudoku puzzle.  
 
 
 - Internal representation:
+`Node Based` (see [Implementation](#implementation) for details)
 
 
 - Complexity (time complexity):
