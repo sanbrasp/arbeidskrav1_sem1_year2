@@ -20,7 +20,7 @@ internal class CustomStack<T>
     /// <summary>
     /// Checks if _top is null/empty.
     /// </summary>
-    private bool IsEmpty => _top == null;
+    internal bool IsEmpty => _top == null;
     
     /// <summary>
     /// Pushes a new node and puts it at the top of the stack.
