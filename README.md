@@ -21,6 +21,14 @@ This solution contains tasks 1 - 6, each in their respective projects.
 
 See each project's own README for task specifics.
 
+_Readme's:  
+[Task 1 README](Task1_LinearAndBinarySearch/README.md)  
+[Task 2 README](Task2_CustomGenericDataStructure/README.md)  
+[Task 3 README](Task3_DivideAndConquer/README.md)  
+[Task 4 README](Task4_GraphAndBFS/README.md)  
+[Task 5 README](Task5_DFSAndComparison/README.md)  
+[Task 6 README](Task6_Video/README.md)_
+
 ---
 
 ## Technical Stack
