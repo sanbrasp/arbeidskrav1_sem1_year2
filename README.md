@@ -52,39 +52,34 @@ dotnet run --project Task1_LinearSearchAndBinarySearch
 ---
 
 ## Test Overview
-TODO: SHRINK THIS SECTION IN THE SOLUTION README!!  
 
-[Test Suite xUnit Project](Arbeidskrav1_year2_sem1.Tests)
+[Test Suite xUnit Project containing all tests](Arbeidskrav1_year2_sem1.Tests)
 
 ### Contents
 **Task 1 Tests**  
- **LinearSearch() Test Names:**
-  - `LinearSearch_DoesNotFindTarget42()`
-  - `LinearSearch_FindsFirstOccurrence_WhenDuplicateValuesInArray()`
-  - `LinearSearch_FindsTarget7_InTestArray()`
-  - `LinearSearch_ReturnSingleValue_InSingleElementArray()`
-  - `LinearSearch_ReturnsNotFound_WhenCollectionIsEmpty()`
+ - [LinearSearch Tests](Arbeidskrav1_year2_sem1.Tests/LinearSearchTests.cs)  
+ - [BinarySearch Test](Arbeidskrav1_year2_sem1.Tests/BinarySearchTests.cs)  
+(_BinarySearchTests include demonstration of instability on unsorted arrays_)  
 
-**BinarySearch() Test Names:**
-  - `BinarySearch_DoesNotFindTarget4()`
-  - `BinarySearch_FindsFirstOccurrence_WhenDuplicateValuesInArray()`
-  - `BinarySearch_FindsTarget13()`
-  - `BinarySearch_ReturnSingleValue_InSingleElementArray()`
-  - `BinarySearch_ReturnsNotFound_WhenCollectionIsEmpty()`
-
-**BinarySearch() Tests Demonstrating Unstability on Unsorted Arrays**
-  - `BinarySearch_MayAccidentallySucceed_OnCertainUnsortedArray()`
-  - `BinarySearch_MayFail_OnDifferentUnsortedArray_WithSameTarget()`  
-
-
-**Task 2 Tests**  
-  - [Test Name]()
-
-**Test Cases Task 1**   
+**Test Cases Task 1**
 - `LinearSearch()` and `BinarySearch()` searching task specified arrays for specified targets. Both "Found" and "Not Found".
 - `BinarySearch()` on unsorted array, empty array, single element array, target outside of range, duplicate values.
 - `LinearSearch()` on empty array, single element array, target outside of range, duplicate values.
 
+
+**Task 2 Tests**  
+  - [CustomStack Tests](Arbeidskrav1_year2_sem1.Tests/CustomStackTests.cs)
+
+**Test Cases Task 2**  
+- Normal Use
+- Edge Cases
+- Data Structure Specific Edge Cases
+- Exceptions
+- Allowed and disallowed values
+
+**Task 3 Tests**
+
+**Test Cases Task 3**
 
 **Why Test For This**
 - To ensure the logic is sound and methods return the expected results
