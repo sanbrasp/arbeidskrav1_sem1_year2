@@ -7,4 +7,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+        <InternalsVisibleTo Include="Arbeidskrav1_year2_sem1.Tests"/>
+    </ItemGroup>
+
 </Project>
