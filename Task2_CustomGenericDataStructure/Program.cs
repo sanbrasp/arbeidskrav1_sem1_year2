@@ -1,9 +1,36 @@
-﻿namespace Task2_CustomGenericDataStructure;
+﻿using Task2_CustomGenericDataStructure.Models;
+
+namespace Task2_CustomGenericDataStructure;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        var stack = new CustomStack<string>();
+
+        Console.WriteLine("\nPushing 'A' to stack.");
+        stack.Push("A");
+        Console.WriteLine("Pushing 'B' to stack.");
+        stack.Push("B");
+        Console.WriteLine("Pushing 'C' to stack.");
+        stack.Push("C");
+
+        Console.WriteLine($"\nPeek at the top of the stack (Expected: 'C'): {stack.Peek()}");
+
+        // These three Pop()s are guaranteed because we Pushed 3 elements:
+        Console.WriteLine($"\nPop: {stack.Pop()}");
+        Console.WriteLine($"Pop: {stack.Pop()}");
+        Console.WriteLine($"Pop: {stack.Pop()}");
+        
+        // This Pop() we KNOW will fail because there aren't any more elements on the stack
+        try
+        {
+            Console.WriteLine("Attempting to Pop() from an empty stack:");
+            Console.WriteLine($"Pop: {stack.Pop()}");
+        }
+        catch (InvalidOperationException e)
+        {
+            Console.WriteLine($"Exception caught: {e.Message}");
+        }
     }
 }
