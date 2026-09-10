@@ -5,6 +5,7 @@ Contains documentation of when, how, and why AI was used in this project.
 ---
 
 Overview
+- [How AI Has Been Used](#how-ai-has-been-used)
 - [Conceptual Discussions](#conceptual-discussion)
 - [Project Name Generation](#project-name-generation)
 - [Leftmost Occurrence Algorithm Structure](#leftmost-occurrence-algorithm-structure)
@@ -13,6 +14,25 @@ Overview
 - [Break-Even Calculation](#break-even-point-calculation)
 - [Git Commands](#git-command-assistance)
 - [Stack And Node Assistance](#stack-and-node-assistance)
+- [CustomStack Demo](#custom-stack-demo)
+- [Assert.Throws Syntax](#assertthrows-syntax)
+- [Maximum Memory Limit](#maximum-memory-limit)
+
+---
+
+## How AI Has Been Used
+`Claude.ai` has been used as a tutor through much of this project, where it has been initially (and repeatedly) instructed
+to not provide any "free-answers" or code, and instead ask the questions needed for me to find the answer myself.  
+Only when I have not been able to find the answer, having tried and failed several times, have I ended up asking for a
+suggestion with detailed explanations that I have then practiced at length until I could safely say I understood.
+
+`Google Notebook LM` / `Gemini Notebook` has been used as a "quizmaster", and it has generated video explainers, flashcards, 
+and other helpful media based on my own notes from lectures and studies.
+
+_AI has not been used as a code generator or project architect. It has been used as a tutor and learning tool, and it has 
+also been used for boilerplate tasks such as name generation for projects, translation of assignments, creating bullet lists of 
+what was already in the assignment text, and things of that nature.  
+Whenever AI has directly affected code or the project is documented in this file._
 
 ---
 
@@ -23,7 +43,9 @@ Used `Claude.ai` and `Google NotebookLM` as tutors. Notebook also generated a qu
 Discussed the use of `Stack`, and Claude.ai helped me realize I needed a `Node` class as well.  
 Walked through some of my code and my interpretations with `Claude.ai` (example: my thought processe of the steps `Push()`
 and the very first value of `_top` before even looking at the first node, and the steps of `Pop()` and `Push()`, until it 
-clicked and I understood it.) 
+clicked and I understood it.)   
+`Claude.ai` has also been used to proof-read (find typos and suggest better wording), and for code-reviews after 
+I have written the code myself.  
 
 ---
 
@@ -125,3 +147,37 @@ I chose `Stack` as that seems to be the most abstract and challenging one to me.
 - The initial `Push()` method
 - A video explainer tying the stack together with the search
 - A quiz on `Stack` fundamentals
+
+---
+
+## Custom Stack Demo
+I had written a demo that was a little more extensive than the assignment was really asking for.  
+Initially I wrote an entire graph traversal where I used my Custom Graph class.  
+`Claude.ai` suggested a rewrite and shaved down version, demonstating only the methods of the class directly, 
+instead of also implementing the graph traversal. It supplied the initial shape with code suggestion, which I then edited and rewrote 
+to be suitable for my class and to my own liking. Final structure, variable choices, message wording, empty stack guarding 
+and so on, are my own creation.
+
+---
+
+## Assert.Throws Syntax
+I had forgotten the syntax for Asserting an exception to be thrown, and `Claude.ai` reminded me of it.  
+This was quicker than a google-search.
+
+---
+
+## Working Assistance for Nullability
+In the `Task 2` Readme, I had not been able to clearly state the reason for the `nullable` "Next" and 
+"Value" members of the `CustomNode` class properly. I asked `Claude.ai` for a suggestion rewrite, and edited that 
+rewrite into my own words before including it into the Readme. The rewrite clarifies the node-level versus stack-level 
+emptiness in a more comprehensible way.
+
+---
+
+## Maximum Memory Limit
+I was considering how I should articulate this edge case, and whether it would make any sense writing a 
+unit test for it. I had a discussion with `Claude.ai` about this, and I reasoned that it would not be 
+very practical to add this as a running unit test that would drain both my own device's memory as well as the grader's, 
+which then led to the decision of adding a note about it to the Readme for `Task 2`.
+
+---
