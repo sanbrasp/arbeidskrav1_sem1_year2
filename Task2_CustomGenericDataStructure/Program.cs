@@ -8,14 +8,16 @@ class Program
     {
         var stack = new CustomStack<string>();
 
-        Console.WriteLine("\nPushing 'A' to stack.");
+        Console.WriteLine("Pushing elements to the stack:");
+        Console.WriteLine("Pushing 'A' to stack.");
         stack.Push("A");
         Console.WriteLine("Pushing 'B' to stack.");
         stack.Push("B");
         Console.WriteLine("Pushing 'C' to stack.");
         stack.Push("C");
 
-        Console.WriteLine("\nExpected element when doing Peek(): 'C'.");
+        Console.WriteLine("\nPeeking at the top of the stack:");
+        Console.WriteLine("Expected element when doing Peek(): 'C'.");
         Console.WriteLine($"Peek: {stack.Peek()}");
 
         // These three Pop()s are guaranteed because we Pushed 3 elements:
