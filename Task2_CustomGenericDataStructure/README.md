@@ -24,7 +24,7 @@ _Tip: Choose an internal representation that makes it possible to explain why th
 
 ## Implementation
 
-[CustomNode class](Models/CustomStack.cs)  
+[CustomNode class](Models/CustomNode.cs)  
 [CustomStack class](Models/CustomStack.cs)  
 
 **Code implementation**  
@@ -33,8 +33,11 @@ It is not `static` because nodes need to be initialized.
 The class is `Generic` so that it can be used by any `type`.  
 This is a basic representation of a `node`, that holds a reference to a `Value` and the node's `_next` node.  
 
-The `_next` field is nullable for when the `Stack` is empty (at creation, and when the last element has been `Pop()`-ed).  
-The `Value` holds the value of the node. Is not nullable, because if the `Stack` is empty, there are no more nodes as well.  
+The `_next` field is nullable because it represents "what comes after this node". For the bottom of the stack, nothing comes 
+"after", in which case `_next is null`. It is a property of an individual node's position.  
+
+The `Value` holds the value of the node. Is not nullable, because a `CustomNode<T>` can only be created through its constructor, 
+which requires a real value to be supplied. It is impossible to construct a node that is holding nothing.  
 `Next` is encapsulated so that it cannot be manipulated into an invalid state.  
 The constructor initializes an object with a `Value` and `_next` set to `null`.
 ```csharp
@@ -100,6 +103,10 @@ internal class CustomStack<T>
     
     internal void Push(T value)
     {
+        if (value == null)
+        {
+            throw new ArgumentNullException(nameof(value));
+        }
         var newNode = new CustomNode<T>(value); // store the node's value in newNode
         newNode.Next = _top; // assign the next value in the currently empty _top
         _top = newNode; // assign newNode to _top
@@ -144,22 +151,52 @@ the development I have been able to learn a lot more than I would if I had chose
 This was a calculated risk from my end, and what offered the most learning value.
 
 I also opted to use one collective `xUnit` `test suite` for the entire solution.  
-The test collections are names in a non-ambiguous way so that they are respectively easy to locate both by file name 
+The test collections are named in a non-ambiguous way so that they are respectively easy to locate both by file name 
 and test names naming convention (`BinarySearchTests`, `CustomNodeTests`, etc).
+
+For method `T Push()` I added a guard clause for null values. This guard clause can only be triggered if `T` is a reference type, 
+as value types will not be able to trigger it because they cannot be null by nature. The value `0` is allowed, however.  
+
+I also decided against writing a unit test for the edge case where `Maximum Memory Limit` triggers. It would be impractical 
+to add a test that exhausts both my own system and the grader's, so I will note it down in the readme instead.  
+The `Max Memory Limit` case happens when the constrained allocated memory runs out during operations, like `Push`.  
+If it has no upper bounds, it will keep pushing until there is no more memory left and the system crashes.  
+This is a trade-off for the `node-based` design.
 
 ---
 
 ## Tests
 **Test names**  
+    - `CustomStack_AllowsValueTypeNode_OfValueZero()`
+    - `CustomStack_CatchesInvalidOperationException_OnPeek_WhenStackIsEmpty()`
+    - `CustomStack_CatchesInvalidOperationException_OnPop_WhenStackIsEmpty()`
+    - `CustomStack_ConfirmsCorrectState_AfterTangledHistory()`
+    - `CustomStack_IsEmpty_ReflectsCorrectState_BeforePushing_And_AfterPopping()`
+    - `CustomStack_PushFollowedByPeek_ReturnsTheCorrectValue()`
+    - `CustomStack_PushFollowedByPop_ConfirmsCorrectLifoOrder()`
+    - `CustomStack_ThrowsArgumentNullException_OnPushNull()`
+
+**Tests Run Successfully**  
+![img.png](Images/img.png)
 
 **Test cases**  
+- Normal use
+- Empty structure handling
+- LIFO order
+- Exception handling
+- `IsEmpty` correct state tracking between `Push()` and `Pop()`
+- `null` values for reference types handled
+- "Tangled" history state (`Push, Push, Pop, Peek, Push, Push, Pop, Peek`)
+- Value `0` allowed
 
 **Why**  
+These tests are written to ensure the code works as intended, handles edge cases, catches exceptions, 
+and allows values that are valid. 
 
 ---
 
 ## Explanation
-- Complexity
-- Use Cases
+- Complexity (time complexity)
+- Use Cases (Use example with graph traversal?)
 
 ---
