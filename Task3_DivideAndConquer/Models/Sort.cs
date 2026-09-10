@@ -6,4 +6,9 @@ internal class Sort
     {
         throw new NotImplementedException();
     }
+    
+    private void Merge(int[] array, int left, int middle, int right)
+    {
+        throw new NotImplementedException();
+    }
 }
