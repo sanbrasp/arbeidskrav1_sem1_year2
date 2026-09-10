@@ -28,6 +28,10 @@ internal class CustomStack<T>
     /// <param name="value">The value of the node.</param>
     internal void Push(T value)
     {
+        if (value == null) // only if the stack is a reference type since value types can't trigger this guard clause
+        {
+            throw new ArgumentNullException(nameof(value));
+        }
         var newNode = new CustomNode<T>(value); // store the node's value in newNode
         newNode.Next = _top; // assign the next value in the currently empty _top
         _top = newNode; // assign newNode to _top
