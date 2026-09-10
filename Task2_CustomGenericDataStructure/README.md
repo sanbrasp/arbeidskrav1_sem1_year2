@@ -200,8 +200,12 @@ and allows values that are valid.
 ### Use Cases:
   - `DFS`, which relies on a `Stack` and `LIFO` ordering for backtracking, and is able to find "all possible paths" by
     using this mechanism, which makes it useful when solving various tasks that have more than one possible path to solution. 
-    For example finding every possible move in a game of Chess, or solving a Sudoku puzzle.  
-
+    For example finding every possible move in a game of Chess, or solving a Sudoku puzzle.
+  - In this specific project the use case is split between: learning the mechanics of the Stack, learning to build it from the 
+  ground, recognizing what methods it needs and what data to hold or reference, and being able to demonstrate 
+  all three methods in sequence and through tests.
+_(My interpretation of the Use Cases section is: general use cases for the Stack, not _this_ stack in particular, but I 
+have chosen to include both.)_
 
 ### Internal representation:
 `Node Based` (see [Implementation](#implementation) for details)
