@@ -17,7 +17,6 @@ public class CustomStackTests
         // Act
         stack.Push(1);
         stack.Push(2);
-        stack.Peek();
 
         // Assert
         Assert.Equal(2, stack.Peek());
@@ -30,12 +29,14 @@ public class CustomStackTests
         var stack = new CustomStack<int>();
 
         // Act
-        stack.Push(1);
-        stack.Push(2);
-        stack.Push(3);
+        stack.Push(10);
+        stack.Push(99);
+        stack.Push(42);
 
         // Assert
-        Assert.Equal(3, stack.Pop());
+        Assert.Equal(42, stack.Pop());
+        Assert.Equal(99, stack.Pop());
+        Assert.Equal(10, stack.Pop());
     }
     
     [Fact]
@@ -70,5 +71,46 @@ public class CustomStackTests
         Assert.False(stack.IsEmpty);
         stack.Pop();
         Assert.True(stack.IsEmpty);
+    }
+
+    [Fact]
+    public void CustomStack_ConfirmsCorrectState_AfterTangledHistory()
+    {
+        // Arrange
+        var stack = new CustomStack<string>();
+
+        // Act and Assert
+        stack.Push("first");
+        stack.Push("second");
+        Assert.Equal("second", stack.Pop());
+        Assert.Equal("first", stack.Peek());
+        
+        stack.Push("third");
+        stack.Push("fourth");
+        Assert.Equal("fourth", stack.Pop());
+        Assert.Equal("third", stack.Peek());
+    }
+
+    [Fact]
+    public void CustomStack_AllowsValueTypeNode_OfValueZero()
+    {
+        // Arrange
+        var stack = new CustomStack<int>();
+
+        // Act
+        stack.Push(0);
+
+        // Assert
+        Assert.Equal(0, stack.Peek());
+    }
+
+    [Fact]
+    public void CustomStack_ThrowsArgumentNullException_OnPushNull()
+    {
+        // Arrange
+        var stack = new CustomStack<string>();
+
+        // Act and Assert
+        Assert.Throws<ArgumentNullException>(() => stack.Push(null));
     }
 }
