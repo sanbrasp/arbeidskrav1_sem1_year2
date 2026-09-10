@@ -15,21 +15,36 @@ class Program
         Console.WriteLine("Pushing 'C' to stack.");
         stack.Push("C");
 
-        Console.WriteLine($"\nPeek at the top of the stack (Expected: 'C'): {stack.Peek()}");
+        Console.WriteLine("\nExpected element when doing Peek(): 'C'.");
+        Console.WriteLine($"Peek: {stack.Peek()}");
 
         // These three Pop()s are guaranteed because we Pushed 3 elements:
-        Console.WriteLine($"\nPop: {stack.Pop()}");
+        Console.WriteLine("\nPop() expected order: 'C', 'B', 'A'.");
         Console.WriteLine($"Pop: {stack.Pop()}");
         Console.WriteLine($"Pop: {stack.Pop()}");
+        Console.WriteLine($"Pop: {stack.Pop()}");
+
+        // This Peek() we KNOW will fail because there aren't any more elements on the stack
+        try
+        {
+            Console.WriteLine("\nAttempting to Peek() on an empty stack:");
+            Console.WriteLine($"Peek: {stack.Peek()}");
+        }
+        catch (InvalidOperationException e)
+        {
+            Console.WriteLine("Expected Exception: 'InvalidOperationException - Stack is Empty'.");
+            Console.WriteLine($"Exception caught: {e.Message}");
+        }
         
         // This Pop() we KNOW will fail because there aren't any more elements on the stack
         try
         {
-            Console.WriteLine("Attempting to Pop() from an empty stack:");
+            Console.WriteLine("\nAttempting to Pop() from an empty stack:");
             Console.WriteLine($"Pop: {stack.Pop()}");
         }
         catch (InvalidOperationException e)
         {
+            Console.WriteLine("Expected Exception: 'InvalidOperationException - Stack is Empty'.");
             Console.WriteLine($"Exception caught: {e.Message}");
         }
     }
