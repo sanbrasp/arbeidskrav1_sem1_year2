@@ -25,10 +25,15 @@ _MergeSort it is!_
 - [Tests](#tests)
 - [Operation Count](#operation-count)
 - [Analysis](#analysis)
+- [Sources](#sources)
 
 ---
 
 ## Implementation
+While I like both `QuickSort` and `MergeSort`, I eventually landed on `MergeSort` for this task, simply because I 
+think it is such an interesting and thorough algorithm, and because it guarantees `O(n log n)` time complexity every time - 
+`best / avg / worst`. It also carries some fundamental similarities to `BinarySearch` in the way it processes arrays, 
+which I also find fascinating.
 
 ---
 
@@ -43,3 +48,10 @@ _MergeSort it is!_
 ## Analysis
 
 ---
+
+### Sources
+- [@Michael Sambol - YouTube - Merge sort in 3 minutes](https://www.youtube.com/watch?v=4VqmGXwpLqc)  
+Screenshot from video - step by step splitting, then merge/sort:  ![img.png](Images/img.png)  
+- [@Bro Code - YouTube - Learn Merge Sort in 13 minutes](https://www.youtube.com/watch?v=3j0SWDX4AtU)  
+Screenshot from video - step by step splitting, then merge/sort: ![img.png](Images/img1.png)
+Screenshot from video - Time and Space Complexity: ![img.png](Images/img3.png)
