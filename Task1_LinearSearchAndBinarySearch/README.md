@@ -7,7 +7,7 @@
   - [BinarySearch](#binarysearch)
 - [Test Results](#test-results)
 - [Analysis](#analysis)
-- [Task Description](#task-description)
+- [Sources](#sources)
 
 ---
 
@@ -316,3 +316,6 @@ be trustworthy. A good system cannot depend on a coin flip chance of success, an
 ensuring we can trust the algorithm. To be able to trust the algorithm, it needs us to fulfill its demands. 
 
 ---
+
+## Sources
+- [@IAmTimCorey - YouTube - Initial Setup and Best Practices - Spectre Console Series](https://www.youtube.com/watch?v=-ZRnq8ke_bU)
