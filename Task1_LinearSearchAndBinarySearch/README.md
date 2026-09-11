@@ -244,7 +244,7 @@ operations. As seen in the example above, where Scenario 1 causes Binary Search 
 Binary Search also has a sorting cost upfront + the searching cost itself. Scenario 2 shows how Binary Search emerges 
 victorious when the calculations are done, and the upfront cost of sorting has paid for itself in full.
 
-From the example above, one could assume the break-even point where Binary Search and the sorting cost would 
+From the example above, one could assume the break-even point where a Binary Search and the sorting cost would 
 be the more efficient algorithm is well below 100 searches.  
 I attempted to calculate this with help from AI, but was unable to follow the steps and therefore omitted using it 
 here.
