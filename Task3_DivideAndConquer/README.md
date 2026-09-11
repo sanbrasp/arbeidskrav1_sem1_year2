@@ -2,7 +2,7 @@
 
 DELETE THIS WHEN DONE!
 - ✅ Choose ~~QuickSort~~ or `MergeSort`
-- Implement core recursive method with exact required signature of your choice
+- ✅ Implement core recursive method with exact required signature of your choice
 - Implement required helper method (~~Partition for Q~~ and `Merge` for `MergeSort`)
 - Design your operation counters  (comparisons for both, + algorithm specific extra: ~~swaps for Q~~ or 
   `merge-calls/element-copies` for `MergeSort`, decide exactly what counts as each (like in task 1))
