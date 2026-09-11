@@ -55,3 +55,4 @@ Screenshot from video - step by step splitting, then merge/sort:  ![img.png](Ima
 - [@Bro Code - YouTube - Learn Merge Sort in 13 minutes](https://www.youtube.com/watch?v=3j0SWDX4AtU)  
 Screenshot from video - step by step splitting, then merge/sort: ![img.png](Images/img1.png)
 Screenshot from video - Time and Space Complexity: ![img.png](Images/img3.png)
+- [@Bálint Benedek Tóth - YouTube - Merge Sort Algorithm in C#](https://www.youtube.com/watch?v=8mZhUH3JsR8)  
