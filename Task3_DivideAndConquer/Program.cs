@@ -7,15 +7,15 @@ class Program
 {
     static void Main(string[] args)
     {
+        int[] taskSpecifiedArray = [64, 34, 25, 12, 22, 11, 90];
         int[] sortedArray = [1, 2, 3, 4, 5];
         int[] reverseSortedArray = [9, 8, 7, 6, 5];
-        int[] arrayWithDuplicated = [2, 22, 67, 7, 12, 27, 17, 2];
+        int[] arrayWithDuplicates = [2, 22, 67, 7, 12, 27, 17, 2];
         int[] emptyArray = [];
         int[] singleValueArray = [1024];
-        int[] test = [2, 1];
         
-        Sort.ResetAndRunMergeSort(sortedArray);
-        foreach (var element in sortedArray)
+        Sort.ResetAndRunMergeSort(taskSpecifiedArray);
+        foreach (var element in taskSpecifiedArray)
         {
             Console.WriteLine(element);
         }
