@@ -38,14 +38,24 @@ which I also find fascinating.
 ---
 
 ## Tests
+Add screenshots, names, test cases, why it's being tested, here.
 
 ---
 
 ## Operation Count
+**What is Counted**  
+`Comparisons` and `Merge()` calls.
 
 ---
 
 ## Analysis
+**Temporary Storage:**  
+`leftArray`  
+`rightArray`
+
+**Time and Space Complexity:**  
+
+**Trade-Offs**  
 
 ---
 
