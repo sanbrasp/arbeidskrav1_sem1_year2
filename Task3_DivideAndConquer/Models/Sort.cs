@@ -8,7 +8,7 @@ internal class Sort
     /// <param name="array">The input array.</param>
     /// <param name="left">Marks the start of the section we are looking at.</param>
     /// <param name="right">Marks the end of the section we are looking at.</param>
-    internal void MergeSort(int[] array, int left, int right)
+    internal static void MergeSort(int[] array, int left, int right)
     {
         if (left >= right) // base case
         {
@@ -28,8 +28,9 @@ internal class Sort
     /// <param name="left">The left sub-array.</param>
     /// <param name="middle">The middle point of the sub-array.</param>
     /// <param name="right">The right sub-array.</param>
-    private void Merge(int[] array, int left, int middle, int right)
+    private static void Merge(int[] array, int left, int middle, int right)
     {
+        int comparisonCounter = 0;
         int[] leftArray = array[left..(middle)]; // define the left side array, starts at left, ends at middle -1 (start inclusive, end exclusive)
         int[] rightArray = array[(middle + 1)..(right + 1)]; // define right side array, starts at middle +1, ends at right (start inclusive, end exclusive)
 
@@ -39,11 +40,13 @@ internal class Sort
         {
             if (leftArray[l] < rightArray[r]) // Comparing the front of left to the front of right, if left is smaller
             {
+                comparisonCounter++;
                 array[o] = leftArray[l++]; // put left into the original array and increment the position for the left pointer in the sub-array
                 o++; // increment the position for the original array
             }
             else
             {
+                comparisonCounter++;
                 array[o] = rightArray[r++]; // if right is smaller than left, put it into the original array, increment right position pointer
                 o++; // increment the position for the original array
             }
