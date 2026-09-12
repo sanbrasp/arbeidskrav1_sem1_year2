@@ -5,9 +5,9 @@ internal class Sort
     /// <summary>
     /// Runs a merge sort on an array of integers.
     /// </summary>
-    /// <param name="array"></param>
-    /// <param name="left"></param>
-    /// <param name="right"></param>
+    /// <param name="array">The input array.</param>
+    /// <param name="left">Marks the start of the section we are looking at.</param>
+    /// <param name="right">Marks the end of the section we are looking at.</param>
     internal void MergeSort(int[] array, int left, int right)
     {
         if (left >= right) // base case
@@ -34,7 +34,21 @@ internal class Sort
         int[] leftArray = array[left..(middle)]; // define the left side array, starts at left, ends at middle -1 (start inclusive, end exclusive)
         int[] rightArray = array[(middle + 1)..(right + 1)]; // define right side array, starts at middle +1, ends at right (start inclusive, end exclusive)
 
-        int l = 0, r = 0, t = 0;
+        int l = 0, r = 0, o = left;
+
+        while (l < leftArray.Length && r < rightArray.Length)
+        {
+            if (leftArray[l] < rightArray[r])
+            {
+                array[o] = leftArray[l++];
+                o++;
+            }
+            else
+            {
+                array[o] = rightArray[r++];
+                o++;
+            }
+        }
         
     }
 }
