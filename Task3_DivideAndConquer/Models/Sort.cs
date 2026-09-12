@@ -5,8 +5,8 @@ internal class Sort
     static int _comparisonCounter = 0;
     static int _mergeCallCounter = 0;
     
-    internal int ComparisonCounter => _comparisonCounter;
-    internal int MergeCallCounter => _mergeCallCounter;
+    internal static int ComparisonCounter => _comparisonCounter;
+    internal static int MergeCallCounter => _mergeCallCounter;
 
     internal static void ResetAndRunMergeSort(int[] array)
     {
