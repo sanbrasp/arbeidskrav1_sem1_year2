@@ -17,6 +17,7 @@ Overview
 - [CustomStack Demo](#custom-stack-demo)
 - [Assert.Throws Syntax](#assertthrows-syntax)
 - [Maximum Memory Limit](#maximum-memory-limit)
+- [MergeSort Tutoring](#merge-sort-tutoring)
 
 ---
 
@@ -75,8 +76,16 @@ Claude.ai to show me the steps of the hand trace so that I could study them and 
 ---
 
 ## Spectre.Console Assistance
-Needed some initial help setting up the columns and rows.  
-Also watched a youtube video for some inspiration.
+Task 1: Needed some initial help setting up the columns and rows.  
+Also watched a youtube video for some inspiration.  
+Task 2: Decided to give the console some flair, but accidentally installed the wrong NuGet package
+(`Spectre.Console.Ansi` instead of `Spectre.Console`). `Claude.ai` pointed me towards checking the 
+`.csproj` file for the actual installed package name, which solved my problem and allowed me to install the 
+correct package instead. It also showed me some examples for text display variations like `FigletText`, `Rule` 
+and `Panel`, which allowed me to choose a display style that worked for me. I landed on `Panel` for the header, 
+and basic text colors and boldness for the demonstration output. I also asked `Claude.ai` to provide me with a 
+linked YouTube video that I could watch for some inspiration, which ultimately led me to the decision of very basic 
+formatting of the output.
 
 ---
 
@@ -179,5 +188,17 @@ I was considering how I should articulate this edge case, and whether it would m
 unit test for it. I had a discussion with `Claude.ai` about this, and I reasoned that it would not be 
 very practical to add this as a running unit test that would drain both my own device's memory as well as the grader's, 
 which then led to the decision of adding a note about it to the Readme for `Task 2`.
+
+---
+
+## Merge Sort Tutoring
+`Gemini Notebook` was used to generate video explainers breaking down MergeSort and the Merge operation, and the 
+general idea of MergeSort itself, based on my own lecture and study notes.
+
+`Claude.ai` was used as an interactive tutor for where the explainers from `Notebook` had gaps.  
+It helped me understand (remember) the range operator's exclusive-end behavior that I had completely forgotten about, 
+reminded me of the trunctation rounding for dividing integers (rounds down, not up), and assisted me with the debugging 
+I had to do because of those one-off and slice bugs I had created prior, which are also explained in more detail in the 
+[Task 3 README](../Task3_DivideAndConquer/README.md).
 
 ---
