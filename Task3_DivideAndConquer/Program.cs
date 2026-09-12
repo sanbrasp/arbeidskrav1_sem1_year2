@@ -1,4 +1,5 @@
-﻿using Task3_DivideAndConquer.Models;
+﻿using System.Net;
+using Task3_DivideAndConquer.Models;
 
 namespace Task3_DivideAndConquer;
 
@@ -13,12 +14,11 @@ class Program
         int[] singleValueArray = [1024];
         int[] test = [2, 1];
         
-        Sort.MergeSort(test, 0, test.Length -1);
-        foreach (var element in test)
+        Sort.ResetAndRunMergeSort(sortedArray);
+        foreach (var element in sortedArray)
         {
             Console.WriteLine(element);
         }
-
         
     }
 }
