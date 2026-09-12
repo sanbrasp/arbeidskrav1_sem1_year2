@@ -57,20 +57,20 @@ Add screenshots, names, test cases, why it's being tested, here.
 **Trade-Offs**  
 
 **Bug Fixing**  
-`MergeSort()` start and end definition was off (neither side included middle).  
-I had initially not set either side (`left` or `right`) to actually include the mid during the calls.  
-This led to bugs itself, and also trailed into the `Merge()` method.  
-The rule I intended to operate by was `mid belongs to left`, however I had set the starting point for the left side 
-to `left` and the ending point to `mid +1`, skipping the middle entirely.  
-For the right I had done something similar, setting the start to `mid +1`, skipping mid, and also set 
-the end to `right -1` and `right +1` (in different steps during my bug hunt). Both skipping mid, 
-and the end for right being entirely wrong because I got the `exclusive-end` behavior from slicing mixed up 
-with this step. With the right questions from `Claude.ai` (documented in [AIUse.md](../Docs/AIUse.md)), 
+**`MergeSort()`** - start and end boundaries were off, neither recursive call included `mid`.     
+I had set the left call's range to `left` through `mid -1`, and the right call's range from `mid+1` through `right`, 
+skipping `mid` entirely on both sides.  
+The rule I intended to operate by was `mid belongs to left`, so the left call needed to end at `mid` itself.  
+I had also been mixing up "indice slicing" and `start/stop` ranges.
+This led to bugs itself, and also trailed into the `Merge()` method.
+With the right questions from `Claude.ai` (documented in [AIUse.md](../Docs/AIUse.md)), 
 I was able to step my way through what I had done wrong and correct it.  
 However, the next couple of bugs still remained:
 
-`Merge()` indice slices were off by one, `mid` became an issue because it wasn't included in the above.  
-I had made the wrong slices for both `leftArray` and `rightArray` several times before getting it right, 
+**`Merge()`** - the array slices were off by one, for the same underlying reason: `middle` was not included where it needed to be.    
+I had again mixed up two different systems: `MergeSort()`'s parameters that are plain numbers, and `Merge()`'s array slices that 
+use C#'s `exclusive-end range` syntax, requiring the `+1` adjustment to include the boundary.  
+I made the wrong slices for both `leftArray` and `rightArray` several times before getting it right, 
 and due to the previous bug, even when the arrays were correctly sliced, it produced bugs.  
 `leftArray` did not include `middle` for quite some time, and the confusion from the bug above also 
 translated into this, where I got "slicing range" and "start and end range" mixed up.  
