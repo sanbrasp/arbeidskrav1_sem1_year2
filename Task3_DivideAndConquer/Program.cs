@@ -19,6 +19,7 @@ class Program
         {
             Console.WriteLine(element);
         }
-        
+        Console.WriteLine($"Comparison count: {Sort.ComparisonCounter}");
+        Console.WriteLine($"Merge call count: {Sort.MergeCallCounter}");
     }
 }
