@@ -2,8 +2,11 @@
 
 internal class Sort
 {
-    static int comparisonCounter = 0;
-    static int mergeCallCounter = 0;
+    static int _comparisonCounter = 0;
+    static int _mergeCallCounter = 0;
+    
+    internal int ComparisonCounter => _comparisonCounter;
+    internal int MergeCallCounter => _mergeCallCounter;
 
     internal static void ResetAndRunMergeSort(int[] array)
     {
@@ -29,7 +32,7 @@ internal class Sort
         int mid = left + (right - left) / 2;
         MergeSort(array, left, mid); // left half starts at left and ends at mid
         MergeSort(array, mid + 1, right); // right half starts at mid + 1 and ends at right
-        mergeCallCounter++;
+        _mergeCallCounter++;
         Merge(array, left, mid, right);
     }
     
@@ -49,7 +52,7 @@ internal class Sort
 
         while (l < leftArray.Length && r < rightArray.Length)
         {
-            comparisonCounter++;
+            _comparisonCounter++;
             if (leftArray[l] < rightArray[r]) // Comparing the front of left to the front of right, if left is smaller
             {
                 array[o] = leftArray[l++]; // put left into the original array and increment the position for the left pointer in the sub-array
@@ -77,11 +80,11 @@ internal class Sort
     
     private static void ResetMergeCallCounter()
     {
-        mergeCallCounter = 0;
+        _mergeCallCounter = 0;
     }
 
     private static void ResetComparisonCounter()
     {
-        comparisonCounter = 0;
+        _comparisonCounter = 0;
     }
 }
