@@ -57,7 +57,7 @@ Add screenshots, names, test cases, why it's being tested, here.
 
 **Trade-Offs**  
 
-**Bugs**  
+**Bug Fixing**  
 `MergeSort()` start and end definition was off (neither side included middle).  
 I had initially not set either side (`left` or `right`) to actually include the mid during the calls.  
 This led to bugs itself, and also trailed into the `Merge()` method.  
