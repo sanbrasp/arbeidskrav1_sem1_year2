@@ -57,6 +57,10 @@ Add screenshots, names, test cases, why it's being tested, here.
 
 **Trade-Offs**  
 
+**Bugs**  
+`MergeSort()` start and end definition was off (neither side included middle)  
+`Merge()` indice slices were off by one, `mid` became an issue because it wasn't included in the above
+
 ---
 
 ### Sources
