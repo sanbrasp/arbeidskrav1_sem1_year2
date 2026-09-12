@@ -152,7 +152,7 @@ I chose `Stack` as that seems to be the most abstract and challenging one to me.
 
 ## Custom Stack Demo
 I had written a demo that was a little more extensive than the assignment was really asking for.  
-Initially I wrote an entire graph traversal where I used my Custom Graph class.  
+Initially I wrote an entire graph traversal where I used my Custom Stack class.  
 `Claude.ai` suggested a rewrite and shaved down version, demonstating only the methods of the class directly, 
 instead of also implementing the graph traversal. It supplied the initial shape with code suggestion, which I then edited and rewrote 
 to be suitable for my class and to my own liking. Final structure, variable choices, message wording, empty stack guarding 
@@ -166,7 +166,7 @@ This was quicker than a google-search.
 
 ---
 
-## Working Assistance for Nullability
+## Wording Assistance for Nullability
 In the `Task 2` Readme, I had not been able to clearly state the reason for the `nullable` "Next" and 
 "Value" members of the `CustomNode` class properly. I asked `Claude.ai` for a suggestion rewrite, and edited that 
 rewrite into my own words before including it into the Readme. The rewrite clarifies the node-level versus stack-level 
