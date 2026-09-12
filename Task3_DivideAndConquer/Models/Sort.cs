@@ -2,13 +2,24 @@
 
 internal class Sort
 {
+    static int comparisonCounter = 0;
+    static int mergeCallCounter = 0;
+
+    internal static void ResetAndRunMergeSort(int[] array)
+    {
+        ResetComparisonCounter();
+        ResetMergeCallCounter();
+        
+        MergeSort(array, 0, array.Length - 1);
+    }
+    
     /// <summary>
     /// Runs a merge sort on an array of integers.
     /// </summary>
     /// <param name="array">The input array.</param>
     /// <param name="left">Marks the start of the section we are looking at.</param>
     /// <param name="right">Marks the end of the section we are looking at.</param>
-    internal static void MergeSort(int[] array, int left, int right)
+    private static void MergeSort(int[] array, int left, int right)
     {
         if (left >= right) // base case
         {
@@ -18,6 +29,7 @@ internal class Sort
         int mid = left + (right - left) / 2;
         MergeSort(array, left, mid); // left half starts at left and ends at mid
         MergeSort(array, mid + 1, right); // right half starts at mid + 1 and ends at right
+        mergeCallCounter++;
         Merge(array, left, mid, right);
     }
     
@@ -30,7 +42,6 @@ internal class Sort
     /// <param name="right">The right sub-array.</param>
     private static void Merge(int[] array, int left, int middle, int right)
     {
-        int comparisonCounter = 0;
         int[] leftArray = array[left..(middle +1)]; // define the left side array, starts at left, ends at middle +1 (start inclusive, end exclusive)
         int[] rightArray = array[(middle +1)..(right + 1)]; // define right side array, starts at middle +1, ends at right +1 (start inclusive, end exclusive)
 
@@ -38,15 +49,14 @@ internal class Sort
 
         while (l < leftArray.Length && r < rightArray.Length)
         {
+            comparisonCounter++;
             if (leftArray[l] < rightArray[r]) // Comparing the front of left to the front of right, if left is smaller
             {
-                comparisonCounter++;
                 array[o] = leftArray[l++]; // put left into the original array and increment the position for the left pointer in the sub-array
                 o++; // increment the position for the original array
             }
             else
             {
-                comparisonCounter++;
                 array[o] = rightArray[r++]; // if right is smaller than left, put it into the original array, increment right position pointer
                 o++; // increment the position for the original array
             }
@@ -63,5 +73,15 @@ internal class Sort
             array[o] = rightArray[r++];
             o++;
         }
+    }
+    
+    private static void ResetMergeCallCounter()
+    {
+        mergeCallCounter = 0;
+    }
+
+    private static void ResetComparisonCounter()
+    {
+        comparisonCounter = 0;
     }
 }
