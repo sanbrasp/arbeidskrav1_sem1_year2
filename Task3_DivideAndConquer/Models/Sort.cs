@@ -31,7 +31,7 @@ internal class Sort
     private static void Merge(int[] array, int left, int middle, int right)
     {
         int comparisonCounter = 0;
-        int[] leftArray = array[left..(middle)]; // define the left side array, starts at left, ends at middle -1 (start inclusive, end exclusive)
+        int[] leftArray = array[left..(middle +1)]; // define the left side array, starts at left, ends at middle -1 (start inclusive, end exclusive)
         int[] rightArray = array[(middle + 1)..(right + 1)]; // define right side array, starts at middle +1, ends at right (start inclusive, end exclusive)
 
         int l = 0, r = 0, o = left; // Define the starting positions for l, r and o(original)
