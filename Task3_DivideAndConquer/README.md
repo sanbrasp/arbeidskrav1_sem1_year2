@@ -58,8 +58,33 @@ Add screenshots, names, test cases, why it's being tested, here.
 **Trade-Offs**  
 
 **Bugs**  
-`MergeSort()` start and end definition was off (neither side included middle)  
-`Merge()` indice slices were off by one, `mid` became an issue because it wasn't included in the above
+`MergeSort()` start and end definition was off (neither side included middle).  
+I had initially not set either side (`left` or `right`) to actually include the mid during the calls.  
+This led to bugs itself, and also trailed into the `Merge()` method.  
+The rule I intended to operate by was `mid belongs to left`, however I had set the starting point for the left side 
+to `left` and the ending point to `mid +1`, skipping the middle entirely.  
+For the right I had done something similar, setting the start to `mid +1`, skipping mid, and also set 
+the end to `right -1` and `right +1` (in different steps during my bug hunt). Both skipping mid, 
+and the end for right being entirely wrong because I got the `exclusive-end` behavior from slicing mixed up 
+with this step. With the right questions from `Claude.ai` (documented in [AIUse.md](../Docs/AIUse.md)), 
+I was able to step my way through what I had done wrong and correct it.  
+However, the next couple of bugs still remained:
+
+`Merge()` indice slices were off by one, `mid` became an issue because it wasn't included in the above.  
+I had made the wrong slices for both `leftArray` and `rightArray` several times before getting it right, 
+and due to the previous bug, even when the arrays were correctly sliced, it produced bugs.  
+`leftArray` did not include `middle` for quite some time, and the confusion from the bug above also 
+translated into this, where I got "slicing range" and "start and end range" mixed up.  
+`Claude.ai` walked me through this by asking the right questions and making me think my way to the answer, 
+and I realized one couldn't have worked without the other (MergeSort and Merge) due to both of them containing 
+bugs that would break the other even if one had the correct logic. They followed different rules (`mid belongs to left`),
+and didn't speak the same language.  
+By walking through my own set rule, ensuring the `start` and `end` ranges in `MergeSort` were correct, 
+and tracing through my indices setup, I was able to gather the error:  
+the left ended at the wrong boundary,   
+and the right ended at the wrong boundary. 
+
+Fixes were applied to both methods and tested on several different arrays to ensure everything was in order.
 
 ---
 
