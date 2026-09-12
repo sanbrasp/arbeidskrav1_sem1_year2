@@ -4,11 +4,20 @@ class Program
 {
     static void Main(string[] args)
     {
-        int[] test = { 10, 20, 30, 40, 50 };
+        int[] array = { 10, 20, 30, 40, 50, 60 };
+        
+        int mid = array.Length / 2;
+        int[] leftArr = array[0..(2+1)];
+        int[] rightArr = array[(mid)..array.Length];
 
-        int[] slice = test[1..4];
-
-        foreach (int i in slice)
+        Console.WriteLine("Left Array:");
+        foreach (int i in leftArr)
+        {
+            Console.WriteLine(i);
+        }
+        Console.WriteLine();
+        Console.WriteLine("Right Array:");
+        foreach (int i in rightArr)
         {
             Console.WriteLine(i);
         }
