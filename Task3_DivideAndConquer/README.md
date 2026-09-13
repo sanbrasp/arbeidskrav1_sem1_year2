@@ -128,11 +128,38 @@ from within the class itself and do not need to be exposed outside of it.
 ---
 
 ## Tests
-Add screenshots, names, test cases, why it's being tested, here.
+Add test cases, why it's being tested, here.
 
-Added bonus: A hand-trace of the full `MergeSort()` and `Merge()` process, counting comparisons and merge calls manually:
+**Tests Run Successfully**  
+![MergeSortTests](Images/testsrunsuccessfully.png)
+
+**Added bonuses**:  
+Hand-traces to ensure the correct results before asserting the counter values in the tests.  
+Full hand-trace on array `[64, 34, 25, 12, 22, 11, 90]`:
 ![hand trace](Images/HandTraceOfMergeSort.png)  
 Excuse the chaos and typos, but I spent too much time doing this for it just to remain unseen by anyone else than me.
+
+Full hand-trace on the array with duplicate values: `[2, 22, 67, 7, 12, 27, 17, 2]`:  
+![hand trace 2](Images/HandTraceDuplicateValues.png)
+
+**Test Names**  
+  - `MergeSort_HandlesEmptyArray_AndCountersAreAtZero`
+  - `MergeSort_HandlesSingleElementArray_AndCountersAreAtZero`
+  - `MergeSort_SortsCorrectly_AndCountsComparisonsAndMerges_ForArrayWithDuplicateElements`
+  - `MergeSort_SortsCorrectly_AndCountsComparisonsAndMerges_ForReverseSortedArray`
+  - `MergeSort_SortsCorrectly_AndCountsComparisonsAndMerges_ForSortedArray`
+  - `MergeSort_SortsCorrectly_AndCountsComparisonsAndMerges_ForTaskSpecifiedArray`
+
+**Test Cases**  
+- Task specified array: `[64, 34, 25, 12, 22, 11, 90]`
+- Sorted array from task: `[1, 2, 3, 4, 5]`
+- Reversed sorted array from task: `[9, 8, 7, 6, 5]`
+- An array with duplicate values: `[2, 22, 67, 7, 12, 27, 17, 2]`
+- An empty array: `[]`
+- A single-element array: `[1024]`
+
+**Why This is Tested**  
+To ensure correct counter data and correct sorting behavior.
 
 ---
 
