@@ -14,8 +14,8 @@ class Program
         int[] emptyArray = [];
         int[] singleValueArray = [1024];
         
-        Sort.ResetAndRunMergeSort(taskSpecifiedArray);
-        foreach (var element in taskSpecifiedArray)
+        Sort.ResetAndRunMergeSort(emptyArray);
+        foreach (var element in emptyArray)
         {
             Console.WriteLine(element);
         }
