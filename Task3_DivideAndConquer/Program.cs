@@ -36,6 +36,15 @@ class Program
                 case 4:
                     MenuActions.ArrayWithDuplicateValues();
                     break;
+                case 5:
+                    MenuActions.EmptyArray();
+                    break;
+                case 6:
+                    MenuActions.SingleValueArray();
+                    break;
+                case 0:
+                    running = false;
+                    break;
             }
         }
     }
