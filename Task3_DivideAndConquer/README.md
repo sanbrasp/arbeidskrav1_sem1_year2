@@ -34,7 +34,7 @@ think it is such an interesting and thorough algorithm, and because it guarantee
 `best / avg / worst`. It also carries some fundamental similarities to `BinarySearch` in the way it processes arrays, 
 which I also find fascinating.  
 
-`void ResetAndRunMergeSort(int[] array)]`:  
+**void ResetAndRunMergeSort(int[] array)]**:  
 ```csharp
 internal static void ResetAndRunMergeSort(int[] array)
     {
@@ -49,51 +49,60 @@ A very plain orchestrator to ensure the correct order of steps:
 - Run the `MergeSort()` algorithm
 - Ensure correct counter data between runs
 
-`void MergeSort(int[] array, int left, int right)`:  
+===============================================================
+
+**void MergeSort(int[] array, int left, int right)**:  
 ```csharp
 private static void MergeSort(int[] array, int left, int right)
     {
         if (left >= right) // base case
         {
-            // Nothing to do here, stop everything once this condition is true.
             return;
         }
         int mid = left + (right - left) / 2;
-        MergeSort(array, left, mid); // left half starts at left and ends at mid
-        MergeSort(array, mid + 1, right); // right half starts at mid + 1 and ends at right
+        MergeSort(array, left, mid);
+        MergeSort(array, mid + 1, right);
         _mergeCallCounter++;
         Merge(array, left, mid, right);
     }
 ```
-TODO: Write about method here!
+Base case for `MergeSort()`:  
+`if (left >= right) -> stop`  
+The condition that avoids infinite recursion.
 
-`void Merge(int[] array, int left, int middle, int right)`:  
+Sectioning rule:  
+`mid belongs to left`.  
+Mid has to be included in the array so it's not skipped over, because that causes instability bugs and generates 
+invalid results. Both Merge and MergeSort abide by this rule.
+
+===============================================================
+
+**void Merge(int[] array, int left, int middle, int right)**:  
 ```csharp
 private static void Merge(int[] array, int left, int middle, int right)
     {
-        int[] leftArray = array[left..(middle +1)]; // define the left side array, starts at left, ends at middle +1 (start inclusive, end exclusive)
-        int[] rightArray = array[(middle +1)..(right + 1)]; // define right side array, starts at middle +1, ends at right +1 (start inclusive, end exclusive)
+        int[] leftArray = array[left..(middle +1)];
+        int[] rightArray = array[(middle +1)..(right + 1)];
 
-        int l = 0, r = 0, o = left; // Define the starting positions for l, r and o(original)
+        int l = 0, r = 0, o = left;
 
         while (l < leftArray.Length && r < rightArray.Length)
         {
             _comparisonCounter++;
-            if (leftArray[l] < rightArray[r]) // Comparing the front of left to the front of right, if left is smaller
+            if (leftArray[l] < rightArray[r])
             {
-                array[o] = leftArray[l++]; // put left into the original array and increment the position for the left pointer in the sub-array
-                o++; // increment the position for the original array
+                array[o] = leftArray[l++];
+                o++;
             }
             else
             {
-                array[o] = rightArray[r++]; // if right is smaller than left, put it into the original array, increment right position pointer
-                o++; // increment the position for the original array
+                array[o] = rightArray[r++];
+                o++;
             }
         }
-        // Check for remaining elements in each block (left and right)
         while (l < leftArray.Length)
         {
-            array[o] = leftArray[l++]; // same logic as the main comparison branches, but no comparisons
+            array[o] = leftArray[l++];
             o++;
         }
 
@@ -104,11 +113,17 @@ private static void Merge(int[] array, int left, int middle, int right)
         }
     }
 ```
-TODO: Write about method here!
+The temporary arrays `leftArray` and `rightArray` are sized like this to abide by the rule set in `MergeSort` that says
+`mid belongs to left`. In order to achieve this, the original array was sliced to place `left` and `mid+1` into `left`, 
+and `mid+1` to `right +1` in `right`. The slices need the `+1` due to the end-exclusive behavior in C#'s slicing syntax. 
+It includes the start range, and excludes the end range. `+1` ensures we get the ends, and the `mid+1` for `right`'s start 
+ensures `mid` stays with `left`, and `right`'s start begins one step to the right of `mid`.
+
+===============================================================
 
 Helper methods: `void ResetComparisonCounter()` and `void ResetMergeCallCounter()` are very simple and do just that, nothing more.
 
-<br>
+===============================================================
 
 **Choices**  
 `MergeSort()` set to `private`.  
@@ -140,7 +155,10 @@ Full hand-trace on array `[64, 34, 25, 12, 22, 11, 90]`:
 Excuse the chaos and typos, but I spent too much time doing this for it just to remain unseen by anyone else than me.
 
 Full hand-trace on the array with duplicate values: `[2, 22, 67, 7, 12, 27, 17, 2]`:  
-![hand trace 2](Images/HandTraceDuplicateValues.png)
+![hand trace 2](Images/HandTraceDuplicateValues.png)  
+_(As I forgot to clearly write it down, here is the counter tally:  
+Total comparisons: 17  
+Total merge calls: 7.)_
 
 **Test Names**  
   - `MergeSort_HandlesEmptyArray_AndCountersAreAtZero`
@@ -165,7 +183,12 @@ To ensure correct counter data and correct sorting behavior.
 
 ## Operation Count
 **What is Counted**  
-`Comparisons` and `Merge()` calls.
+`Comparisons` and `Merge()` calls.  
+
+I refer to the manually hand-traced images that you can see in the [Tests section](#tests).  
+In the second image, I had not clearly noted the result.  
+Total comparisons: 17  
+Total merge calls: 7.
 
 ---
 
