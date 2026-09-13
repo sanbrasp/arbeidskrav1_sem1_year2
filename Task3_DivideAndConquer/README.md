@@ -130,6 +130,10 @@ from within the class itself and do not need to be exposed outside of it.
 ## Tests
 Add screenshots, names, test cases, why it's being tested, here.
 
+Added bonus: A hand-trace of the full `MergeSort()` and `Merge()` process, counting comparisons and merge calls manually:
+![hand trace](Images/HandTraceOfMergeSort.png)  
+Excuse the chaos and typos, but I spent too much time doing this for it just to remain unseen by anyone else than me.
+
 ---
 
 ## Operation Count
