@@ -140,6 +140,12 @@ the correct behavior from the `MergeSort()` method.
 `Merge()`, `ResetComparisonCounter()`, and `ResetMergeCallCounter` are also set to `private` because they are only run 
 from within the class itself and do not need to be exposed outside of it.  
 
+I opted to write the various test cases available to be run from the project as well as the unit tests.  
+For this I decided to implement a basic menu that utilizes reused code from previous projects and helper methods for 
+flow control. I also extracted the text outputs into `RunDemo()` method inside `Demo` class so that I would not have 
+to repeat 6 blocks of almost identical text. It uses parameters in place of the labels and arrays.  
+
+
 ---
 
 ## Tests
