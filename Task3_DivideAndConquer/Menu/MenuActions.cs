@@ -8,6 +8,9 @@ namespace Task3_DivideAndConquer.Menu;
 /// </summary>
 internal static class MenuActions
 {
+    /// <summary>
+    /// Runs the first task specified array to test the algorithm on.
+    /// </summary>
     internal static void FirstArray()
     {
         int[] taskSpecifiedArray = [64, 34, 25, 12, 22, 11, 90];
@@ -17,6 +20,9 @@ internal static class MenuActions
         FlowHelpers.Pause();
     }
 
+    /// <summary>
+    /// Runs the test on the task specified sorted array.
+    /// </summary>
     internal static void SortedArray()
     {
         int[] sortedArray = [1, 2, 3, 4, 5];
@@ -26,6 +32,9 @@ internal static class MenuActions
         FlowHelpers.Pause();
     }
 
+    /// <summary>
+    /// Runs the test on the task specified reverse sorted array.
+    /// </summary>
     internal static void ReverseSortedArray()
     {
         int[] reverseSortedArray = [9, 8, 7, 6, 5];
@@ -35,6 +44,9 @@ internal static class MenuActions
         FlowHelpers.Pause();
     }
 
+    /// <summary>
+    /// Runs the test on the duplicated values array.
+    /// </summary>
     internal static void ArrayWithDuplicateValues()
     {
         int[] arrayWithDuplicates = [2, 22, 67, 7, 12, 27, 17, 2];
@@ -44,6 +56,9 @@ internal static class MenuActions
         FlowHelpers.Pause();
     }
     
+    /// <summary>
+    /// Runs the test on the empty array.
+    /// </summary>
     internal static void EmptyArray()
     {
         int[] emptyArray = [];
@@ -53,6 +68,9 @@ internal static class MenuActions
         FlowHelpers.Pause();
     }
 
+    /// <summary>
+    /// Runs the test on the single-value array.
+    /// </summary>
     internal static void SingleValueArray()
     {
         int[] singleValueArray = [1024];
