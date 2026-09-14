@@ -4,10 +4,20 @@ internal class Sort
 {
     static int _comparisonCounter = 0;
     static int _mergeCallCounter = 0;
-    
+    /// <summary>
+    /// Gets the Comparison count.
+    /// </summary>
     internal static int ComparisonCounter => _comparisonCounter;
+    /// <summary>
+    /// Gets the Merge call count.
+    /// </summary>
     internal static int MergeCallCounter => _mergeCallCounter;
 
+    /// <summary>
+    /// Orchestrates the resetting of the counters and then
+    /// kicks off the MergeSort algorithm.
+    /// </summary>
+    /// <param name="array">Array to run the algorithm on.</param>
     internal static void ResetAndRunMergeSort(int[] array)
     {
         ResetComparisonCounter();
