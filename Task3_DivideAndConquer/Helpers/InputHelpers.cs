@@ -10,7 +10,7 @@ internal static class InputHelpers
     /// </summary>
     /// <param name="prompt">The message displayed to the user.</param>
     /// <returns>A non-negative integer entered by the user.</returns>
-    internal static int ReadInt(string prompt)
+    private static int ReadInt(string prompt)
     {
         while (true)
         {
