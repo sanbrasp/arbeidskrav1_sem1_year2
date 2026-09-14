@@ -75,7 +75,7 @@ dotnet run --project Task1_LinearSearchAndBinarySearch
 **Task 2 Tests**  
   - [CustomStack Tests](Arbeidskrav1_year2_sem1.Tests/CustomStackTests.cs)
 
-**Task 3 Tests**
+**Task 3 Tests**  
     - [MergeSort Tests](Arbeidskrav1_year2_sem1.Tests/MergeSortTests.cs)
 
 **Task 4 Tests**
