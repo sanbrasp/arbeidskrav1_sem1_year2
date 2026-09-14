@@ -196,13 +196,31 @@ I refer to the manually hand-traced images that you can see in the [Tests sectio
 ---
 
 ## Analysis
+`MergeSort()` uses temporary storage, and then the `Merge()` method in order to successfully merge 
+the values from those temporary arrays back into the original array in the correct order.  
+The logic guarantees a correct output because of how the sections are sliced and defined.  
+At the point when either `left` or `right` side is empty, the remaining values are already sorted by definition 
+and can be placed into the array without comparison, because the process leading up to that has made sure of the 
+order. The entire array is included, which ensures that all values are taken into consideration.  
+The sizing is not hardcoded and will work with any size array, both for `MergeSort()` itself and its helper 
+`Merge()`.  
+Each side is split down the middle until only single elements remain. Then the comparison and merge starts, 
+always placing the smallest element at the first index of the temporary array, working its way up, for both sides
+(left first, then right).  
+This process ensures the correct order when the algorithm has run its course, which can be seen 
+in the `Demo` that runs from `Program.cs`.  
+The test suite also covers all task specified cases, and produces the same results as the demo. 
+
 **Temporary Storage:**  
 `leftArray` - `int[] leftArray = array[left..(middle +1)];`  
 `rightArray`- `int[] rightArray = array[(middle +1)..(right + 1)];`
 
 **Time and Space Complexity:**  
-`MergeSort()` har a guaranteed time complexity of `O(n log n)` for `best/worst/average`.  
-The space complexity degrades to `o(n)` due to the use of temporary storage and swaps instead of in-place sorting.
+`MergeSort()` has a guaranteed time complexity of `O(n log n)` for `best/worst/average`.  
+The time complexity does not vary based on the input, like `BinarySearch()` did, because it always splits 
+down the mid-point regardless of which values are there.   
+The space complexity degrades to `O(n)` due to the use of temporary storage (`leftArray` and `rightArray`), 
+which is allocated during each `Merge()` call because `MergeSort()` does not `sort-in-place`.
 
 **Duplicate-Value Stability**  
 I made an observation during my hand-trace of the array with duplicated values.  
@@ -213,7 +231,7 @@ value before the left-side value, as it depends on the value itself and the orde
 **Strengths And Weaknesses**  
 `Strengths:`  
 - Stable
-- Fast (guaranteed `o(n log n)` time compelxity)
+- Fast (guaranteed `o(n log n)` time complexity)
 - thorough
 
 `Weaknesses:`
