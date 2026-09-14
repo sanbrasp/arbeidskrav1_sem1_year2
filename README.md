@@ -29,6 +29,9 @@ _Readme's:
 [Task 5 README](Task5_DFSAndComparison/README.md)  
 [Task 6 README](Task6_Video/README.md)_
 
+_Commit History:_  
+[Commit History Document](Docs/CommitHistory.md)
+ 
 ---
 
 ## Technical Stack
