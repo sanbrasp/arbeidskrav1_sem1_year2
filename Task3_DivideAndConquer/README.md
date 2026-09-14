@@ -6,10 +6,10 @@ DELETE THIS WHEN DONE!
 - ✅ Implement required helper method: `Merge` for `MergeSort`)
 - ✅ Design your operation counters  (comparisons for both, + algorithm specific extra: 
   `merge-calls/element-copies` for `MergeSort`, decide exactly what counts as each (like in task 1))
-- _For MergeSort: think through your temporary storage approach and how it affects space complexity_
-- Confirm and be able to explain recursion termination: what is your base case, and why does the recursion guarantee to reach it?
+- ✅ _For MergeSort: think through your temporary storage approach and how it affects space complexity_
+- ✅ Confirm and be able to explain recursion termination: what is your base case, and why does the recursion guarantee to reach it?
 - ✅ Test all five required data sets, printing/documenting before-and-after state for each
-- Write analysis: base case explanation, recursive splitting explanation, ho sub-results combine into a sorted whole, 
+- ✅ Write analysis: base case explanation, recursive splitting explanation, ho sub-results combine into a sorted whole, 
   time complexity (best, avg, worst), space complexity, and a reflection on strengths/weaknesses/input-data sensitivity
 - ✅ Algorithm code and tests separate (already the case)
 
@@ -231,7 +231,7 @@ value before the left-side value, as it depends on the value itself and the orde
 **Strengths And Weaknesses**  
 `Strengths:`  
 - Stable
-- Fast (guaranteed `o(n log n)` time complexity)
+- Fast (guaranteed `O(n log n)` time complexity)
 - thorough
 
 `Weaknesses:`
