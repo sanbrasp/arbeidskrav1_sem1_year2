@@ -24,6 +24,7 @@ _MergeSort it is!_
 - [Tests](#tests)
 - [Operation Count](#operation-count)
 - [Analysis](#analysis)
+- [Bug Fixing](#bug-fixing-)
 - [Sources](#sources)
 
 ---
@@ -68,7 +69,8 @@ private static void MergeSort(int[] array, int left, int right)
 ```
 Base case for `MergeSort()`:  
 `if (left >= right) -> stop`  
-The condition that avoids infinite recursion.
+The condition avoids infinite recursion because it guarantees a stop as soon as `left>=right`.  
+Each recursive call operates on a smaller range between left and right until the base case is reached.
 
 Sectioning rule:  
 `mid belongs to left`.  
@@ -149,8 +151,6 @@ to repeat 6 blocks of almost identical text. It uses parameters in place of the 
 ---
 
 ## Tests
-Add test cases, why it's being tested, here.
-
 **Tests Run Successfully**  
 ![MergeSortTests](Images/testsrunsuccessfully.png)
 
@@ -191,24 +191,39 @@ To ensure correct counter data and correct sorting behavior.
 **What is Counted**  
 `Comparisons` and `Merge()` calls.  
 
-I refer to the manually hand-traced images that you can see in the [Tests section](#tests).  
-In the second image, I had not clearly noted the result.  
-Total comparisons: 17  
-Total merge calls: 7.
+I refer to the manually hand-traced images that you can see in the [Tests section](#tests).
 
 ---
 
 ## Analysis
 **Temporary Storage:**  
-`leftArray`  
-`rightArray`
+`leftArray` - `int[] leftArray = array[left..(middle +1)];`  
+`rightArray`- `int[] rightArray = array[(middle +1)..(right + 1)];`
 
 **Time and Space Complexity:**  
+`MergeSort()` har a guaranteed time complexity of `O(n log n)` for `best/worst/average`.  
+The space complexity degrades to `o(n)` due to the use of temporary storage and swaps instead of in-place sorting.
 
-**Trade-Offs**  
+**Duplicate-Value Stability**  
+I made an observation during my hand-trace of the array with duplicated values.  
+In that specific array, the right-side duplicate won "first place" (smallest value in the array), which appears 
+incidental rather than guaranteed. A different array with different duplicates may not end up placing the right-side 
+value before the left-side value, as it depends on the value itself and the order of the array.
 
-**Bug Fixing**  
-**`MergeSort()`** - start and end boundaries were off, neither recursive call included `mid`.     
+**Strengths And Weaknesses**  
+`Strengths:`  
+- Stable
+- Fast (guaranteed `o(n log n)` time compelxity)
+- thorough
+
+`Weaknesses:`
+- More expensive in space complexity
+
+---
+
+## Bug Fixing  
+**`MergeSort()`:**
+start and end boundaries were off, neither recursive call included `mid`.     
 I had set the left call's range to `left` through `mid -1`, and the right call's range from `mid+1` through `right`, 
 skipping `mid` entirely on both sides.  
 The rule I intended to operate by was `mid belongs to left`, so the left call needed to end at `mid` itself.  
@@ -218,7 +233,8 @@ With the right questions from `Claude.ai` (documented in [AIUse.md](../Docs/AIUs
 I was able to step my way through what I had done wrong and correct it.  
 However, the next couple of bugs still remained:
 
-**`Merge()`** - the array slices were off by one, for the same underlying reason: `middle` was not included where it needed to be.    
+**`Merge():`**  
+the array slices were off by one, for the same underlying reason: `middle` was not included where it needed to be.    
 I had again mixed up two different systems: `MergeSort()`'s parameters that are plain numbers, and `Merge()`'s array slices that 
 use C#'s `exclusive-end range` syntax, requiring the `+1` adjustment to include the boundary.  
 I made the wrong slices for both `leftArray` and `rightArray` several times before getting it right, 
