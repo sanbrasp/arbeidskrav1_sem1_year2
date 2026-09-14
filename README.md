@@ -72,25 +72,14 @@ dotnet run --project Task1_LinearSearchAndBinarySearch
  - [BinarySearch Test](Arbeidskrav1_year2_sem1.Tests/BinarySearchTests.cs)  
 (_BinarySearchTests include demonstration of instability on unsorted arrays_)  
 
-**Test Cases Task 1**
-- `LinearSearch()` and `BinarySearch()` searching task specified arrays for specified targets. Both "Found" and "Not Found".
-- `BinarySearch()` on unsorted array, empty array, single element array, target outside of range, duplicate values.
-- `LinearSearch()` on empty array, single element array, target outside of range, duplicate values.
-
-
 **Task 2 Tests**  
   - [CustomStack Tests](Arbeidskrav1_year2_sem1.Tests/CustomStackTests.cs)
 
-**Test Cases Task 2**  
-- Normal Use
-- Edge Cases
-- Data Structure Specific Edge Cases
-- Exceptions
-- Allowed and disallowed values
-
 **Task 3 Tests**
 
-**Test Cases Task 3**
+**Task 4 Tests**
+
+**Task 5 Tests**
 
 **Why Test For This**
 - To ensure the logic is sound and methods return the expected results
