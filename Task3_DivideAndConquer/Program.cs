@@ -1,6 +1,5 @@
 ﻿using Spectre.Console;
 using Task3_DivideAndConquer.Menu;
-using Task3_DivideAndConquer.Models;
 
 namespace Task3_DivideAndConquer;
 
