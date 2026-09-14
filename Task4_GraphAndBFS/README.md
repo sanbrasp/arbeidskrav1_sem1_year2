@@ -18,6 +18,7 @@ Mark completed with: ✅
   unweighted graph.
 - Tests (BFS from Majorstuen, document visit order, shortest number of stops )
 - Document the neighbor-order (when a node has multiple neighbors, the visit order may vary depending on storage order)
+- (don't forget to update the [commit history document](../Docs/CommitHistory.md))
 
 ---
 
