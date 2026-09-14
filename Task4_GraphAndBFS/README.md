@@ -2,7 +2,9 @@
 
 DELETE WHEN FINISHED:  
 Model a small, undirected transport network as a graph. Stations are nodes, connections are edges. Use BFS to visit 
-all reachable stations from a starting station, and to find the shortest number of stops in the unweighted graph.
+all reachable stations from a starting station, and to find the shortest number of stops in the unweighted graph.  
+
+Mark completed with: ✅
 
 - Design a Graph class that stores the network as an adjacency list (example: `Dictionary<string, List<string>>`)
 - Implement `void AddConnection(string stationA, string stationB)` that adds a two-way connection
