@@ -2,6 +2,12 @@ namespace Task4_GraphAndBFS.Search;
 
 internal static class BreathFirstSearch
 {
+    /// <summary>
+    /// Runs a Breadth-First Search on an array with a starting node.
+    /// </summary>
+    /// <param name="adjacencyList">The array to search in.</param>
+    /// <param name="startNode">The starting node/point.</param>
+    /// <returns></returns>
     internal static List<string> Bfs(Dictionary<string, List<string>> adjacencyList, string startNode)
     {
         HashSet<string> Visited = new();
