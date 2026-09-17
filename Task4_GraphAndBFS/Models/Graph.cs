@@ -40,4 +40,9 @@ internal class Graph
 
         return adjacencyListCopy;
     }
+
+    internal static Dictionary<string, List<string>> ShortestPath(Dictionary<string, List<string>> adjacencyList, string start, string target)
+    {
+        throw new NotImplementedException();
+    }
 }
