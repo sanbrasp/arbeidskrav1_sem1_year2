@@ -8,7 +8,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        // var adjacencyList = new Dictionary<string, List<string>>();
         var graph = new Graph();
         graph.AddStation("Majorstuen", "Nationaltheatret");
         graph.AddStation("Nationaltheatret", "Stortinget");
@@ -19,11 +18,12 @@ class Program
         graph.AddStation("Blindern", "Forskningsparken");
         graph.AddStation("Forskningsparken", "Ullevål Stadion");
         
-        BreathFirstSearch.Bfs(graph.GetAdjacencyList(), "Majorstuen");
-        Console.WriteLine(graph.GetAdjacencyList().Count);
-        foreach (var node in graph.GetAdjacencyList())
+        
+        var result = BreathFirstSearch.Bfs(graph.GetAdjacencyList(), "Majorstuen");
+
+        foreach (var key in result)
         {
-            Console.WriteLine(node.Key);
+            Console.WriteLine(key);
         }
     }
 }
