@@ -4,7 +4,12 @@ internal class Graph
 {
     private readonly Dictionary<string, List<string>> _adjacencyList = new();
 
-    internal void AddStation(string stationA, string stationB) // edge
+    /// <summary>
+    /// Adds stations A and B to adjacency list.
+    /// </summary>
+    /// <param name="stationA">The first stations (start).</param>
+    /// <param name="stationB">The last station (end).</param>
+    internal void AddStation(string stationA, string stationB)
     {
         AddNode(stationA);
         AddNode(stationB);
@@ -21,6 +26,10 @@ internal class Graph
         }
     }
 
+    /// <summary>
+    /// Gets a copy of the adjacency list.
+    /// </summary>
+    /// <returns></returns>
     internal Dictionary<string, List<string>> GetAdjacencyList()  
     {
         Dictionary<string, List<string>> adjacencyListCopy = new();
