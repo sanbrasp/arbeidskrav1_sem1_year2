@@ -181,10 +181,15 @@ internal static int ShortestPath
 ```
 Is a modified `Bfs()`, that stops when the condition `current == target` becomes true.  
 It doesn't exhaust the array if it finds the target prior.  
-Set up with a sentinel value for missing start or missing target.  
-Initialized with a `Dictionary<string, List<string> distances` to keep track of the actual 
-steps from start to target.
 
+Like `Bfs()` is uses a `HashSet` for visited and a `Queue` for the queue.  
+It also uses a `Dictionary<string, List<string> distances` to keep track of the actual steps from start to target.  
+Set up with a sentinel value (`-1`) for missing start or missing target, and returns that whenever either is missing.
+
+Does not have the line `visited.Add(current)`, as it has already been added during `visited.Add(start)`, and this method 
+does not return a list of visited nodes, only the amount of steps taken in order to reach `target`.
+
+Guards against `!adjacencyList.ContainsKey(start) || !adjacencyList.ContainsKey(target)`, and exists if either are true.
 
 ---
 
