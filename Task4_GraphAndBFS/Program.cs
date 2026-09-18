@@ -10,14 +10,14 @@ class Program
     static void Main(string[] args)
     {
         var graph = new Graph();
-        graph.AddStation("Majorstuen", "Nationaltheatret");
-        graph.AddStation("Nationaltheatret", "Stortinget");
-        graph.AddStation("Stortinget", "Jernbanetorget");
-        graph.AddStation("Jernbanetorget", "Grønland");    
-        graph.AddStation("Grønland", "Tøyen");
-        graph.AddStation("Majorstuen", "Blindern");
-        graph.AddStation("Blindern", "Forskningsparken");
-        graph.AddStation("Forskningsparken", "Ullevål Stadion");
+        graph.AddConnection("Majorstuen", "Nationaltheatret");
+        graph.AddConnection("Nationaltheatret", "Stortinget");
+        graph.AddConnection("Stortinget", "Jernbanetorget");
+        graph.AddConnection("Jernbanetorget", "Grønland");    
+        graph.AddConnection("Grønland", "Tøyen");
+        graph.AddConnection("Majorstuen", "Blindern");
+        graph.AddConnection("Blindern", "Forskningsparken");
+        graph.AddConnection("Forskningsparken", "Ullevål Stadion");
         
         // Run and document BFS from "Majorstuen":
         var result = BreadthFirstSearch.Bfs(graph.GetAdjacencyList(), "Majorstuen");
