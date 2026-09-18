@@ -1,9 +1,6 @@
 # Task 4 - Graph and BFS
 
 
-TODO:  
-Still testing to see if the warning will fire, this can be deleted.
-
 DELETE WHEN FINISHED:  
 Model a small, undirected transport network as a graph. Stations are nodes, connections are edges. Use BFS to visit 
 all reachable stations from a starting station, and to find the shortest number of stops in the unweighted graph.  
