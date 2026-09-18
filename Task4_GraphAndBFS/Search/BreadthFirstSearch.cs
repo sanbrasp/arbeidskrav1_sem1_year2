@@ -41,4 +41,9 @@ internal static class BreadthFirstSearch
         }
         return Result;
     }
+    
+    internal static Dictionary<string, List<string>> ShortestPath(Dictionary<string, List<string>> adjacencyList, string start, string target)
+    {
+        throw new NotImplementedException();
+    }
 }
