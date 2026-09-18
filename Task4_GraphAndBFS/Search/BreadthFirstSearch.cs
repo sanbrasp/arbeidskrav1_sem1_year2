@@ -57,7 +57,7 @@ internal static class BreadthFirstSearch
         Dictionary<string, int> distances = new();
         int result = -1;
 
-        if (!adjacencyList.ContainsKey(start))
+        if (!adjacencyList.ContainsKey(start) || !adjacencyList.ContainsKey(target))
         {
             return result;
         }
