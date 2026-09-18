@@ -10,40 +10,78 @@ internal static class BreadthFirstSearch
     /// <returns></returns>
     internal static List<string> Bfs(Dictionary<string, List<string>> adjacencyList, string startNode)
     {
-        HashSet<string> Visited = new();
-        Queue<string> Queue = new();
-        List<string> Result = new();
+        HashSet<string> visited = new();
+        Queue<string> queue = new();
+        List<string> result = new();
         
         if (!adjacencyList.ContainsKey(startNode))
         {
             return new List<string>();
         }
         
-        Visited.Add(startNode);
-        Queue.Enqueue(startNode);
+        visited.Add(startNode);
+        queue.Enqueue(startNode);
 
-        while (Queue.Count > 0) // while someone is waiting in the queue
+        while (queue.Count > 0) // while someone is waiting in the queue
         {
-            var current = Queue.Dequeue(); // gives us the first node, removes it from the queue
-            Result.Add(current); // current has been processed, added to result list, storing visit order
+            var current = queue.Dequeue(); // gives us the first node, removes it from the queue
+            result.Add(current); // current has been processed, added to result list, storing visit order
 
             if (adjacencyList.TryGetValue(current, out var neighbors))
             {
                 foreach (var neighbor in neighbors) // current's neighbors
                 {
-                    if (!Visited.Contains(neighbor)) // if not visited, add to visited, skipped otherwise
+                    if (!visited.Contains(neighbor)) // if not visited, add to visited, skipped otherwise
                     {
-                        Visited.Add(neighbor); // new neighbor marked visited immediately
-                        Queue.Enqueue(neighbor); // new neighbors added to the back of queue
+                        visited.Add(neighbor); // new neighbor marked visited immediately
+                        queue.Enqueue(neighbor); // new neighbors added to the back of queue
                     }
                 }
             }
         }
-        return Result;
+        return result;
     }
     
-    internal static Dictionary<string, List<string>> ShortestPath(Dictionary<string, List<string>> adjacencyList, string start, string target)
+    internal static int ShortestPath
+        (Dictionary<string, List<string>> adjacencyList, string start, string target)
     {
-        throw new NotImplementedException();
+        HashSet<string> visited = new();
+        Queue<string> queue = new();
+        Dictionary<string, int> distances = new();
+        int result = -1;
+
+        if (!adjacencyList.ContainsKey(start))
+        {
+            return result;
+        }
+
+        visited.Add(start);
+        queue.Enqueue(start);
+        distances[start] = 0;
+
+        while (queue.Count > 0)
+        {
+            var current =  queue.Dequeue();
+            // visited.Add(current);
+
+            if (current == target)
+            {
+                return distances[target];
+            }
+            
+            if (adjacencyList.TryGetValue(current, out var neighbors))
+            {
+                foreach (var neighbor in neighbors)
+                {
+                    if (!visited.Contains(neighbor))
+                    {
+                        visited.Add(neighbor);
+                        queue.Enqueue(neighbor);
+                        distances[neighbor] = distances[current] + 1;
+                    }
+                }
+            }
+        }
+        return result;
     }
 }
