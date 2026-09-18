@@ -64,10 +64,11 @@ internal static class BreadthFirstSearch
 
         visited.Add(start);
         queue.Enqueue(start);
-        distances[start] = 0;
+        distances[start] = 0; // set start's distance to itself to 0
 
         while (queue.Count > 0)
         {
+            // catch the current key in a variable and dequeue
             var current =  queue.Dequeue();
             
             if (current == target)
@@ -75,6 +76,7 @@ internal static class BreadthFirstSearch
                 return distances[target];
             }
             
+            // try to find the value stored under the key "current", and put it into variable called "neighbors"
             if (adjacencyList.TryGetValue(current, out var neighbors))
             {
                 foreach (var neighbor in neighbors)
@@ -83,7 +85,7 @@ internal static class BreadthFirstSearch
                     {
                         visited.Add(neighbor);
                         queue.Enqueue(neighbor);
-                        distances[neighbor] = distances[current] + 1;
+                        distances[neighbor] = distances[current] + 1; // increment distance from current to neighbor
                     }
                 }
             }
