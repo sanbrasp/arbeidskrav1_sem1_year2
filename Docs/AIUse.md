@@ -18,6 +18,8 @@ Overview
 - [Assert.Throws Syntax](#assertthrows-syntax)
 - [Maximum Memory Limit](#maximum-memory-limit)
 - [MergeSort Tutoring](#merge-sort-tutoring)
+- [Shallow VS Deep Copy](#shallow-vs-deep-copy)
+- [Distances]
 
 ---
 
@@ -45,8 +47,10 @@ Discussed the use of `Stack`, and Claude.ai helped me realize I needed a `Node` 
 Walked through some of my code and my interpretations with `Claude.ai` (example: my thought processe of the steps `Push()`
 and the very first value of `_top` before even looking at the first node, and the steps of `Pop()` and `Push()`, until it 
 clicked and I understood it.)   
-`Claude.ai` has also been used to proof-read (find typos and suggest better wording), and for code-reviews after 
-I have written the code myself.  
+Discussion about `readonly` and how it applies to fields and not properties.  
+Discussion about the `distances Dictionary` from task 3, and its design.  
+`Claude.ai` has also been used to proof-read (find typos and suggest better wording), task translation from Norwegian to English, 
+and for code-reviews after I have written the code myself.  
 
 ---
 
@@ -136,7 +140,8 @@ That is however something I will look deeper into on the side of this project, a
 Various git commands that were quicker to find using AI than searching the web.  
 Reminders of things I already knew but had forgotten, like `git restore --staged` for files I didn't mean 
 to stage, `git push --force` when I accidentally created the repo for the project with an initial README already 
-in the repo, and `git rm --cached` to clean up some files that didn't belong in the repo.
+in the repo, and `git rm --cached` to clean up some files that didn't belong in the repo.  
+Using `git log --pretty=format` to extract commit messages with dates to avoid the manual copy/pasting from gitlab/github.
 
 ---
 
@@ -202,3 +207,10 @@ I had to do because of those one-off and slice bugs I had created prior, which a
 [Task 3 README](../Task3_DivideAndConquer/README.md).
 
 ---
+
+## Shallow VS Deep Copy
+Part conceptual - what is a shallow copy vs a deep copy, how do they differ, and part syntax assistance.  
+I was working on getting the adjacency list display wihtout risking any sort of manipulation from the outside, 
+and realized using a getter like `AdjacencyList -> _adjacencyList` would not guard against `AdjacencyList.Add("Something"). 
+`Claude.ai` guided me with targeted questions that allowed me to think and find the solution myself after the concept was 
+explained. 
