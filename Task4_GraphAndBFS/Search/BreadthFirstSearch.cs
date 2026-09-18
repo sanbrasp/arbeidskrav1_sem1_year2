@@ -55,11 +55,11 @@ internal static class BreadthFirstSearch
         HashSet<string> visited = new();
         Queue<string> queue = new();
         Dictionary<string, int> distances = new();
-        int result = -1;
+        int noResult = -1;
 
         if (!adjacencyList.ContainsKey(start) || !adjacencyList.ContainsKey(target))
         {
-            return result;
+            return noResult;
         }
 
         visited.Add(start);
@@ -90,6 +90,6 @@ internal static class BreadthFirstSearch
                 }
             }
         }
-        return result;
+        return noResult;
     }
 }
