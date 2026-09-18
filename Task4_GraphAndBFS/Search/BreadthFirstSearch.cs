@@ -42,6 +42,13 @@ internal static class BreadthFirstSearch
         return result;
     }
     
+    /// <summary>
+    /// Returns the shortest path from a starting node to a target node.
+    /// </summary>
+    /// <param name="adjacencyList">The array to search in.</param>
+    /// <param name="start">The starting node.</param>
+    /// <param name="target">The target node.</param>
+    /// <returns>The shortest amount of steps from start to stop.</returns>
     internal static int ShortestPath
         (Dictionary<string, List<string>> adjacencyList, string start, string target)
     {
@@ -62,8 +69,7 @@ internal static class BreadthFirstSearch
         while (queue.Count > 0)
         {
             var current =  queue.Dequeue();
-            // visited.Add(current);
-
+            
             if (current == target)
             {
                 return distances[target];
