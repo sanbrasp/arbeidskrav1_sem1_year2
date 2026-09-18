@@ -7,7 +7,7 @@ internal static class BreadthFirstSearch
     /// </summary>
     /// <param name="adjacencyList">The array to search in.</param>
     /// <param name="startNode">The starting node/point.</param>
-    /// <returns></returns>
+    /// <returns>A list of visited nodes in order.</returns>
     internal static List<string> Bfs(Dictionary<string, List<string>> adjacencyList, string startNode)
     {
         HashSet<string> visited = new();
