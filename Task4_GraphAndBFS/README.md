@@ -203,9 +203,11 @@ What?
 ## Bug Fixing
 I had initially set up `ShortestPath()` with a redundant .Add line: `visited.Add(current)` right after 
 dequeue of `current`.  
+I was returning the wrong `distances[]` and initially set it to `distances[start]`, which rendered the output useless as it 
+would always be `0`.
 
 In `Bfs()` I had a missing `result.Add(current)` after dequeue of `current`, which gave me the corrupt results when 
-running the code. 
+running the code.
 
 ---
 
