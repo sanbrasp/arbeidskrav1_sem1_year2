@@ -18,7 +18,7 @@ internal class Graph
         _adjacencyList[stationB].Add(stationA);
     }
     
-    private void AddNode(string node)
+    internal void AddNode(string node)
     {
         if (!_adjacencyList.ContainsKey(node))
         {
