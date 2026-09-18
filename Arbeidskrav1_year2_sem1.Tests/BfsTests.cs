@@ -90,4 +90,33 @@ public class BfsTests
         // Assert
         Assert.Equal(expectedResult, attemptReach);
     }
+
+    [Fact]
+    public void Bfs_ReturnsEmptyList_WhenStartNodeDoesNotExist()
+    {
+        // Arrange
+        // nothing to arrange here
+
+        // Act
+        var result = BreadthFirstSearch.Bfs(_graph.GetAdjacencyList(), "Ingenmannsland");
+
+        // Assert
+        Assert.Empty(result);
+    }
+    
+    [Theory]
+    [InlineData("Ingenmannsland", "Majorstuen")]
+    [InlineData("Majorstuen", "Ingenmannsland")]
+    [InlineData("Ingenmannsland", "Huttiheita")]
+    public void ShortestPath_ReturnsNotFound_WhenStartAndOrTargetNodeDoesNotExist(string start, string target)
+    {
+        // Arrange
+        int expectedResult = -1;
+
+        // Act
+        var actualResult = BreadthFirstSearch.ShortestPath(_graph.GetAdjacencyList(), start, target);
+
+        // Assert
+        Assert.Equal(expectedResult, actualResult);
+    }
 }
