@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Runtime.CompilerServices;
 using Task4_GraphAndBFS.Models;
 using Task4_GraphAndBFS.Search;
 
@@ -20,7 +21,10 @@ class Program
         
         
         var result = BreadthFirstSearch.Bfs(graph.GetAdjacencyList(), "Majorstuen");
-
+        
+        // Console.WriteLine(BreadthFirstSearch.ShortestPath(graph.GetAdjacencyList(), "Majorstuen", "Grønland"));
+        
+        
         foreach (var key in result)
         {
             Console.WriteLine(key);
