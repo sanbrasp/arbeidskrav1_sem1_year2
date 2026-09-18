@@ -1,6 +1,6 @@
 namespace Task4_GraphAndBFS.Search;
 
-internal static class BreathFirstSearch
+internal static class BreadthFirstSearch
 {
     /// <summary>
     /// Runs a Breadth-First Search on an array with a starting node.
