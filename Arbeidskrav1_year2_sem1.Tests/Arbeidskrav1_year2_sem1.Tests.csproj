@@ -25,4 +25,8 @@
       <ProjectReference Include="..\Task4_GraphAndBFS\Task4_GraphAndBFS.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Images\" />
+    </ItemGroup>
+
 </Project>
