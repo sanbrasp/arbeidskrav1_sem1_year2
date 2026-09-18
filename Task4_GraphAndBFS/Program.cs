@@ -19,7 +19,7 @@ class Program
         graph.AddStation("Forskningsparken", "Ullevål Stadion");
         
         
-        var result = BreathFirstSearch.Bfs(graph.GetAdjacencyList(), "Majorstuen");
+        var result = BreadthFirstSearch.Bfs(graph.GetAdjacencyList(), "Majorstuen");
 
         foreach (var key in result)
         {
