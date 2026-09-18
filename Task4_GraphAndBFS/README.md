@@ -75,7 +75,7 @@ internal class Graph
     }
 }
 ```
-Holds an adjacency list, and the methods `AddStation()`, `AddNode()`, and `GetAdjacencyList()`.  
+Holds an adjacency list, and the methods `AddConnection()`, `AddNode()`, and `GetAdjacencyList()`.  
 `AddNode()` is only called within the class and is therefore set to `private`.  
 `AddStation()` calls `AddNode()`, and can be called from elsewhere in the assembly.  
 `GetAdjacencyList()` returns a deep copy of the original list, keeping it safe from corruption.
