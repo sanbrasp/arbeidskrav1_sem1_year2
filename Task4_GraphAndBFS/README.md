@@ -25,12 +25,12 @@ Mark completed with: ✅
 
 ## Overview
 - [Implementation](#implementation)
-  - [Graph Class]()
-  - [BFS]()
-    - [ShortestPath]()
+  - [Graph Class](#graph-class)
+  - [BFS](#breadthfirstsearch-method)
+    - [ShortestPath](#shortestpath)
 - [Tests](#tests)
-- [Shortest Path Method]()
-- [Explanation]()
+- [Explanation](#explanation)
+- [Bug Fixing](#bug-fixing)
 - [Sources](#sources)
 
 ---
@@ -46,7 +46,7 @@ internal class Graph
 {
     private readonly Dictionary<string, List<string>> _adjacencyList = new();
     
-    internal void AddStation(string stationA, string stationB)
+    internal void AddConnection(string stationA, string stationB)
     {
         AddNode(stationA);
         AddNode(stationB);
@@ -183,26 +183,31 @@ Is a modified `Bfs()`, that stops when the condition `current == target` becomes
 It doesn't exhaust the array if it finds the target prior.  
 
 Like `Bfs()` is uses a `HashSet` for visited and a `Queue` for the queue.  
-It also uses a `Dictionary<string, List<string> distances` to keep track of the actual steps from start to target.  
+It also uses a `Dictionary<string, int> distances` to keep track of the actual steps from start to target.  
 Set up with a sentinel value (`-1`) for missing start or missing target, and returns that whenever either is missing.
-
-Does not have the line `visited.Add(current)`, as it has already been added during `visited.Add(start)`, and this method 
-does not return a list of visited nodes, only the amount of steps taken in order to reach `target`.
 
 Guards against `!adjacencyList.ContainsKey(start) || !adjacencyList.ContainsKey(target)`, and exists if either are true.
 
 ---
 
 ## Tests
-
----
-
-## Shortest Path Method
+Test screenshot, test names, test cases, why tests
 
 ---
 
 ## Explanation
+What?
+
+---
+
+## Bug Fixing
+I had initially set up `ShortestPath()` with a redundant .Add line: `visited.Add(current)` right after 
+dequeue of `current`.  
+
+In `Bfs()` I had a missing `result.Add(current)` after dequeue of `current`, which gave me the corrupt results when 
+running the code. 
 
 ---
 
 ## Sources
+Any external sources here
