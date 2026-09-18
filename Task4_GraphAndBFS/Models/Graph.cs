@@ -9,7 +9,7 @@ internal class Graph
     /// </summary>
     /// <param name="stationA">The first stations (start).</param>
     /// <param name="stationB">The last station (end).</param>
-    internal void AddStation(string stationA, string stationB)
+    internal void AddConnection(string stationA, string stationB)
     {
         AddNode(stationA);
         AddNode(stationB);
