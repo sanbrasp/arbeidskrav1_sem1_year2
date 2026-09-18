@@ -27,6 +27,7 @@ Mark completed with: ✅
 - [Implementation](#implementation)
   - [Graph Class]()
   - [BFS]()
+    - [ShortestPath]()
 - [Tests](#tests)
 - [Shortest Path Method]()
 - [Explanation]()
@@ -36,8 +37,154 @@ Mark completed with: ✅
 
 ## Implementation
 ### Graph Class
+Class setup:
 
-### BFS
+```csharp
+namespace Task4_GraphAndBFS.Models;
+
+internal class Graph
+{
+    private readonly Dictionary<string, List<string>> _adjacencyList = new();
+    
+    internal void AddStation(string stationA, string stationB)
+    {
+        AddNode(stationA);
+        AddNode(stationB);
+        
+        _adjacencyList[stationA].Add(stationB);
+        _adjacencyList[stationB].Add(stationA);
+    }
+    
+    private void AddNode(string node)
+    {
+        if (!_adjacencyList.ContainsKey(node))
+        {
+            _adjacencyList[node] = new List<string>();
+        }
+    }
+    
+    internal Dictionary<string, List<string>> GetAdjacencyList()  
+    {
+        Dictionary<string, List<string>> adjacencyListCopy = new();
+        foreach (var key in _adjacencyList)
+        {
+            adjacencyListCopy.Add(key.Key, new List<string>(key.Value));
+        }
+
+        return adjacencyListCopy;
+    }
+}
+```
+Holds an adjacency list, and the methods `AddStation()`, `AddNode()`, and `GetAdjacencyList()`.  
+`AddNode()` is only called within the class and is therefore set to `private`.  
+`AddStation()` calls `AddNode()`, and can be called from elsewhere in the assembly.  
+`GetAdjacencyList()` returns a deep copy of the original list, keeping it safe from corruption.
+
+### BreadthFirstSearch Method
+BFS method setup:
+
+```csharp
+internal static List<string> Bfs(Dictionary<string, List<string>> adjacencyList, string startNode)
+    {
+        HashSet<string> visited = new();
+        Queue<string> queue = new();
+        List<string> result = new();
+        
+        if (!adjacencyList.ContainsKey(startNode))
+        {
+            return new List<string>();
+        }
+        
+        visited.Add(startNode);
+        queue.Enqueue(startNode);
+
+        while (queue.Count > 0)
+        {
+            var current = queue.Dequeue();
+            result.Add(current);
+
+            if (adjacencyList.TryGetValue(current, out var neighbors))
+            {
+                foreach (var neighbor in neighbors)
+                {
+                    if (!visited.Contains(neighbor))
+                    {
+                        visited.Add(neighbor);
+                        queue.Enqueue(neighbor);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+```
+Tracks `visited` nodes using a `HashSet`.  
+Uses a `Queue` in order to keep track of who is next up for processing.  
+Stores the visitation order in a `List` of strings. 
+
+Base case: `while someone is still waiting in the queue -> go on`.
+
+Discovered nodes are immediately added to `visited`.  
+Neighbors are enqueued.  
+
+Guards against `if (!adjacencyList.ContainsKey(startNode)` and exits if the startnode doesn't exist in the array. 
+Guards against `if (!visited.Contains(neighbor)` and ensures unvisited nodes gets added.  
+
+Returns a list of processed visits in the order they were visited in.
+
+---
+
+### ShortestPath
+ShortestPath method setup:
+
+```csharp
+internal static int ShortestPath
+        (Dictionary<string, List<string>> adjacencyList, string start, string target)
+    {
+        HashSet<string> visited = new();
+        Queue<string> queue = new();
+        Dictionary<string, int> distances = new();
+        int noResult = -1;
+
+        if (!adjacencyList.ContainsKey(start) || !adjacencyList.ContainsKey(target))
+        {
+            return noResult;
+        }
+
+        visited.Add(start);
+        queue.Enqueue(start);
+        distances[start] = 0;
+
+        while (queue.Count > 0)
+        {
+            var current =  queue.Dequeue();
+            if (current == target)
+            {
+                return distances[target];
+            }
+            
+            if (adjacencyList.TryGetValue(current, out var neighbors))
+            {
+                foreach (var neighbor in neighbors)
+                {
+                    if (!visited.Contains(neighbor))
+                    {
+                        visited.Add(neighbor);
+                        queue.Enqueue(neighbor);
+                        distances[neighbor] = distances[current] + 1;
+                    }
+                }
+            }
+        }
+        return noResult;
+    }
+```
+Is a modified `Bfs()`, that stops when the condition `current == target` becomes true.  
+It doesn't exhaust the array if it finds the target prior.  
+Set up with a sentinel value for missing start or missing target.  
+Initialized with a `Dictionary<string, List<string> distances` to keep track of the actual 
+steps from start to target.
+
 
 ---
 
