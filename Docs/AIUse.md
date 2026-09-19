@@ -19,7 +19,7 @@ Overview
 - [Maximum Memory Limit](#maximum-memory-limit)
 - [MergeSort Tutoring](#merge-sort-tutoring)
 - [Shallow VS Deep Copy](#shallow-vs-deep-copy)
-- [Distances]
+- [Regex](#regex-table-swap)
 
 ---
 
@@ -214,3 +214,13 @@ I was working on getting the adjacency list display wihtout risking any sort of 
 and realized using a getter like `AdjacencyList -> _adjacencyList` would not guard against `AdjacencyList.Add("Something"). 
 `Claude.ai` guided me with targeted questions that allowed me to think and find the solution myself after the concept was 
 explained. 
+
+---
+
+## Regex Table Swap
+I asked `Claude.ai` how I could easily swap the table for [Commit History](CommitHistory.md) around so that Date comes 
+first and Commit Message second. It showed me a regex I could use, and the regex to swap.  
+The **Find Regex:**  
+`\|\s*(.+?)\s*\|\s*(\d{2}\.\d{2}\.\d{2})\s*\|`  
+The **Swap/Replace Regex:**  
+`| $2 | $1 |`.
