@@ -15,17 +15,18 @@ Mark completed with: ✅
 - ✅ Handle a missing start or target station without the program terminating uncontrolled (i.e. without crashing!)
 - ✅ Run and document BFS from Majorstuen
 - ✅ Tests (BFS from Majorstuen, document visit order, shortest number of stops )
-- Document the neighbor-order (when a node has multiple neighbors, the visit order may vary depending on storage order)
-- (don't forget to update the [commit history document](../Docs/CommitHistory.md))
-- ?? Document the required test graph's edges explicitly (or build your own)
-- Explain the complexity `O(V + E)` and why the `FIFO` order means BFS finds the shortest number of stops in an
+- ✅ Document the neighbor-order (when a node has multiple neighbors, the visit order may vary depending on storage order)
+- ✅ ?? Document the required test graph's edges explicitly (or build your own)
+- ✅ Explain the complexity `O(V + E)` and why the `FIFO` order means BFS finds the shortest number of stops in an
   unweighted graph.
+- (don't forget to update the [commit history document](../Docs/CommitHistory.md))
 
 ---
 
 ## Overview
 - [Implementation](#implementation)
   - [Graph Class](#graph-class)
+    - [Graph Edges](#graph-edges)
   - [BFS](#breadthfirstsearch-method)
     - [ShortestPath](#shortestpath)
 - [Tests](#tests)
@@ -81,8 +82,22 @@ internal class Graph
 ```
 Holds an adjacency list, and the methods `AddConnection()`, `AddNode()`, and `GetAdjacencyList()`.  
 `AddNode()` is only called within the class and is therefore set to `private`.  
-`AddStation()` calls `AddNode()`, and can be called from elsewhere in the assembly.  
+`AddConnection()` calls `AddNode()`, and can be called from elsewhere in the assembly.  
 `GetAdjacencyList()` returns a deep copy of the original list, keeping it safe from corruption.
+
+### Graph Edges
+Documentation of the graph edges: 
+```csharp
+var graph = new Graph();
+        graph.AddConnection("Majorstuen", "Nationaltheatret");
+        graph.AddConnection("Nationaltheatret", "Stortinget");
+        graph.AddConnection("Stortinget", "Jernbanetorget");
+        graph.AddConnection("Jernbanetorget", "Grønland");    
+        graph.AddConnection("Grønland", "Tøyen");
+        graph.AddConnection("Majorstuen", "Blindern");
+        graph.AddConnection("Blindern", "Forskningsparken");
+        graph.AddConnection("Forskningsparken", "Ullevål Stadion");
+```
 
 ### BreadthFirstSearch Method
 BFS method setup:
@@ -207,8 +222,6 @@ returned. If the target is not found, it returns the sentinel, `noResult -> -1`.
 ---
 
 ## Tests
-test names, test cases, why tests
-
 Tests run successfully:
 ![img.png](Images/img.png)
 
@@ -322,7 +335,7 @@ If we look at the first call, we see that `Majorstuen`'s first neighbor is `Nati
 We then see that "Majorstuen" shows up again further down, in the 6th call:  
 `graph.AddConnection("Majorstuen", "Blindern");`  
 Because `Nationaltheatret` came first in the sequence, it comes before the second neighbor of `Majorstuen`; `Blindern`.  
-Had the first call said: `graph.AddConnection("Majorstuen", "Blindern"` or (if `AddStation` took more than two arguments):  
+Had the first call said: `graph.AddConnection("Majorstuen", "Blindern"` or (if `AddConnection` took more than two arguments):  
 `graph.AddConnection("Majorstuen", "Blindern", "Nationaltheatret")`, `Blindern` would have been the first neighbor and 
 come before `Nationaltheatret` in the `Queue`. 
 
