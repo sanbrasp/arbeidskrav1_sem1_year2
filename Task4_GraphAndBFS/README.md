@@ -13,13 +13,13 @@ Mark completed with: ✅
 - ✅ Implement a BFS method that returns the shortest number of edges/stops between two stations. 
 - ✅ Clearly define and document the return value when no route exists.
 - ✅ Handle a missing start or target station without the program terminating uncontrolled (i.e. without crashing!)
-- ?? Document the required test graph's edges explicitly (or build your own)
 - ✅ Run and document BFS from Majorstuen
-- Explain the complexity `O(V + E)` and why the `FIFO` order means BFS finds the shortest number of stops in an 
-  unweighted graph.
 - ✅ Tests (BFS from Majorstuen, document visit order, shortest number of stops )
 - Document the neighbor-order (when a node has multiple neighbors, the visit order may vary depending on storage order)
 - (don't forget to update the [commit history document](../Docs/CommitHistory.md))
+- ?? Document the required test graph's edges explicitly (or build your own)
+- Explain the complexity `O(V + E)` and why the `FIFO` order means BFS finds the shortest number of stops in an
+  unweighted graph.
 
 ---
 
