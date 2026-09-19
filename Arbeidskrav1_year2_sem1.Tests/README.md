@@ -6,8 +6,9 @@ Year: 2
 
 ## About
 This test suite covers the test cases for tasks 1-5 in the `Arbeidskrav`.  
-Each collection of tests is named accordingly, and the tests within are names using the convention of   
-`Method -> Expectation -> Condition`, so an example could be:  
+Each collection of tests is named accordingly, and the tests within are named using the convention:   
+`Method -> Expectation -> Condition`,  
+so a test could be named like this:  
 `Bfs_ReturnsCorrectOrder_FromStartNode` and  
 `CustomStack_CatchesInvalidOperationException_OnPeek_WhenStackIsEmpty`.
 
