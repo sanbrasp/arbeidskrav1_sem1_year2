@@ -30,6 +30,7 @@ Mark completed with: ✅
     - [ShortestPath](#shortestpath)
 - [Tests](#tests)
 - [Explanation](#explanation)
+  - [Distance Count (ShortestPath)](#shortestpath)
 - [Bug Fixing](#bug-fixing)
 - [Sources](#sources)
 
@@ -55,7 +56,7 @@ internal class Graph
         _adjacencyList[stationB].Add(stationA);
     }
     
-    private void AddNode(string node)
+    internal void AddNode(string node)
     {
         if (!_adjacencyList.ContainsKey(node))
         {
@@ -127,7 +128,7 @@ Base case: `while someone is still waiting in the queue -> go on`.
 Discovered nodes are immediately added to `visited`.  
 Neighbors are enqueued.  
 
-Guards against `if (!adjacencyList.ContainsKey(startNode)` and exits if the startnode doesn't exist in the array. 
+Guards against `if (!adjacencyList.ContainsKey(startNode)` and exits if the start node doesn't exist in the array. 
 Guards against `if (!visited.Contains(neighbor)` and ensures unvisited nodes gets added.  
 
 Returns a list of processed visits in the order they were visited in.
@@ -191,15 +192,54 @@ Guards against `!adjacencyList.ContainsKey(start) || !adjacencyList.ContainsKey(
 ---
 
 ## Tests
-Test screenshot, test names, test cases, why tests
+test names, test cases, why tests
 
 Tests run successfully:
 ![img.png](Images/img.png)
 
+**Test names**  
+- `Bfs_DoesNotReachDisconnectedStation`
+- `Bfs_ReturnsCorrectOrder_FromStartNode`
+- `Bfs_ReturnsEmptyList_WhenStartNodeDoesNotExist`
+- `ShortestPath_ReturnsNotFound_OnDisconnectedStation`
+- `ShortestPath_ReturnsNotFound_WhenStartAndOrTargetNodeDoesNotExist`
+- `ShortestPath_ReturnsNotFound_WhenStartAndOrTargetNodeDoesNotExist(start: "Ingenmannsland", target: "Huttiheita")`
+- `ShortestPath_ReturnsNotFound_WhenStartAndOrTargetNodeDoesNotExist(start: "Ingenmannsland", target: "Majorstuen")`
+- `ShortestPath_ReturnsNotFound_WhenStartAndOrTargetNodeDoesNotExist(start: "Majorstuen", target: "Ingenmannsland")`
+- `ShortestPath_ReturnsShortestPath_FromMajorstuenToGronland`
+- `ShortestPath_ReturnsShortestPath_FromUllevaalToToyen`
+
+**Test Cases**  
+- BFS from "Majorstuen", with documentation of visitation order (also in [Program.cs](Program.cs))
+- ShortestPath from "Majorstuen" to "Grønland" (with correct result: `4`)
+- Route between "Ullevål Stadion" and "Tøyen"
+- Isolated station - test traversal and missing route (`Bfs()` and `ShortestPath()`)
+
+**Why This is Tested**  
+To ensure correct algorithm behavior, correct distance count between start and target, 
+and as a demonstration on how the algorithm works.
+
 ---
 
 ## Explanation
-What?
+### Shortest Path Distance Count
+The Bfs method `ShortestPath()` has the job of finding the shortest path from A to B and returning the amount of steps 
+for that path. In order to achieve that, I needed somewhere to store those steps while avoiding having that counter reset 
+between iterations.  
+For this, I would need to store something more than a basic `int`, because the nodes have neighbors, and (okay I need some helpt
+wording this I see!)  
+The solution was using a `Dictionary<string, int> distances`, which stores the key(node) and its integer value.  
+In the case of missing start or target, a sentinel value was initialized to the standardized `-1`.  
+
+The distance counter starts at `distance[start] = 0`, because the start node is 0 steps away from itself.  
+The algorithm then checks if the current node `current` is equal to `target`, and returns `distances[target]` if so.  
+If the first step is not the target, it loops through the adjacency list (pulling out `neighbors` and loops over `neighbor`)
+of neighbors (like `Bfs()`), marking every discovered node as `visited`, `enqueueing` neighbors, and incrementing the 
+distance like this:  
+`distances[neighbor] = distances[current] +1`. So, the distance for `neighbor` is whatever distance is for `current` +1 step.
+
+As soon as the condition `if (current == target)` becomes true, the loop ends, and the steps from start to target is 
+returned.
 
 ---
 
