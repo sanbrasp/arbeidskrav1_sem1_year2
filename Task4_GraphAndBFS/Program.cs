@@ -19,18 +19,18 @@ class Program
         graph.AddConnection("Forskningsparken", "Ullevål Stadion");
 
         
-        AnsiConsole.Write(new Panel($"[green bold]Task 4 - Graph and BFS Demonstration[/]")
+        AnsiConsole.Write(new Panel("[green bold]Task 4 - Graph and BFS Demonstration[/]")
             .SquareBorder());
         
-        AnsiConsole.Write(new Panel($"[green bold]Run BFS from 'Majorstuen' on the Graph:[/]")
+        AnsiConsole.Write(new Panel("[green bold]Run BFS from 'Majorstuen' on the Graph:[/]")
             .RoundedBorder());
-        AnsiConsole.MarkupLine($"[green]Expected result order:[/]\n" +
+        AnsiConsole.MarkupLine("[green]Expected result order:[/]\n" +
                                "[blue]Majorstuen, Nationaltheatret, Blindern, Stortinget, " +
                                "Forskningsparken, Jernbanetorget, Ullevål Stadion, Grønland, Tøyen[/]");
         
         var result = BreadthFirstSearch.Bfs(graph.GetAdjacencyList(), "Majorstuen");
         
-        AnsiConsole.MarkupLine($"[green]Actual result order:[/]");
+        AnsiConsole.MarkupLine("[green]Actual result order:[/]");
         int number = 1;
         foreach (var key in result)
         {
@@ -40,7 +40,7 @@ class Program
 
         Console.WriteLine();
         
-        AnsiConsole.Write(new Panel($"[green bold]Find ShortestPath between 'Majorstuen' and 'Grønland':[/]")
+        AnsiConsole.Write(new Panel("[green bold]Find ShortestPath between 'Majorstuen' and 'Grønland':[/]")
             .RoundedBorder());
         AnsiConsole.MarkupLine($"[green]Shortest Path from 'Majorstuen' to 'Grønland':[/] " +
                           $"[blue]{BreadthFirstSearch.ShortestPath(graph.GetAdjacencyList(), 
@@ -48,7 +48,7 @@ class Program
 
         Console.WriteLine();
         
-        AnsiConsole.Write(new Panel($"[green bold]Route between 'Ullevål Stadion' and 'Tøyen':[/]")
+        AnsiConsole.Write(new Panel("[green bold]Route between 'Ullevål Stadion' and 'Tøyen':[/]")
             .RoundedBorder());
         AnsiConsole.MarkupLine($"[green]Shortest Path from 'Ullevål Stadion' to 'Tøyen':[/] " + 
                                $"[blue]{BreadthFirstSearch.ShortestPath(graph.GetAdjacencyList(),
@@ -56,11 +56,11 @@ class Program
 
         Console.WriteLine();
         
-        AnsiConsole.Write(new Panel($"[green bold]Isolated Station, traversal skip + no-route result:[/]")
+        AnsiConsole.Write(new Panel("[green bold]Isolated Station, traversal skip + no-route result:[/]")
             .RoundedBorder());
         graph.AddNode("Leirfjord");
-        AnsiConsole.MarkupLine($"[green]'Leirfjord' added as isolated station.[/]");
-        AnsiConsole.MarkupLine($"[green]BFS result from 'Majorstuen';'Leirfjord' is absent: [/]");
+        AnsiConsole.MarkupLine("[green]'Leirfjord' added as isolated station.[/]");
+        AnsiConsole.MarkupLine("[green]BFS result from 'Majorstuen';'Leirfjord' is absent: [/]");
         
         var disconnectedBfs = BreadthFirstSearch.Bfs(graph.GetAdjacencyList(), "Majorstuen");
         foreach (var key in disconnectedBfs)
