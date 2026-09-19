@@ -32,6 +32,8 @@ Mark completed with: ✅
 - [Explanation](#explanation)
   - [Distance Count (ShortestPath)](#shortest-path-distance-count)
   - [FIFO](#fifo)
+  - [O(V + E)](#ov--e)
+  - [Neighbor Order Documentation](#neighbor-order-documentation)
 - [Bug Fixing](#bug-fixing)
 - [Sources](#sources)
 
@@ -288,6 +290,46 @@ This process, although very simplified in the example, does the same work in the
 If we look at `C`, we can see that it was discovered and marked early on while looking up the neighbors of `A`. Due to 
 this, it is never processed later via a longer path through `B`. And this is why the first time a node is discovered, 
 it is always the shortest distance away from start. `Bfs()` fully finishes one `distance level` before starting the next.
+
+
+### O(V + E)
+A `station` (`Vertex`) can only ever be enqueued and dequeued once across the whole traversal, and the algorithm 
+looks at every connection (`Edge`) once for every iteration of the inner loop. The inner loop roughly equates to `2E` since 
+every neighbor is stored in two different neighbor lists (one per direction). But because this is a constant multiplier, 
+it simplifies to just `E`; it does the same job on any array, every time.  
+To get the total amount of work from both the `V` (each station visited) and `E` (each edge examined, twice but simplified 
+to once), we simply use addition.
+
+
+###  Neighbor Order Documentation
+The graph:
+```csharp
+var graph = new Graph();
+        graph.AddConnection("Majorstuen", "Nationaltheatret");
+        graph.AddConnection("Nationaltheatret", "Stortinget");
+        graph.AddConnection("Stortinget", "Jernbanetorget");
+        graph.AddConnection("Jernbanetorget", "Grønland");    
+        graph.AddConnection("Grønland", "Tøyen");
+        graph.AddConnection("Majorstuen", "Blindern");
+        graph.AddConnection("Blindern", "Forskningsparken");
+        graph.AddConnection("Forskningsparken", "Ullevål Stadion");
+```
+Every node in the graph, except `Ullevål Stadion`, have multiple neighbors.  
+The order of the `graph.AddConnection()` calls determine which node is visited first.
+
+If we look at the first call, we see that `Majorstuen`'s first neighbor is `Nationaltheatret`, because it is defined as
+`stationB` in the call; there is nothing in between the two.  
+We then see that "Majorstuen" shows up again further down, in the 6th call:  
+`graph.AddConnection("Majorstuen", "Blindern");`  
+Because `Nationaltheatret` came first in the sequence, it comes before the second neighbor of `Majorstuen`; `Blindern`.  
+Had the first call said: `graph.AddConnection("Majorstuen", "Blindern"` or (if `AddStation` took more than two arguments):  
+`graph.AddConnection("Majorstuen", "Blindern", "Nationaltheatret")`, `Blindern` would have been the first neighbor and 
+come before `Nationaltheatret` in the `Queue`. 
+
+This general rule covers the remaining stations and their visited order as well. And because the direction goes both ways, 
+the first neighbor of `Nationaltheatret` would be `Majorstuen`, because they are defined as `stationA/stationB` in the 
+first call; meaning the second neighbor of `Nationaltheatret` becomes `Stortinget`, because it doesn't appear until the 
+second `graph.AddConnection()` call.
 
 ---
 
