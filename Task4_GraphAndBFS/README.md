@@ -345,4 +345,5 @@ running the code.
 ---
 
 ## Sources
-Any external sources here
+- xUnit Shared Context (Constructor and Dispose):
+  https://xunit.net/docs/shared-context
