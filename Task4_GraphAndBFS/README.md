@@ -31,6 +31,7 @@ Mark completed with: ✅
 - [Tests](#tests)
 - [Explanation](#explanation)
   - [Distance Count (ShortestPath)](#shortest-path-distance-count)
+  - [FIFO](#fifo)
 - [Bug Fixing](#bug-fixing)
 - [Sources](#sources)
 
@@ -189,6 +190,18 @@ Set up with a sentinel value (`-1`) for missing start or missing target, and ret
 
 Guards against `!adjacencyList.ContainsKey(start) || !adjacencyList.ContainsKey(target)`, and exists if either are true.
 
+**ShortestPath Distances**  
+The distance counter starts at `distance[start] = 0`, because the start node is 0 steps away from itself.  
+The algorithm then checks if the current node `current` is equal to `target`, and returns `distances[target]` if so.  
+If the first step is not the target, it loops through the adjacency list (pulling out `neighbors` and loops over `neighbor`)
+of neighbors (like `Bfs()`), marking every discovered node as `visited`, `enqueueing` neighbors, and incrementing the
+distance like this:  
+`distances[neighbor] = distances[current] +1`. So, the distance for `neighbor` is whatever distance is for `current` +1 step.
+
+As soon as the condition `if (current == target)` becomes true, the loop ends, and the steps from start to target is
+returned. If the target is not found, it returns the sentinel, `noResult -> -1`.
+
+
 ---
 
 ## Tests
@@ -223,23 +236,58 @@ and as a demonstration on how the algorithm works.
 
 ## Explanation
 ### Shortest Path Distance Count
-The Bfs method `ShortestPath()` has the job of finding the shortest path from A to B and returning the amount of steps 
+The Bfs-based method `ShortestPath()` has the job of finding the shortest path from A to B and returning the amount of steps 
 for that path. In order to achieve that, I needed somewhere to store those steps while avoiding having that counter reset 
 between iterations.  
-For this, I would need to store something more than a basic `int`, because the nodes have neighbors, and (okay I need some helpt
-wording this I see!)  
-The solution was using a `Dictionary<string, int> distances`, which stores the key(node) and its integer value.  
-In the case of missing start or target, a sentinel value was initialized to the standardized `-1`.  
+For this, I would need to store something more than a basic `int`, because a single counter can't work due to how the 
+algorithm does its search by exploring multiple branches simultaneously, at different depths. This means the question of 
+"How many nodes have I visited?" versus "How many stops from start to target?" become two entirely different questions.  
+Each node needs its own recorded distance that is tied to the specific node that discovered it, one step further every time. 
+The solution was using a `Dictionary<string, int> distances`, which stores the key(node) and its integer value.
 
-The distance counter starts at `distance[start] = 0`, because the start node is 0 steps away from itself.  
-The algorithm then checks if the current node `current` is equal to `target`, and returns `distances[target]` if so.  
-If the first step is not the target, it loops through the adjacency list (pulling out `neighbors` and loops over `neighbor`)
-of neighbors (like `Bfs()`), marking every discovered node as `visited`, `enqueueing` neighbors, and incrementing the 
-distance like this:  
-`distances[neighbor] = distances[current] +1`. So, the distance for `neighbor` is whatever distance is for `current` +1 step.
+### FIFO
+`Bfs()` uses a `Queue` to keep track of who is next in line.  
+A `Queue` uses `FIFO` when organizing this; First in, first out. It always ensures the one that has been waiting the 
+longest is dequeued first, just like it works in the queue at the grocery store or the bank.  
+Because we also keep track of `visited` nodes, and mark them immediately upon discovery and then add them to the queue, 
+and we know that `Bfs()` works on `Breadth-First` (one level at a time), the start node is always placed first in the queue, 
+and the next node is always placed second, and so on.  
 
-As soon as the condition `if (current == target)` becomes true, the loop ends, and the steps from start to target is 
-returned.
+If we look at a basic example:   
+`["A", "B", "C"]` and `["C", "D"]` and use `A` as our starting node, we enqueue the starting node and mark it as visited:  
+```text
+visited = ["A"]
+queue = ["A"]
+```
+We then deque the first node, `A`, and look at its neighbor(s). There we find `B`(first) and `C`.
+`B` is then immediately marked as visited, and put in the queue. Then we find `C`, which is also marked and queued: 
+```text
+visited = ["A", "B", "C"]
+queue = ["B", "C"]
+```
+When we then dequeue `B` and look at its neighbors, which is `A` and `C`. `A` already exists in visited and is skipped. 
+`C` also already exists in visited and is skipped. So now we have: 
+```text
+visited = ["A", "B", "C"]
+queue = ["C"]
+```
+Next we dequeue `C` and look at its neighbors. We find `A` and `D`. `A` exists in visisted and is skipped. `D` is marked 
+and enqueued. Now we have:  
+```text
+visited = ["A", "B", "C", "D"]
+queue = ["D"]
+```
+We dequeue `D` and look for neighbors. There are none. The loop condition (`while (queue.Count > 0))` becomes
+false, the loop ends, and we are left with:
+```text
+visited = ["A", "B", "C", "D"]
+queue = []
+```
+
+This process, although very simplified in the example, does the same work in the same order for any array it is working on.  
+If we look at `C`, we can see that it was discovered and marked early on while looking up the neighbors of `A`. Due to 
+this, it is never processed later via a longer path through `B`. And this is why the first time a node is discovered, 
+it is always the shortest distance away from start. `Bfs()` fully finishes one `distance level` before starting the next.
 
 ---
 
