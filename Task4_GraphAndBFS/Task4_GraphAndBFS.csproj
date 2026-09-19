@@ -11,4 +11,8 @@
         <InternalsVisibleTo Include="Arbeidskrav1_year2_sem1.Tests" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Spectre.Console" Version="0.57.2" />
+    </ItemGroup>
+
 </Project>
