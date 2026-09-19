@@ -30,7 +30,7 @@ Mark completed with: ✅
     - [ShortestPath](#shortestpath)
 - [Tests](#tests)
 - [Explanation](#explanation)
-  - [Distance Count (ShortestPath)](#shortestpath)
+  - [Distance Count (ShortestPath)](#shortest-path-distance-count)
 - [Bug Fixing](#bug-fixing)
 - [Sources](#sources)
 
