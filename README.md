@@ -17,7 +17,8 @@ This solution contains tasks 1 - 6, each in their respective projects.
 - [Task 3 - Divide And Conquer](Task3_DivideAndConquer)
 - [Task 4 - Graph and BFS](Task4_GraphAndBFS)
 - [Task 5 - DFS And Comparison to BFS](Task5_DFSAndComparison)
-- [Task 6 - Video](Task6_Video) (included in submission ZIP, not in repo)
+- [Task 6 - Video](Task6_Video)  
+(included in submission ZIP, not in repo)
 
 See each project's own README for task specifics.
 
@@ -79,15 +80,14 @@ dotnet run --project Task1_LinearSearchAndBinarySearch
   - [MergeSort Tests](Arbeidskrav1_year2_sem1.Tests/MergeSortTests.cs)
 
 **Task 4 Tests**
+  - [BFS Tests](Arbeidskrav1_year2_sem1.Tests/BfsTests.cs)
 
 **Task 5 Tests**
-
-**Why Test For This**
-- To ensure the logic is sound and methods return the expected results
 
 ---
 
 ## Algorithmic Choices
+This could refer to the respective project's own readmes.
 - Why did I choose "x" instead of "y"
 - Trade-offs
 - Pros and cons
