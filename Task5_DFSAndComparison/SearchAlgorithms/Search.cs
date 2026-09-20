@@ -43,7 +43,14 @@ internal static class Search
 
                 else if (visited.Contains(neighbor) && neighbor != previous)
                 {
-                    cycles.Add((neighbor, current));
+                    bool alreadyRecorded = cycles.Any(
+                        edge => edge == (neighbor, current)
+                        || edge == (current, neighbor));
+                    
+                    if (!alreadyRecorded)
+                    {
+                        cycles.Add((neighbor, current));
+                    }
                 }
             }
         }
