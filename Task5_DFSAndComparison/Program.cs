@@ -7,7 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        // testing
+        // reused graph from task 4
         var graph = new Graph();
         graph.AddConnection("Majorstuen", "Nationaltheatret");
         graph.AddConnection("Nationaltheatret", "Stortinget");
