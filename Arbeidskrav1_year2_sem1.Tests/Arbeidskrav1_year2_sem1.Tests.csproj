@@ -23,6 +23,7 @@
       <ProjectReference Include="..\Task2_CustomGenericDataStructure\Task2_CustomGenericDataStructure.csproj" />
       <ProjectReference Include="..\Task3_DivideAndConquer\Task3_DivideAndConquer.csproj" />
       <ProjectReference Include="..\Task4_GraphAndBFS\Task4_GraphAndBFS.csproj" />
+      <ProjectReference Include="..\Task5_DFSAndComparison\Task5_DFSAndComparison.csproj" />
     </ItemGroup>
 
     <ItemGroup>
