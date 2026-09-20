@@ -3,16 +3,17 @@
 internal static class Search
 {
     internal static List<string> RecursiveDfs
-        (Dictionary<string, List<string>> adjacencyList, string startNode)
+        (Dictionary<string, List<string>> adjacencyList, string startNode, out List<(string, string)> cycles)
     {
         if (!adjacencyList.ContainsKey(startNode))
         {
+            cycles = new List<(string, string)>();
             return new List<string>();
         }
         
+        cycles = new List<(string, string)>();
         var visited = new HashSet<string>();
         var result =  new List<string>();
-        var cycles = new List<(string, string)>();
         string? previous = null;
 
         Recursion(adjacencyList, startNode, previous, visited, cycles, result);
@@ -40,7 +41,7 @@ internal static class Search
                     Recursion(adjacencyList, neighbor, current, visited, cycles, result);
                 }
 
-                if (visited.Contains(neighbor) && neighbor != previous)
+                else if (visited.Contains(neighbor) && neighbor != previous)
                 {
                     cycles.Add((neighbor, current));
                 }
