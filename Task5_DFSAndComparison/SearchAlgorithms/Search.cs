@@ -1,4 +1,6 @@
-﻿namespace Task5_DFSAndComparison.SearchAlgorithms;
+﻿using System.Linq;
+
+namespace Task5_DFSAndComparison.SearchAlgorithms;
 
 internal static class Search
 {
@@ -55,7 +57,8 @@ internal static class Search
     /// <param name="startNode">The starting node.</param>
     /// <param name="cycles">Discovered and recorded cycles.</param>
     /// <remarks>Avoids duplicate results caused by two-way connections.</remarks>
-    internal static void DetectCycles(Dictionary<string, List<string>> adjacencyList, string startNode, out List<(string, string)> cycles)
+    internal static void DetectCycles(Dictionary<string, List<string>> adjacencyList, 
+        string startNode, out List<(string, string)> cycles)
     {
         if (!adjacencyList.ContainsKey(startNode))
         {
@@ -126,7 +129,7 @@ internal static class Search
             
             if (adjacencyList.TryGetValue(current, out var neighbors))
             {
-                foreach (var neighbor in neighbors)
+                foreach (var neighbor in neighbors.AsEnumerable().Reverse())
                 {
                     if (!visited.Contains(neighbor))
                     {
