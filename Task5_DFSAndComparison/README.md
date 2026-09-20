@@ -1,10 +1,10 @@
 # Task 5 - DFS and Comparison
 DFS, and comparison with BFS.
 
-DELETE WHEN FINISHED:   
+DELETE WHEN FINISHED:   (Mark with ✅ )
 Bullet list: 
-1. Reuse the Task 4 graph — same test graph, same edges, same Graph class.
-2. Implement recursive DFS — needs a visited-tracking structure; needs a defined base step and recursive step.
+1. ✅ Reuse the Task 4 graph — same test graph, same edges, same Graph class.
+2. ✅ Implement recursive DFS — needs a visited-tracking structure; needs a defined base step and recursive step.
 3. Implement iterative DFS — must specifically use Stack<string>, not recursion.
 4. Both variants must return or print visit order from a given start station.
 5. Handle cycles — the graph must not infinite-loop if a cycle exists.
@@ -43,6 +43,12 @@ _Note to self about recursive DFS:
   - [Extension](#extension)
 - [Tests](#tests)
 - [Comparison](#comparison)
+- [Explanation](#explanation)
+  - [Base Step](#base-step)
+  - [Recursive Step](#recursive-step)
+  - [O(V+E)](#ove)
+  - [Differences Between Recursive and Iterative DFS](#differences-between-recursive-and-iterative-dfs)
+  - [Risk of StackOverFlowException](#risk-of-stackoverflowexception)
 - [Sources](#sources)
 
 ---
@@ -71,6 +77,11 @@ internal static List<string> RecursiveDfs
         return result;
     }
 ```
+Guards for non-existent startNode.  
+Defines `cycles` before any return happens both in if check and outside.  
+Calls the `Recursion()` logic.  
+Returns the `result` data.
+
 **Recursion logic method:**
 ```csharp
 private static void Recursion
@@ -93,7 +104,7 @@ private static void Recursion
                     Recursion(adjacencyList, neighbor, current, visited, cycles, result);
                 }
 
-                else if (visited.Contains(neighbor) && neighbor != previous)
+                else if (neighbor != previous)
                 {
                     bool alreadyRecorded = cycles.Any(
                         edge => edge == (neighbor, current)
@@ -107,6 +118,15 @@ private static void Recursion
             }
         }
 ```
+Guards against running recursion on already visited nodes.  
+Immediately adds `current` to `visited`.  
+Immediately thereafter adds `current` to `result`.
+
+It then pulls the needed values from the `adjacencyList` with an `out var neighbors` (List).  
+It loops through the `neighbor` elements in `neighbors`, and performs the check `if (!visited.Contains(neighbor))`:
+⇒ if true ⇒ run `Recursion()`. If false ⇒ check `if (neighbor != previous)` (branch guarantees neighbor is in visited)
+⇒ check if already recorded (using the bool LINQ) ⇒ only record once.  
+Without the bool check, the cycle result will be duplicated due to the two-way direction of the graph. 
 
 
 ### Iterative DFS
@@ -121,6 +141,19 @@ private static void Recursion
 ---
 
 ## Comparison
+
+---
+
+## Explanation
+### Base Step
+
+### Recursive Step
+
+### O(V+E)
+
+### Differences Between Recursive and Iterative DFS
+
+### Risk of StackOverFlowException
 
 ---
 
