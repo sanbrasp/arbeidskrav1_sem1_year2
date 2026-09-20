@@ -38,8 +38,8 @@ _Note to self about recursive DFS:
 
 ## Overview
 - [Implementation](#implementation)
-  - [Iterative DFS](#iterative-dfs)
   - [Recursive DFS](#recursive-dfs)
+  - [Iterative DFS](#iterative-dfs)
   - [Extension](#extension)
 - [Tests](#tests)
 - [Comparison](#comparison)
@@ -49,9 +49,67 @@ _Note to self about recursive DFS:
 
 ## Implementation
 
-### Iterative DFS
-
 ### Recursive DFS
+**Recursive DFS implementation, orchestrator:**
+```csharp
+internal static List<string> RecursiveDfs
+        (Dictionary<string, List<string>> adjacencyList, string startNode, out List<(string, string)> cycles)
+    {
+        if (!adjacencyList.ContainsKey(startNode))
+        {
+            cycles = new List<(string, string)>();
+            return new List<string>();
+        }
+        
+        cycles = new List<(string, string)>();
+        var visited = new HashSet<string>();
+        var result =  new List<string>();
+        string? previous = null;
+
+        Recursion(adjacencyList, startNode, previous, visited, cycles, result);
+        
+        return result;
+    }
+```
+**Recursion logic method:**
+```csharp
+private static void Recursion
+        (Dictionary<string, List<string>> adjacencyList, string current, string? previous, 
+            HashSet<string> visited, List<(string, string)> cycles, List<string> result)
+    {
+        if (visited.Contains(current))
+        {
+            return;
+        }
+        visited.Add(current);
+        result.Add(current);
+
+        if (adjacencyList.TryGetValue(current, out var neighbors))
+        {
+            foreach (var neighbor in neighbors)
+            {
+                if (!visited.Contains(neighbor))
+                {
+                    Recursion(adjacencyList, neighbor, current, visited, cycles, result);
+                }
+
+                else if (visited.Contains(neighbor) && neighbor != previous)
+                {
+                    bool alreadyRecorded = cycles.Any(
+                        edge => edge == (neighbor, current)
+                        || edge == (current, neighbor));
+                    
+                    if (!alreadyRecorded)
+                    {
+                        cycles.Add((neighbor, current));
+                    }
+                }
+            }
+        }
+```
+
+
+### Iterative DFS
 
 ### Extension
 **Chose extension:** Cycle Detection
