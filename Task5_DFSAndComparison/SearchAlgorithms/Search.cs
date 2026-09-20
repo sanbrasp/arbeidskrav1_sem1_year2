@@ -64,8 +64,43 @@ internal static class Search
         }
     }
 
-    internal static List<string> IterativeDfs()
+    internal static List<string> IterativeDfs // Stack, push, pop, peek. Use Stack<string>
+        (Dictionary<string, List<string>> adjacencyList, string startNode, out List<(string, string)> cycles)
     {
-        throw new NotImplementedException();
+        if (!adjacencyList.ContainsKey(startNode))
+        {
+            cycles = new List<(string, string)>();
+            return new List<string>();
+        }
+
+        cycles = new List<(string, string)>();
+        var visited = new HashSet<string>();
+        var result = new List<string>();
+        string? current = null;
+        string? previous = null;
+        Stack<string> stack = new Stack<string>();
+        
+        stack.Push(startNode);
+        visited.Add(startNode);
+        
+        while (stack.Count > 0)
+        {
+            current = stack.Pop();
+            result.Add(current);
+            
+            if (adjacencyList.TryGetValue(current, out var neighbors))
+            {
+                foreach (var neighbor in neighbors)
+                {
+                    if (!visited.Contains(neighbor))
+                    {
+                        stack.Push(neighbor);
+                        visited.Add(neighbor);
+                    }
+                }
+            }
+        }
+
+        return result;
     }
 }
