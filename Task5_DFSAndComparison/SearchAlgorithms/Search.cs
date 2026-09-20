@@ -2,34 +2,28 @@
 
 internal static class Search
 {
-    private static HashSet<string> _visited;
-    private static List<string> _results;
-
-    internal void ResetAndRunRecursiveDfs(Dictionary<string, List<string>> adjacencyList, string startNode)
-    {
-        ResetVisited();
-        ResetResults();
-        
-        RecursiveDfs();
-    }
-    
     internal static List<string> RecursiveDfs
-        (Dictionary<string, List<string>> adjacencyList, string current, string previous, HashSet<string> visited)
+        (Dictionary<string, List<string>> adjacencyList, string startNode)
     {
-        _visited = null;
-        _results = null;
+        if (!adjacencyList.ContainsKey(startNode))
+        {
+            return new List<string>();
+        }
         
+        var visited = new HashSet<string>();
+        var result =  new List<string>();
+        var cycles = new List<(string, string)>();
+
+        Recursion(adjacencyList, startNode, visited, cycles, result);
         
+        return result;
     }
 
-
-    private static void ResetVisited()
+    private static void Recursion
+        (Dictionary<string, List<string>> adjacencyList, string node, 
+            HashSet<string> visited, List<(string, string)> cycles, List<string> result)
     {
-        _visited = null;
-    }
-    
-    private static void ResetResults()
-    {
-        _results = null;
+        visited.Add(node);
+        result.Add(node);
     }
 }
