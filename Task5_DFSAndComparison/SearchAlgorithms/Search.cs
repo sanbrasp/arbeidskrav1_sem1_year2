@@ -4,34 +4,30 @@ internal static class Search
 {
     /// <summary>
     /// Runs a recursive Depth-First Search on an array.
-    /// It also has an out var return value for catching the cycles records.
     /// </summary>
     /// <param name="adjacencyList">The array to perform the search on.</param>
     /// <param name="startNode">The start node.</param>
-    /// <param name="cycles">Any discovered and recorded cycles.</param>
     /// <returns>An ordered visitation list.</returns>
     internal static List<string> RecursiveDfs
-        (Dictionary<string, List<string>> adjacencyList, string startNode, out List<(string, string)> cycles)
+        (Dictionary<string, List<string>> adjacencyList, string startNode)
     {
         if (!adjacencyList.ContainsKey(startNode))
         {
-            cycles = new List<(string, string)>(); // define the "cycles" before returning
             return new List<string>();
         }
         
-        cycles = new List<(string, string)>(); // parameter value assignment
         var visited = new HashSet<string>();
         var result =  new List<string>();
         string? previous = null;
 
-        Recursion(adjacencyList, startNode, previous, visited, cycles, result); // run recursion logic
+        Recursion(adjacencyList, startNode, previous, visited, result); // run recursion logic
         
         return result; // returns the order of visits
     }
 
     private static void Recursion
         (Dictionary<string, List<string>> adjacencyList, string current, string? previous, 
-            HashSet<string> visited, List<(string, string)> cycles, List<string> result)
+            HashSet<string> visited, List<string> result)
     {
         if (visited.Contains(current))
         {
@@ -46,14 +42,50 @@ internal static class Search
             {
                 if (!visited.Contains(neighbor)) // recurse into any unvisited neighbor
                 {
-                    Recursion(adjacencyList, neighbor, current, visited, cycles, result);
+                    Recursion(adjacencyList, neighbor, current, visited, result);
                 }
+            }
+        }
+    }
 
-                else if (neighbor != previous) // cycle detection (neighbor IS in visited)
+    private static void DetectCycles(Dictionary<string, List<string>> adjacencyList, string startNode, out List<(string, string)> cycles)
+    {
+        if (!adjacencyList.ContainsKey(startNode))
+        {
+            cycles = new List<(string, string)>(); // define the "cycles" before returning
+            return;
+        }
+        cycles = new List<(string, string)>(); // parameter value assignment
+        var visited = new HashSet<string>();
+        var result =  new List<string>();
+        string? previous = null;
+
+        RecursionForCycles(adjacencyList, startNode, previous, visited, cycles, result);
+    }
+
+    private static void RecursionForCycles(Dictionary<string, List<string>> adjacencyList, string current,
+        string? previous, HashSet<string> visited, List<(string, string)> cycles, List<string> result)
+    {
+        if (visited.Contains(current))
+        {
+            return;
+        }
+        visited.Add(current);
+        result.Add(current);
+
+        if (adjacencyList.TryGetValue(current, out var neighbors))
+        {
+            foreach (var neighbor in neighbors)
+            {
+                if (!visited.Contains(neighbor))
+                {
+                    RecursionForCycles(adjacencyList, neighbor, current, visited, cycles, result);
+                }
+                else if (neighbor != previous)
                 {
                     bool alreadyRecorded = cycles.Any(
                         edge => edge == (neighbor, current)
-                        || edge == (current, neighbor)); // avoid duplicate results in cycles record (two-way)
+                                || edge == (current, neighbor)); // avoid duplicate results in cycles record (two-way)
                     
                     if (!alreadyRecorded) // only add to cycles if not already recorded
                     {
@@ -65,19 +97,16 @@ internal static class Search
     }
 
     internal static List<string> IterativeDfs // Stack, push, pop, peek. Use Stack<string>
-        (Dictionary<string, List<string>> adjacencyList, string startNode, out List<(string, string)> cycles)
+        (Dictionary<string, List<string>> adjacencyList, string startNode, string targetNode)
     {
-        if (!adjacencyList.ContainsKey(startNode))
+        if (!adjacencyList.ContainsKey(startNode) || !adjacencyList.ContainsKey(targetNode))
         {
-            cycles = new List<(string, string)>();
             return new List<string>();
         }
-
-        cycles = new List<(string, string)>();
+        
         var visited = new HashSet<string>();
         var result = new List<string>();
         string? current = null;
-        string? previous = null;
         Stack<string> stack = new Stack<string>();
         
         stack.Push(startNode);
@@ -87,6 +116,11 @@ internal static class Search
         {
             current = stack.Pop();
             result.Add(current);
+
+            if (current == targetNode)
+            {
+                return result;
+            }
             
             if (adjacencyList.TryGetValue(current, out var neighbors))
             {
