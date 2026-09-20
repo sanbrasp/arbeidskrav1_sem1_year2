@@ -20,13 +20,13 @@ internal static class Search
         var result =  new List<string>();
         string? previous = null;
 
-        Recursion(adjacencyList, startNode, previous, visited, result); // run recursion logic
+        Recursion(adjacencyList, startNode, visited, result); // run recursion logic
         
         return result; // returns the order of visits
     }
 
     private static void Recursion
-        (Dictionary<string, List<string>> adjacencyList, string current, string? previous, 
+        (Dictionary<string, List<string>> adjacencyList, string current, 
             HashSet<string> visited, List<string> result)
     {
         if (visited.Contains(current))
@@ -42,13 +42,20 @@ internal static class Search
             {
                 if (!visited.Contains(neighbor)) // recurse into any unvisited neighbor
                 {
-                    Recursion(adjacencyList, neighbor, current, visited, result);
+                    Recursion(adjacencyList, neighbor, visited, result);
                 }
             }
         }
     }
 
-    private static void DetectCycles(Dictionary<string, List<string>> adjacencyList, string startNode, out List<(string, string)> cycles)
+    /// <summary>
+    /// DFS-based algorithm that detects cycles in the graph.
+    /// </summary>
+    /// <param name="adjacencyList">The array to search.</param>
+    /// <param name="startNode">The starting node.</param>
+    /// <param name="cycles">Discovered and recorded cycles.</param>
+    /// <remarks>Avoids duplicate results caused by two-way connections.</remarks>
+    internal static void DetectCycles(Dictionary<string, List<string>> adjacencyList, string startNode, out List<(string, string)> cycles)
     {
         if (!adjacencyList.ContainsKey(startNode))
         {
@@ -97,9 +104,9 @@ internal static class Search
     }
 
     internal static List<string> IterativeDfs // Stack, push, pop, peek. Use Stack<string>
-        (Dictionary<string, List<string>> adjacencyList, string startNode, string targetNode)
+        (Dictionary<string, List<string>> adjacencyList, string startNode)
     {
-        if (!adjacencyList.ContainsKey(startNode) || !adjacencyList.ContainsKey(targetNode))
+        if (!adjacencyList.ContainsKey(startNode))
         {
             return new List<string>();
         }
@@ -116,11 +123,6 @@ internal static class Search
         {
             current = stack.Pop();
             result.Add(current);
-
-            if (current == targetNode)
-            {
-                return result;
-            }
             
             if (adjacencyList.TryGetValue(current, out var neighbors))
             {
