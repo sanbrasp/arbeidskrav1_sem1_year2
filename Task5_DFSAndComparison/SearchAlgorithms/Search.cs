@@ -13,17 +13,38 @@ internal static class Search
         var visited = new HashSet<string>();
         var result =  new List<string>();
         var cycles = new List<(string, string)>();
+        string? previous = null;
 
-        Recursion(adjacencyList, startNode, visited, cycles, result);
+        Recursion(adjacencyList, startNode, previous, visited, cycles, result);
         
         return result;
     }
 
     private static void Recursion
-        (Dictionary<string, List<string>> adjacencyList, string node, 
+        (Dictionary<string, List<string>> adjacencyList, string current, string? previous, 
             HashSet<string> visited, List<(string, string)> cycles, List<string> result)
     {
-        visited.Add(node);
-        result.Add(node);
+        if (visited.Contains(current))
+        {
+            return;
+        }
+        visited.Add(current);
+        result.Add(current);
+
+        if (adjacencyList.TryGetValue(current, out var neighbors))
+        {
+            foreach (var neighbor in neighbors)
+            {
+                if (!visited.Contains(neighbor))
+                {
+                    Recursion(adjacencyList, neighbor, current, visited, cycles, result);
+                }
+
+                if (visited.Contains(neighbor) && neighbor != previous)
+                {
+                    cycles.Add((neighbor, current));
+                }
+            }
+        }
     }
 }
