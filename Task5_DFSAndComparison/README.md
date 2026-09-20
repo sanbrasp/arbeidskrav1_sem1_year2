@@ -132,7 +132,7 @@ Without the bool check, the cycle result will be duplicated due to the two-way d
 ### Iterative DFS
 
 ### Extension
-**Chose extension:** Cycle Detection
+**Chose extension for Recursive DFS:** Cycle Detection
 
 ---
 
