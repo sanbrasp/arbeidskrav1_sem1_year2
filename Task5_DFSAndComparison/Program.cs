@@ -18,31 +18,34 @@ class Program
         graph.AddConnection("Blindern", "Forskningsparken");
         graph.AddConnection("Forskningsparken", "Ullevål Stadion");
 
-        Console.WriteLine("Traversal test:");
-        var result = (Search.RecursiveDfs(graph.GetAdjacencyList(), "Majorstuen", out var cycles1));
-        int count = 0;
+        Console.WriteLine("Recursive DFS test from 'Majorstuen':");
+        var result = (Search.RecursiveDfs(graph.GetAdjacencyList(), "Majorstuen"));
+        int count = 1;
         foreach (var item in result)
         {
             Console.WriteLine($"{count++}: {item}");
         }
 
         Console.WriteLine();
-
-        Console.WriteLine("Hypothetical extra edge test:");
-        graph.AddConnection("Tøyen", "Majorstuen");
-        var hypresult = Search.RecursiveDfs(graph.GetAdjacencyList(), "Majorstuen", out var cycles);
-        int counter = 0;
-        foreach (var item in hypresult)
+        
+        Console.WriteLine("Iterative DFS test from 'Majorstuen':");
+        var iterResult = Search.IterativeDfs(graph.GetAdjacencyList(), "Majorstuen");
+        var itCount = 1;
+        foreach (var item in iterResult)
         {
-            Console.WriteLine($"{counter++}: {item}");
+            Console.WriteLine($"{itCount++}: {item}");
         }
 
         Console.WriteLine();
-        Console.WriteLine("Looking for cycles:");
+        
+        Console.WriteLine("Hypothetical extra edge test:");
+        Console.WriteLine("Adding Connection: 'Tøyen', 'Majorstuen'");
+        graph.AddConnection("Tøyen", "Majorstuen");
+        Console.WriteLine("Running DetectCycles test:");
+        Search.DetectCycles(graph.GetAdjacencyList(), "Majorstuen", out var cycles);
         foreach (var item in cycles)
         {
-            Console.WriteLine($"Cycles found: {item}");
+            Console.WriteLine("Result: " + item);
         }
-        
     }
 }
