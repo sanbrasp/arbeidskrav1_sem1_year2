@@ -12,6 +12,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <InternalsVisibleTo Include="Task5_DFSAndComparison" />
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="Spectre.Console" Version="0.57.2" />
     </ItemGroup>
 
