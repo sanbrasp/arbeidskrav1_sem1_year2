@@ -47,5 +47,15 @@ class Program
         {
             Console.WriteLine("Result: " + item);
         }
+
+        Console.WriteLine();
+        Console.WriteLine("Adding isolated node: 'Leirfjord'");
+        graph.AddNode("Leirfjord");
+        Console.WriteLine("Running FindRoute from startNode 'Majorstuen' to targetNode: 'Leirfjord':");
+        bool isolatedRouteResult = Search.FindRoute(graph.GetAdjacencyList(), "Majorstuen", "Leirfjord");
+        Console.WriteLine(isolatedRouteResult);
+        Console.WriteLine("Running FindRoute from startNode 'Majorstuen' to targetNode: 'Tøyen':");
+        bool shouldBeTrue  = Search.FindRoute(graph.GetAdjacencyList(), "Majorstuen", "Tøyen");
+        Console.WriteLine(shouldBeTrue);
     }
 }
