@@ -318,7 +318,12 @@ it means that the traversal is done, and it's time to stop. We don't want to rec
 have already been processed, because that would lead to infinite recursion, and could cause 
 a `StackOverflowException`.
 
-
+`DetectCycles() -> RecursionForCycles()`:  
+Mirroring the above, and because it's directly based on `RecursiveDfs()`, the setup is similar. 
+The base step lives in `RecursionForCycles()`, and uses the same guard as it's "parent":  
+`if (visited.Contains(current)) -> return;`  
+The rest of the logic is fairly similar, except checking `neighbor != previous`, so 
+I refer to the above explanation.
 
 ### Recursive Step
 
