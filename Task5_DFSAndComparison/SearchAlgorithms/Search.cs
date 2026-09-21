@@ -20,7 +20,6 @@ internal static class Search
         
         var visited = new HashSet<string>();
         var result =  new List<string>();
-        string? previous = null;
 
         Recursion(adjacencyList, startNode, visited, result); // run recursion logic
         
@@ -147,6 +146,13 @@ internal static class Search
         return result;
     }
 
+    /// <summary>
+    /// Runs an Iterative DFS-based search that discovers if there is a route between start node and target node.
+    /// </summary>
+    /// <param name="adjacencyList">The array to search in.</param>
+    /// <param name="startNode">The node to start from.</param>
+    /// <param name="targetNode">The target node.</param>
+    /// <returns>True if there is a path, and False if there isn't one.</returns>
     internal static bool FindRoute(Dictionary<string, List<string>> adjacencyList, string startNode, string targetNode)
     {
         if (!adjacencyList.ContainsKey(startNode) || (!adjacencyList.ContainsKey(targetNode)))
@@ -162,9 +168,8 @@ internal static class Search
 
         while (stack.Count > 0)
         {
-            var current = stack.Pop();
+            string current = stack.Pop();
             
-
             if (current == targetNode)
             {
                 return true;
