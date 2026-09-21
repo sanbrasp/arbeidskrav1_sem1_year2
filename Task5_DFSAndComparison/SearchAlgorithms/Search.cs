@@ -112,7 +112,7 @@ internal static class Search
     /// <param name="adjacencyList">The array to perform the traversal on.</param>
     /// <param name="startNode">The node to start from.</param>
     /// <returns>A list ordered by time visited.</returns>
-    internal static List<string> IterativeDfs // Stack, push, pop, peek. Use Stack<string>
+    internal static List<string> IterativeDfs
         (Dictionary<string, List<string>> adjacencyList, string startNode)
     {
         if (!adjacencyList.ContainsKey(startNode))
@@ -123,19 +123,19 @@ internal static class Search
         var visited = new HashSet<string>();
         var result = new List<string>();
         string? current = null;
-        Stack<string> stack = new Stack<string>();
+        Stack<string> stack = new Stack<string>(); // explicit stack
         
-        stack.Push(startNode);
-        visited.Add(startNode);
+        stack.Push(startNode); // push the first element to the stack
+        visited.Add(startNode); // immediately mark as visited
         
-        while (stack.Count > 0)
+        while (stack.Count > 0) // base case. if false, stop.
         {
-            current = stack.Pop();
-            result.Add(current);
+            current = stack.Pop(); // store the first element pop in a variable
+            result.Add(current); // processed - now it can be added to result
             
             if (adjacencyList.TryGetValue(current, out var neighbors))
             {
-                foreach (var neighbor in neighbors.AsEnumerable().Reverse())
+                foreach (var neighbor in neighbors.AsEnumerable().Reverse()) // reverse to mirror RecursiveDFS
                 {
                     if (!visited.Contains(neighbor))
                     {
