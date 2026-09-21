@@ -106,6 +106,12 @@ internal static class Search
         }
     }
 
+    /// <summary>
+    /// Runs an iterative DFS traversal on a chosen array.
+    /// </summary>
+    /// <param name="adjacencyList">The array to perform the traversal on.</param>
+    /// <param name="startNode">The node to start from.</param>
+    /// <returns>A list ordered by time visited.</returns>
     internal static List<string> IterativeDfs // Stack, push, pop, peek. Use Stack<string>
         (Dictionary<string, List<string>> adjacencyList, string startNode)
     {
@@ -139,7 +145,6 @@ internal static class Search
                 }
             }
         }
-
         return result;
     }
 }
