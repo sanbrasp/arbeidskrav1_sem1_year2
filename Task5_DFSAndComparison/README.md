@@ -69,7 +69,6 @@ internal static List<string> RecursiveDfs
         
         var visited = new HashSet<string>();
         var result =  new List<string>();
-        string? previous = null;
 
         Recursion(adjacencyList, startNode, visited, result); // run recursion logic
         
@@ -177,7 +176,7 @@ private static void RecursionForCycles(Dictionary<string, List<string>> adjacenc
 
 ### Iterative DFS
 ```csharp
-internal static List<string> IterativeDfs // Stack, push, pop, peek. Use Stack<string>
+internal static List<string> IterativeDfs
         (Dictionary<string, List<string>> adjacencyList, string startNode)
     {
         if (!adjacencyList.ContainsKey(startNode))
