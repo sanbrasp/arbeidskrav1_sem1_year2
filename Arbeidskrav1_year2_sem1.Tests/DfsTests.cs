@@ -38,13 +38,13 @@ public class DfsTests
     public void RecursiveDfs_HandlesMissingStartNode()
     {
         // Arrange
-        var extectedResult = new List<string>();
+        var expectedResult = new List<string>();
 
         // Act
         var result = Search.RecursiveDfs(_graph.GetAdjacencyList(), "Månen");
 
         // Assert
-        Assert.Equal(extectedResult, result);
+        Assert.Equal(expectedResult, result);
     }
 
     [Theory]
@@ -66,14 +66,12 @@ public class DfsTests
     public void DetectCycles_DoesNotDetectCycles_WhereThereAreNoCycles()
     {
         // Arrange
-        var expectedResult = new List<(string, string)>();
 
         // Act
         Search.DetectCycles(_graph.GetAdjacencyList(), "Majorstuen", out List<(string, string)> cycles);
 
         // Assert
         Assert.Empty(cycles);
-        Assert.Equal(expectedResult.Count, cycles.Count);
     }
 
     [Fact]
@@ -122,19 +120,20 @@ public class DfsTests
     public void IterativeDfs_HandlesMissingStartNode()
     {
         // Arrange
-        var extectedResult = new List<string>();
+        var expectedResult = new List<string>();
 
         // Act
         var result = Search.IterativeDfs(_graph.GetAdjacencyList(), "Månen");
 
         // Assert
-        Assert.Equal(extectedResult, result);
+        Assert.Equal(expectedResult, result);
     }
 
     [Theory]
     [InlineData("Majorstuen", "Leirfjord")]
     [InlineData("Månen", "Jernbanetorget")]
     [InlineData("Sola", "Månen")]
+    [InlineData("Nationaltheatret", "Merkur")]
     public void FindRoute_ReturnsFalse_OnNoRouteAndMissingStartAndTarget(string start, string end)
     {
         // Arrange
