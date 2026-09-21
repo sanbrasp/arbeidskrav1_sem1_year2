@@ -325,19 +325,6 @@ The base step lives in `RecursionForCycles()`, and uses the same guard as it's "
 The rest of the logic is fairly similar, except checking `neighbor != previous`, so 
 I refer to the above explanation.
 
-`IterativeDfs()`:  
-The iterative DFS is set up with an explicit stack, so the base case is written differently, and lives 
-in another section within the same method.  
-`while (stack.Count > 0) -> continue`  
-This branch holds the entire logic loop for Pushing, marking as visited, and Popping the bottom element.  
-
-`FindRoute()`:  
-This method is based directly off `IterativeDfs()` and uses the same core logic.  
-It uses the same base case:  
-`while (stack.Count > 0) -> continue`  
-As with the pure iterative traversal algorithm, this branch holds the full looping logic.  
-
-
 ### Recursive Step
 
 ### O(V + E)
