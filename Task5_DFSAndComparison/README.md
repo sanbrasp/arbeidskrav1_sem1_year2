@@ -326,6 +326,23 @@ The rest of the logic is fairly similar, except checking `neighbor != previous`,
 I refer to the above explanation.
 
 ### Recursive Step
+`RecursiveDfs() -> Recursion()`:  
+When the base case does not fire, the recursion step does.  
+Whichever element is the `current` element gets added to `visited`, and to `result`.  
+The `neighbors` of `current` are looped over, and examined. If `neighbor` is not marked as `visited` 
+already, we recurse into it:
+```csharp
+if (!visited.Contains(neighbor)) // recurse into any unvisited neighbor
+                {
+                    Recursion(adjacencyList, neighbor, visited, result);
+                }
+```
+Then we are back at the start, and the loop goes again unless the base case branch fires.
+
+`DetectCycles() -> RecursionForCycles()`:  
+As above, the recursion step fires when the base case doesn't.  
+The logic is mostly the same for this method as well, except for the check `neighbor != previous`, which only 
+fires if `visited` already contains `neighbor`.
 
 ### O(V + E)
 Reasoning is similar to the `O(V + E)` explanation for Task 4 `BFS`.  
