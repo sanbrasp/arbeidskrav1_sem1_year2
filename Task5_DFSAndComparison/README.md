@@ -315,13 +315,17 @@ To ensure the code can handle edge-cases without crashing.
 
 ### O(V + E)
 Reasoning is similar to the `O(V + E)` explanation for Task 4 `BFS`.  
-A station can only be processed once across the traversal, and the algorithm looks at
-every connection once for every iteration of the inner loop.  
+A station(`V`) can only be processed once across the traversal, and the algorithm looks at
+every connection(`E`) once for every iteration of the inner loop.  
+The `visited` HashSet tracks which nodes have already been discovered, meaning they will not be 
+re-added to the stack at any point. Each of the neighbors is looped and discovered (`visited`) only once.
 The inner loop, as with `BFS`, simplifies from `2E` to just `E`, giving us 
-`O(V)` for stations, and `O(E)` for edges.  
+`O(V)` for stations, and `O(E)` for edges. The neighbors are examined twice, like in `BFS`, because of 
+the two-way graph.
 Like with `BFS`, we are working with constant multipliers because the same job is performed 
 regardless of the contents in the array.  
-To get the total amount of work, we use `O(V + E)`.
+To get the total amount of work, we use `O(V + E)`.  
+This covers both `RecursiveDfs` and `IterativeDfs`.
 
 ### Differences Between Recursive and Iterative DFS
 
