@@ -14,9 +14,21 @@
 
 ## Implementation
 ### LinearSearch():
-
-The class that contains `LinearSearch()`:  
-[Search.LinearSearch()](Task1_LinearSearchAndBinarySearch/Models/Search.cs)
+```csharp
+internal static int LinearSearch(int[] array, int target)
+    {
+        ResetLinearComparisons();
+        for (int i = 0; i < array.Length; i++)
+        {
+            _linearComparisons++;
+            if (array[i] == target)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+```
 
 **Naming Choice**  
 The name `Search` was chosen for the file, as opposed to `LinearSearch`, to avoid ambiguous naming.  
@@ -52,8 +64,40 @@ always starts with a state of 0. The method `ResetComparisons()` was then set to
 ---
 
 ### BinarySearch():
-The class that contains method `BinarySearch()`:  
-[Search.BinarySearch()](Task1_LinearSearchAndBinarySearch/Models/Search.cs)
+```csharp
+internal static int BinarySearch(int[] array, int target)
+    {
+        ResetBinaryComparisons();
+
+        int left = 0;
+        int right = array.Length - 1;
+        int lowestMatchResult = -1; // initialized with sentinel value.
+
+        while (left <= right)
+        {
+            int mid = left + (right - left) / 2;
+            
+            _binaryComparisons++;
+            if (array[mid] == target)
+            {
+                lowestMatchResult = mid;
+                right = mid - 1;
+            }
+            
+            else if (array[mid] < target)
+            {
+                _binaryComparisons++;
+                left = mid + 1;
+            }
+                
+            else
+            {
+                right = mid - 1;
+            }
+        }
+        return lowestMatchResult;
+    }
+```
 
 **Naming Choice**  
 Refer to the same paragraph of `LinearSearch()`.
