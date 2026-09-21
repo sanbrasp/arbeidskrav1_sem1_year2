@@ -1,4 +1,5 @@
-﻿using Task4_GraphAndBFS.Models;
+﻿using Spectre.Console;
+using Task4_GraphAndBFS.Models;
 using Task5_DFSAndComparison.SearchAlgorithms;
 
 namespace Task5_DFSAndComparison;
@@ -18,44 +19,48 @@ class Program
         graph.AddConnection("Blindern", "Forskningsparken");
         graph.AddConnection("Forskningsparken", "Ullevål Stadion");
 
-        Console.WriteLine("Recursive DFS test from 'Majorstuen':");
+        AnsiConsole.Write(new Panel("[green bold]Run Recursive DFS from 'Majorstuen':[/]"));
         var result = (Search.RecursiveDfs(graph.GetAdjacencyList(), "Majorstuen"));
         int count = 1;
         foreach (var item in result)
         {
-            Console.WriteLine($"{count++}: {item}");
+            AnsiConsole.MarkupLine($"[blue]{count++}: {item}[/]");
         }
 
         Console.WriteLine();
         
-        Console.WriteLine("Iterative DFS test from 'Majorstuen':");
+        AnsiConsole.Write(new Panel("[green bold]Iterative DFS from 'Majorstuen':[/]"));
         var iterResult = Search.IterativeDfs(graph.GetAdjacencyList(), "Majorstuen");
         var itCount = 1;
         foreach (var item in iterResult)
         {
-            Console.WriteLine($"{itCount++}: {item}");
+            AnsiConsole.MarkupLine($"[blue]{itCount++}: {item}[/]");
         }
 
         Console.WriteLine();
         
-        Console.WriteLine("Hypothetical extra edge test:");
-        Console.WriteLine("Adding Connection: 'Tøyen', 'Majorstuen'");
+        AnsiConsole.Write(new Panel("[green bold]Detect Cycles:[/]"));
+        AnsiConsole.MarkupLine("[green]Hypothetical extra edge test.\n" +
+                               "Adding Connection 'Tøyen', 'Majorstuen'.[/]");
         graph.AddConnection("Tøyen", "Majorstuen");
-        Console.WriteLine("Running DetectCycles test:");
+        AnsiConsole.MarkupLine("[green]Running DetectCycles test:[/]");
         Search.DetectCycles(graph.GetAdjacencyList(), "Majorstuen", out var cycles);
         foreach (var item in cycles)
         {
-            Console.WriteLine("Result: " + item);
+            AnsiConsole.MarkupLine($"[blue]Result: {item}[/]");
         }
 
         Console.WriteLine();
-        Console.WriteLine("Adding isolated node: 'Leirfjord'");
+        AnsiConsole.Write(new Panel("[green bold]Isolated Node Test[/]"));
+        AnsiConsole.MarkupLine("[green]Adding isolated node: 'Leirfjord'[/]");
         graph.AddNode("Leirfjord");
-        Console.WriteLine("Running FindRoute from startNode 'Majorstuen' to targetNode: 'Leirfjord':");
+        AnsiConsole.MarkupLine("[green]Running FindRoute from 'Majorstuen' to 'Leirfjord':[/]");
         bool isolatedRouteResult = Search.FindRoute(graph.GetAdjacencyList(), "Majorstuen", "Leirfjord");
-        Console.WriteLine(isolatedRouteResult);
-        Console.WriteLine("Running FindRoute from startNode 'Majorstuen' to targetNode: 'Tøyen':");
+        AnsiConsole.MarkupLine($"[red]{isolatedRouteResult}[/]");
+
+        Console.WriteLine();
+        AnsiConsole.MarkupLine("[green]Running FindRoute from 'Majorstuen' to 'Tøyen':[/]");
         bool shouldBeTrue  = Search.FindRoute(graph.GetAdjacencyList(), "Majorstuen", "Tøyen");
-        Console.WriteLine(shouldBeTrue);
+        AnsiConsole.MarkupLine($"[blue]{shouldBeTrue}[/]");
     }
 }
