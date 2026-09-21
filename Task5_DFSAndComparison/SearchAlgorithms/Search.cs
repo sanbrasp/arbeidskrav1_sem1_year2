@@ -147,4 +147,15 @@ internal static class Search
         }
         return result;
     }
+
+    internal static int FindRoute(Dictionary<string, List<string>> adjacencyList, string startNode, string targetNode)
+    {
+        int noResult = -1;
+        if (!adjacencyList.ContainsKey(startNode) || (!adjacencyList.ContainsKey(targetNode)))
+        {
+            return noResult;
+        }
+        
+        
+    }
 }
