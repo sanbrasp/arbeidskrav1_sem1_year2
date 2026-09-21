@@ -37,6 +37,7 @@ Bullet list:
   - [O(V + E)](#ov--e)
   - [Differences Between Recursive and Iterative DFS](#differences-between-recursive-and-iterative-dfs)
   - [Risk of StackOverFlowException](#risk-of-stackoverflowexception)
+- [Reflection](#reflection)
 - [Sources](#sources)
 
 ---
@@ -318,6 +319,14 @@ To ensure the code can handle edge-cases without crashing.
 ### Differences Between Recursive and Iterative DFS
 
 ### Risk of StackOverFlowException
+
+---
+
+## Reflection
+- What went well?
+- What could've gone better?
+- What did I learn?
+- Improvements for next time.
 
 ---
 

@@ -8,6 +8,7 @@
 - [Operation Count](#operation-count)
 - [Analysis](#analysis)
 - [Bug Fixing](#bug-fixing-)
+- [Reflection](#reflection)
 - [Sources](#sources)
 
 ---
@@ -252,6 +253,15 @@ the left ended at the wrong boundary,
 and the right ended at the wrong boundary. 
 
 Fixes were applied to both methods and tested on several different arrays to ensure everything was in order.
+
+---
+
+## Reflection
+- What went well?
+- What could've gone better?
+- What did I learn?
+- Improvements for next time.
+
 
 ---
 

@@ -7,6 +7,7 @@
   - [BinarySearch](#binarysearch)
 - [Test Results](#test-results)
 - [Analysis](#analysis)
+- [Reflection](#reflection)
 - [Sources](#sources)
 
 ---
@@ -314,6 +315,14 @@ due to the rules and conditions it follows (`is 19<7? No -> right = mid -1`).
 Imagining this in production we quickly understand why the array **must** be sorted for `BinarySearch` to 
 be trustworthy. A good system cannot depend on a coin flip chance of success, and there has to be guardrails 
 ensuring we can trust the algorithm. To be able to trust the algorithm, it needs us to fulfill its demands. 
+
+---
+
+## Reflection
+- What went well?
+- What could've gone better?
+- What did I learn?
+- Improvements for next time.
 
 ---
 

@@ -10,6 +10,7 @@
   - [Use Cases](#use-cases)
   - [Internal Representation](#internal-representation)
   - [Time Complexity](#complexity)
+- [Reflection](#reflection)
 
 ---
 
@@ -221,3 +222,9 @@ have chosen to include both.)_
     the contents of the `Stack`. It only does a check (once), and returns a value (once).
 
 ---
+
+## Reflection
+- What went well?
+- What could've gone better?
+- What did I learn?
+- Improvements for next time.

@@ -15,6 +15,7 @@
   - [O(V + E)](#ov--e)
   - [Neighbor Order Documentation](#neighbor-order-documentation)
 - [Bug Fixing](#bug-fixing)
+- [Reflection](#reflection)
 - [Sources](#sources)
 
 ---
@@ -333,6 +334,14 @@ would always be `0`.
 
 In `Bfs()` I had a missing `result.Add(current)` after dequeue of `current`, which gave me the corrupt results when 
 running the code.
+
+---
+
+## Reflection
+- What went well?
+- What could've gone better?
+- What did I learn?
+- Improvements for next time.
 
 ---
 

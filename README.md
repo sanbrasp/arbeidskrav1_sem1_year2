@@ -83,30 +83,10 @@ dotnet run --project Task1_LinearSearchAndBinarySearch
   - [BFS Tests](Arbeidskrav1_year2_sem1.Tests/BfsTests.cs)
 
 **Task 5 Tests**
+  - [DFS Tests](Arbeidskrav1_year2_sem1.Tests/DfsTests.cs)
 
 ---
 
-## Algorithmic Choices
-This could refer to the respective project's own readmes.
-- Why did I choose "x" instead of "y"
-- Trade-offs
-- Pros and cons
-
----
-
-## Results
-- Test results
-- Outputs from algorithms
-
----
-
-## Reflection
-- What went well?  
-- What could've gone better?  
-- What did I learn?
-- Improvements for next time.
-
----
 
 ## AI Use
 - Documented [here](Docs/AIUse.md)
