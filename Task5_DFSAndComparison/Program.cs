@@ -19,7 +19,8 @@ class Program
         graph.AddConnection("Blindern", "Forskningsparken");
         graph.AddConnection("Forskningsparken", "Ullevål Stadion");
 
-        AnsiConsole.Write(new Panel("[green bold]Run Recursive DFS from 'Majorstuen':[/]"));
+        AnsiConsole.Write(new Panel("[green bold]Run Recursive DFS from 'Majorstuen':[/]")
+            .RoundedBorder());
         var result = (Search.RecursiveDfs(graph.GetAdjacencyList(), "Majorstuen"));
         int count = 1;
         foreach (var item in result)
@@ -29,7 +30,8 @@ class Program
 
         Console.WriteLine();
         
-        AnsiConsole.Write(new Panel("[green bold]Iterative DFS from 'Majorstuen':[/]"));
+        AnsiConsole.Write(new Panel("[green bold]Iterative DFS from 'Majorstuen':[/]")
+            .RoundedBorder());;
         var iterResult = Search.IterativeDfs(graph.GetAdjacencyList(), "Majorstuen");
         var itCount = 1;
         foreach (var item in iterResult)
@@ -39,7 +41,8 @@ class Program
 
         Console.WriteLine();
         
-        AnsiConsole.Write(new Panel("[green bold]Detect Cycles:[/]"));
+        AnsiConsole.Write(new Panel("[green bold]Detect Cycles:[/]")
+            .RoundedBorder());
         AnsiConsole.MarkupLine("[green]Hypothetical extra edge test.\n" +
                                "Adding Connection 'Tøyen', 'Majorstuen'.[/]");
         graph.AddConnection("Tøyen", "Majorstuen");
