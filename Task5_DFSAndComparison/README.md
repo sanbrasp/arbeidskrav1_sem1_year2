@@ -331,6 +331,12 @@ in another section within the same method.
 `while (stack.Count > 0) -> continue`  
 This branch holds the entire logic loop for Pushing, marking as visited, and Popping the bottom element.  
 
+`FindRoute()`:  
+This method is based directly off `IterativeDfs()` and uses the same core logic.  
+It uses the same base case:  
+`while (stack.Count > 0) -> continue`  
+As with the pure iterative traversal algorithm, this branch holds the full looping logic.  
+
 
 ### Recursive Step
 
