@@ -11,8 +11,8 @@ Bullet list:
 6. ✅ Handle isolated nodes — same isolated-station concept from Task 4.
 7. ✅ Handle a missing start station gracefully.
 8. ✅ Choose one extension: either (a) a route-exists-between-two-nodes method, or (b) a cycle-detection method for the undirected graph. Only one is required.
-9. **Explain base step and recursive step for the recursive DFS specifically.**
-10. **Explain O(V+E) for DFS.**
+9. ✅ **Explain base step and recursive step for the recursive DFS specifically.**
+10. ✅ **Explain O(V+E) for DFS.**
 11. **Explain recursive vs. iterative DFS — the differences between them.**
 12. **Explain stack overflow risk for very deep graphs (recursive-specific risk).**
 13. **Compare BFS vs. DFS — data structure used, method of visiting, memory use, and which problems each is best suited for.**
