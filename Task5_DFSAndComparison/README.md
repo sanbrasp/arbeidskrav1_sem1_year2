@@ -310,6 +310,15 @@ To ensure the code can handle edge-cases without crashing.
 
 ## Explanation
 ### Base Step
+`RecursiveDfs() -> Recursion()`:  
+`if (visited.Contains(current)) -> return;`
+The base step lives in `Recursion()`, which is `RecursiveDfs`'s recursion logic loop.  
+Once whichever element that is now stored in the variable `current` already exists in `visited`, 
+it means that the traversal is done, and it's time to stop. We don't want to recurse into elements that 
+have already been processed, because that would lead to infinite recursion, and could cause 
+a `StackOverflowException`.
+
+
 
 ### Recursive Step
 
