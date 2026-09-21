@@ -122,7 +122,6 @@ internal static class Search
         
         var visited = new HashSet<string>();
         var result = new List<string>();
-        string? current = null;
         Stack<string> stack = new Stack<string>(); // explicit stack
         
         stack.Push(startNode); // push the first element to the stack
@@ -130,7 +129,7 @@ internal static class Search
         
         while (stack.Count > 0) // base case. if false, stop.
         {
-            current = stack.Pop(); // store the first element pop in a variable
+            var current = stack.Pop(); // store the first element pop in a variable
             result.Add(current); // processed - now it can be added to result
             
             if (adjacencyList.TryGetValue(current, out var neighbors))
@@ -148,14 +147,40 @@ internal static class Search
         return result;
     }
 
-    internal static int FindRoute(Dictionary<string, List<string>> adjacencyList, string startNode, string targetNode)
+    internal static bool FindRoute(Dictionary<string, List<string>> adjacencyList, string startNode, string targetNode)
     {
-        int noResult = -1;
         if (!adjacencyList.ContainsKey(startNode) || (!adjacencyList.ContainsKey(targetNode)))
         {
-            return noResult;
+            return false;
         }
+
+        HashSet<string> visited = new();
+        Stack<string> stack = new();
         
-        
+        stack.Push(startNode);
+        visited.Add(startNode);
+
+        while (stack.Count > 0)
+        {
+            var current = stack.Pop();
+            
+
+            if (current == targetNode)
+            {
+                return true;
+            }
+            else if (adjacencyList.TryGetValue(current, out var neighbors))
+            {
+                foreach (var neighbor in neighbors)
+                {
+                    if (!visited.Contains(neighbor))
+                    {
+                        stack.Push(neighbor);
+                        visited.Add(neighbor);
+                    }
+                }
+            }
+        }
+        return false;
     }
 }
