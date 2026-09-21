@@ -314,7 +314,14 @@ To ensure the code can handle edge-cases without crashing.
 ### Recursive Step
 
 ### O(V + E)
-
+Reasoning is similar to the `O(V + E)` explanation for Task 4 `BFS`.  
+A station can only be processed once across the traversal, and the algorithm looks at
+every connection once for every iteration of the inner loop.  
+The inner loop, as with `BFS`, simplifies from `2E` to just `E`, giving us 
+`O(V)` for stations, and `O(E)` for edges.  
+Like with `BFS`, we are working with constant multipliers because the same job is performed 
+regardless of the contents in the array.  
+To get the total amount of work, we use `O(V + E)`.
 
 ### Differences Between Recursive and Iterative DFS
 
