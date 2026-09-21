@@ -313,6 +313,9 @@ To ensure the code can handle edge-cases without crashing.
 | Memory Use      | Stores the entire `depth` of one deep dive until bottom the is reached | Stores the entire `width` of its Queue in memory |
 | Suited For      | Finding all possible paths from A to B                                 | Finding the shortest path from A to B            |
 
+**BFS visited results vs DFS visited results:**
+![compare](Images/BFSvsDFSresults.png)
+
 ---
 
 ## Explanation
