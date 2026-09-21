@@ -15,7 +15,7 @@ Bullet list:
 10. ✅ **Explain O(V+E) for DFS.**
 11. **Explain recursive vs. iterative DFS — the differences between them.**
 12. **Explain stack overflow risk for very deep graphs (recursive-specific risk).**
-13. **Compare BFS vs. DFS — data structure used, method of visiting, memory use, and which problems each is best suited for.**
+13. ✅ **Compare BFS vs. DFS — data structure used, method of visiting, memory use, and which problems each is best suited for.**
 14. ✅ Test: run both DFS variants from Majorstuen, compare their order against Task 4's BFS order.
 15. ✅ Test the isolated station — behavior depends on which extension you picked (no-route test if you chose connectivity; if you chose cycle detection, this isolated-station test isn't explicitly tied to it, worth noting).
 16. ✅ If you chose cycle detection: add an edge that creates a cycle, test that it's detected; also test a graph without a cycle for contrast.
