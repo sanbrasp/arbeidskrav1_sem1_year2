@@ -1,6 +1,7 @@
 # Test suite for Arbeidskrav1
-Semester: 1
-Year: 2
+Semester: 1  
+Year: 2  
+Subject: Algorithms
 
 ---
 
@@ -39,7 +40,7 @@ dotnet test
 
 ## Test Suite Contents
 Arbeidskrav1_year2_sem1.Tests  
-Total amount: 35
+Total amount: 50
 
 ![TestsRun](Images/testsrun.png)
 
@@ -57,6 +58,12 @@ Total amount: 35
 
 **[MergeSortTests](MergeSortTests.cs)**  
 6 tests
+
+**[BfsTests](BfsTests.cs)**  
+9 tests
+
+**[DfsTests](DfsTests.cs)**  
+15 tests
 
 ---
 
