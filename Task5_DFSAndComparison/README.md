@@ -306,6 +306,13 @@ To ensure the code can handle edge-cases without crashing.
 
 ## Comparison
 
+| Subject         | DFS                                                                    | BFS                                              |
+|-----------------|------------------------------------------------------------------------|--------------------------------------------------|
+| Data Structure  | Stack (implicit or explicit)                                           | Queue                                            |
+| Method of visit | LIFO (last in, first out)                                              | FIFO (first in, first out)                       |
+| Memory Use      | Stores the entire `depth` of one deep dive until bottom the is reached | Stores the entire `width` of its Queue in memory |
+| Suited For      | Finding all possible paths from A to B                                 | Finding the shortest path from A to B            |
+
 ---
 
 ## Explanation
