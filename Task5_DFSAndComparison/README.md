@@ -113,7 +113,7 @@ It then pulls the needed values from the `adjacencyList` with an `out var neighb
 It loops through the `neighbor` elements in `neighbors`, and performs the check `if (!visited.Contains(neighbor))`:
 ⇒ if true ⇒ run `Recursion()`.
 
-### DFS-Based Extension Method
+### Recursive DFS Extension Method
 Cycle Discovery.  
 Based on basic DFS with recursion.
 ```csharp
@@ -221,15 +221,97 @@ internal static List<string> IterativeDfs // Stack, push, pop, peek. Use Stack<s
 - Returns a list of visited nodes in order
 - Loop results and Pushes reversed to mirror results from `RecursiveDfs()`
 
+### Iterative DFS Extension Method
+Finds a route if one exists, returning true or false:
+```csharp
+internal static bool FindRoute(Dictionary<string, List<string>> adjacencyList, string startNode, string targetNode)
+    {
+        if (!adjacencyList.ContainsKey(startNode) || (!adjacencyList.ContainsKey(targetNode)))
+        {
+            return false;
+        }
 
-### Extension
-**Chosen extension for Recursive DFS:** Cycle Detection
+        HashSet<string> visited = new();
+        Stack<string> stack = new();
+        
+        stack.Push(startNode);
+        visited.Add(startNode);
 
-**Chosen extension for Iterative DFS:** Route between two stations
+        while (stack.Count > 0)
+        {
+            string current = stack.Pop();
+            
+            if (current == targetNode)
+            {
+                return true;
+            }
+            else if (adjacencyList.TryGetValue(current, out var neighbors))
+            {
+                foreach (var neighbor in neighbors)
+                {
+                    if (!visited.Contains(neighbor))
+                    {
+                        stack.Push(neighbor);
+                        visited.Add(neighbor);
+                    }
+                }
+            }
+        }
+        return false;
+    }
+```
+- Based on `IterativeDfs()`, but is a `bool` return type
+- Guards against missing start node and target node
+- Checks the first Popped element to see if `current == target` 
+- If True, returns `True`
+- If False, the `else if` branch fires and starts looking through neighbors, the same way 
+  the original `IterativeDfs()` does, until the condition `current == target` becomes true. 
+- If neither `if` or `else if` conditions become true, it returns `false`.
 
 ---
 
+
 ## Tests
+**Tests run successfully:**
+![success](Images/successfulltests.png)
+
+**Test names**  
+
+- `DetectCycles_DetectsCycles_WhereThereAreCycles`
+- `DetectCycles_DoesNotDetectCycles_WhereThereAreNoCycles`
+- `FindRoute_ReturnsFalse_OnNoRouteAndMissingStartAndTarget`
+- `FindRoute_ReturnsFalse_OnNoRouteAndMissingStartAndTarget(start: "Majorstuen", end: "Leirfjord")`
+- `FindRoute_ReturnsFalse_OnNoRouteAndMissingStartAndTarget(start: "Månen", end: "Jernbanetorget")`
+- `FindRoute_ReturnsFalse_OnNoRouteAndMissingStartAndTarget(start: "Nationaltheatret", end: "Merkur")`
+- `FindRoute_ReturnsFalse_OnNoRouteAndMissingStartAndTarget(start: "Sola", end: "Månen")`
+- `FindRoute_ReturnsTrue_OnExistingRoute`
+- `FindRoute_ReturnsTrue_OnExistingRoute(start: "Majorstuen", end: "Forskningsparken")`
+- `FindRoute_ReturnsTrue_OnExistingRoute(start: "Tøyen", end: "Stortinget")`
+- `IterativeDfs_HandlesMissingStartNode`
+- `IterativeDfs_ReturnsCorrectVisitOrder_FromMajorstuen`
+- `IterativeDfsAndRecursiveDfs_ReturnIdenticalVisitOrder`
+- `RecursiveDfs_DoesNotReachIsolatedStationLeirfjord_FromAnywhere`
+- `RecursiveDfs_DoesNotReachIsolatedStationLeirfjord_FromAnywhere(startNode: "Majorstuen")`
+- `RecursiveDfs_DoesNotReachIsolatedStationLeirfjord_FromAnywhere(startNode: "Tøyen")`
+- `RecursiveDfs_HandlesMissingStartNode`
+- `RecursiveDfs_ReturnsCorrectVisitOrder_FromMajorstuen`
+
+**Test Cases**
+- `RecursiveDfs()` visit order from `Majorstuen`
+- `RecursiveDfs()` missing node handling
+- `RecursiveDfs()` isolated node handling
+- `DetectCycles()` does not record cycles where there are none
+- `DetectCycles()` detects cycles where there are any, and does not return a duplicate result
+- `IterativeDfs()` same visit order as `RecursiveDfs()` that match exactly
+- `IterativeDfs()` missing start node handling
+- `FindRoute()` reaches the target and returns true when there is a path between two
+- `FindRoute()` returns false when trying to reach isolated station
+- `FindRoute()` returns false whenever start, target, or both are missing
+
+**Why This is Tested**  
+To ensure a mirrored result between `RecursiveDfs()` and `IterativeDfs()`.  
+To ensure the code works as intended.  
+To ensure the code can handle edge-cases without crashing.
 
 ---
 
@@ -241,6 +323,11 @@ internal static List<string> IterativeDfs // Stack, push, pop, peek. Use Stack<s
 ### Base Step
 
 ### Recursive Step
+
+### Extension
+**Chosen extension for Recursive DFS:** Cycle Detection
+
+**Chosen extension for Iterative DFS:** Route between two stations
 
 ### O(V+E)
 
