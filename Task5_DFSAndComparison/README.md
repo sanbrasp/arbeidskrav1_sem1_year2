@@ -370,6 +370,24 @@ This covers both `RecursiveDfs` and `IterativeDfs`.
 
 ### Differences Between Recursive and Iterative DFS
 
+**Mechanisms:**  
+`RecursiveDfs()` uses Recursion and an implicit stack.  
+`IterativeDfs()` uses an explicit Stack.
+
+**Base Case vs Loop Condition:**  
+`RecursiveDfs()` uses a base case to stop recursion and avoid infinite recursion:  
+`if (visited.Contains(current)) -> stop recursing`
+
+`IterativeDfs()` does not need a base case at all, because that is recursion exclusive. 
+Instead, it uses a `loop condition` that controls the loop flow and avoids endless loops.  
+`while (stack.Count > 0) -> keep going`
+
+**Neighbor Order and Reversal**  
+`RecursiveDfs()` uses implicit call stack, and recurses into neighbors in the exact order they are visited by the `foreach`.
+`IterativeDfs()` uses explicit stack, and will push neighbors from left to right unless modified.  
+To mirror the order of `RecursiveDfs()`, we need to reverse the order that `IterativeDfs()` pushes the neighbor.
+
+
 ### Risk of StackOverFlowException
 
 ---
