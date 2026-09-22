@@ -258,6 +258,7 @@ Fixes were applied to both methods and tested on several different arrays to ens
 - Seeing the use of a wrapper method to orchestrate the resetting of counters and running the algorithm
 - Learning about the sizing of left and right side
 - Learning about the slicing of the left and right array
+- Implementing the basic menu for this project
 
 **What could've gone better?**  
 - I should have started writing the reflection section way earlier
