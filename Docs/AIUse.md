@@ -20,6 +20,8 @@ Overview
 - [MergeSort Tutoring](#merge-sort-tutoring)
 - [Shallow VS Deep Copy](#shallow-vs-deep-copy)
 - [Regex](#regex-table-swap)
+- [Reverse Ambiguity](#reverse-ambiguity)
+- [Tuple Syntax And Init](#tuple-syntax-and-initializing)
 
 ---
 
@@ -50,7 +52,9 @@ clicked and I understood it.)
 Discussion about `readonly` and how it applies to fields and not properties.  
 Discussion about the `distances Dictionary` from task 3, and its design.  
 `Claude.ai` has also been used to proof-read (find typos and suggest better wording), task translation from Norwegian to English, 
-and for code-reviews after I have written the code myself.  
+and for code-reviews after I have written the code myself.   
+`Claude.ai` mentioned that xUnit had a pattern that would make writing tests that share the same thing several times 
+easier. I asked it for a source I could read about myself, and used it (shared context, noted in test suite Readme.)
 
 ---
 
@@ -224,3 +228,23 @@ The **Find Regex:**
 `\|\s*(.+?)\s*\|\s*(\d{2}\.\d{2}\.\d{2})\s*\|`  
 The **Swap/Replace Regex:**  
 `| $2 | $1 |`.
+
+---
+
+## Reverse Ambiguity
+In `IterativeDfs()`, I tried to use `neighbors.Reverse()`, which would not 
+compile. `Claude.ai` explained that `neighbors.Reverse()` resolved to 
+`List<T>`'s mutating, `void`-returning overload instead of `LINQ`'s, 
+and suggested the fix `AsEnumerable().Reverse()` instead.
+
+---
+
+## Tuple Syntax And Initializing
+After trying to write the syntax myself in various ways, one of them being 
+`List<string, string>` and not being able to compile, I asked `Claide.ai` to straight out 
+give me the correct syntax, which was `List<(string, string)>`.  
+It also showed me the initializing syntax:  
+`expected = new() { ("string", "string") };`
+
+---
+
