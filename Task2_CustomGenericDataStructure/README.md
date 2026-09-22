@@ -19,19 +19,7 @@
 [CustomNode class](Models/CustomNode.cs)  
 [CustomStack class](Models/CustomStack.cs)  
 
-**Code implementation**  
-`CustomNode<T>` is written as an internal class, following the convention of the rest of the solution.  
-It is not `static` because nodes need to be initialized.  
-The class is `Generic` so that it can be used by any `type`.  
-This is a basic representation of a `node`, that holds a reference to a `Value` and the node's `_next` node.  
-
-The `_next` field is nullable because it represents "what comes after this node". For the bottom of the stack, nothing comes 
-"after", in which case `_next is null`. It is a property of an individual node's position.  
-
-The `Value` holds the value of the node. Is not nullable, because a `CustomNode<T>` can only be created through its constructor, 
-which requires a real value to be supplied. It is impossible to construct a node that is holding nothing.  
-`Next` is encapsulated so that it cannot be manipulated into an invalid state.  
-The constructor initializes an object with a `Value` and `_next` set to `null`.
+**CustomNode**
 ```csharp
 namespace Task2_CustomGenericDataStructure.Models;
 
@@ -54,32 +42,21 @@ internal class CustomNode<T>
     }
 }
 ```
+`CustomNode<T>` is written as an internal class, following the convention of the rest of the solution.  
+It is not `static` because nodes need to be initialized.  
+The class is `Generic` so that it can be used by any `type`.  
+This is a basic representation of a `node`, that holds a reference to a `Value` and the node's `_next` node.  
 
-`CustomStack` is written as an internal class, following the convention of the project.  
-It holds a reference to `CustomNode<T>`'s `_top` value so that it can perform its actions.  
-`CustomNode<T>? Top` is encapsulated to avoid invalid states, and nullable for when there is nothing at the top (empty).  
-The internal bool `IsEmpty` is `true` if `_top` is empty, and allows us to check for that in the methods and tests.  
+The `_next` field is nullable because it represents "what comes after this node". For the bottom of the stack, nothing comes 
+"after", in which case `_next is null`. It is a property of an individual node's position.  
 
-Method `void Push(T value)` takes a `T` argument.  
-It creates a new node for that `value`.  
-It then uses the `Next` to see what `value` is up next (and also first).  
-It then assigns that value to `_top` (`_top = newNode`)
+The `Value` holds the value of the node. Is not nullable, because a `CustomNode<T>` can only be created through its constructor, 
+which requires a real value to be supplied. It is impossible to construct a node that is holding nothing.  
+`Next` is encapsulated so that it cannot be manipulated into an invalid state.  
+The constructor initializes an object with a `Value` and `_next` set to `null`.
 
-Method `T Pop()` takes no arguments.  
-If first checks whether the `Stack` is empty by using the internal bool `IsEmpty`. If `IsEmpty = true`, it throw 
-an `InvalidOperationException` with an error message.  
-If the `Stack` is not empty, it continues.  
-It creates a variable for storing the value of `_top`.  
-It then stores the value of the next node in `var nextNode`, using `node.Next`.  
-Then it assigns that value to `_top` (`_top = nextNode`), before returning the `node.Value`.
 
-Method `T Peek()` takes no arguments.  
-It first checks whether the `Stack` is empty, using the same logic as `T Pop()`, and throws the 
-same exception if `IsEmpty = true`.  
-It then simply returns `_top.Value` directly, with no need for storing anything prior.  
-It changes nothing, it only reads the value of the top element in the `Stack`, and therefore doesn't need 
-to do any other operations than returning the value.
-
+**CustomStack**  
 ```csharp
 using Task2_CustomGenericDataStructure.Models;
 
@@ -128,6 +105,32 @@ internal class CustomStack<T>
     }
 }
 ```
+`CustomStack` is written as an internal class, following the convention of the project.  
+It holds a reference to `CustomNode<T>`'s `_top` value so that it can perform its actions.  
+`CustomNode<T>? Top` is encapsulated to avoid invalid states, and nullable for when there is nothing at the top (empty).  
+The internal bool `IsEmpty` is `true` if `_top` is empty, and allows us to check for that in the methods and tests.  
+
+Method `void Push(T value)` takes a `T` argument.  
+It creates a new node for that `value`.  
+It then uses the `Next` to see what `value` is up next (and also first).  
+It then assigns that value to `_top` (`_top = newNode`)
+
+Method `T Pop()` takes no arguments.  
+If first checks whether the `Stack` is empty by using the internal bool `IsEmpty`. If `IsEmpty = true`, it throw 
+an `InvalidOperationException` with an error message.  
+If the `Stack` is not empty, it continues.  
+It creates a variable for storing the value of `_top`.  
+It then stores the value of the next node in `var nextNode`, using `node.Next`.  
+Then it assigns that value to `_top` (`_top = nextNode`), before returning the `node.Value`.
+
+Method `T Peek()` takes no arguments.  
+It first checks whether the `Stack` is empty, using the same logic as `T Pop()`, and throws the 
+same exception if `IsEmpty = true`.  
+It then simply returns `_top.Value` directly, with no need for storing anything prior.  
+It changes nothing, it only reads the value of the top element in the `Stack`, and therefore doesn't need 
+to do any other operations than returning the value.
+
+
 
 **Choices**  
 During the work on this task, it took me a while to understand that I needed a separate `Node` class in order 
@@ -224,7 +227,16 @@ have chosen to include both.)_
 ---
 
 ## Reflection
-- What went well?
-- What could've gone better?
-- What did I learn?
-- Improvements for next time.
+**What went well?**  
+- Implementing Spectre.Console to shine up the console outputs
+- Learning about re-assigning node values during the operations
+- Learning to write the Custom Stack class in itself
+
+**What could've gone better?**  
+- It took me too long to realize I needed a `Node` class to use my Custom Stack
+
+**What did I learn?**  
+- About the core operations of Stack (push, pop, peek)
+- Where to reassign values safely without losing anything
+- What information the stack really needs to hold (`top`)
+- What information the Node class really needs to hold (`next`, `value`)
