@@ -1,4 +1,5 @@
-﻿using Task1_LinearSearchAndBinarySearch.Display;
+﻿using Spectre.Console;
+using Task1_LinearSearchAndBinarySearch.Display;
 using Task1_LinearSearchAndBinarySearch.Models;
 
 namespace Task1_LinearSearchAndBinarySearch;
@@ -38,17 +39,22 @@ class Program
                 ArrayIsSorted: false)
         };
 
-        Console.WriteLine("\n=== Required Target Searches ===");
+        AnsiConsole.Write(new Panel($"[green bold]Required Target Searches[/]"));
         DisplayResult.ShowTable(requiredSearchesResults);
-        Console.WriteLine("Showing targets, indexes, number of comparisons, and whether the input is sorted or not.");
+        AnsiConsole.MarkupLine("[green]Shows targets, indexes, number of comparisons, " +
+                               "and whether the input is sorted or not.[/]");
+        
         Console.WriteLine();
-        Console.WriteLine("=== Duplicate Values Searches ===");
+        AnsiConsole.Write(new Panel("[green bold]Duplicate Values Searches[/]"));
         DisplayResult.ShowTable(duplicateValuesResults);
-        Console.WriteLine("The README contains a hand trace proving the guarantee of BinarySearch leftmost target returned.");
-        Console.WriteLine("No such thing needed for LinearSearch because it always looks at the next neighbor first.");
+        AnsiConsole.MarkupLine("[green]The README contains a hand trace proving the guarantee " +
+                               "of BinarySearch leftmost target returned.\n" +
+                               "No such thing needed for LinearSearch because it always looks " +
+                               "at the next neighbor first.[/]");
+        
         Console.WriteLine();
-        Console.WriteLine("=== Binary Search On Unsorted Array ===");
+        AnsiConsole.Write(new Panel("[green bold]Binary Search On Unsorted Array[/]"));
         DisplayResult.ShowTable(binarySearchOnUnsortedArrayResults);
-        Console.WriteLine("The first search succeeds by accident, the second fails.");
+        AnsiConsole.MarkupLine("[green]The first search succeeds by accident, the second fails.[/]");
     }
 }
