@@ -399,6 +399,13 @@ On very deep graphs, it is recommended to use `IterativeDfs()` to avoid `StackOv
 
 ## Neighbor Order
 Document how neighbor order and stack insertion order affect visit order
+`RecursiveDfs()`:  
+It examines the first node, `current`, `Majorstuen` first. It finds `Majorstuen`'s first neighbor, `Nationaltheatret`, 
+and immediately recurses into `Nationaltheatret`. There it finds the first neighbor, `Majorstuen`, which is already in 
+`visited`, so it moves on to the next neighbor, `Stortinget`, and so on. Keeping the order by visited.  
+
+`IterativeDfs()`:  
+It uses the `for loop` which already reverses the order, 
 
 ---
 
