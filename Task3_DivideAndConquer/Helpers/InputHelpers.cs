@@ -1,6 +1,6 @@
-﻿// Imported from Libray project.
+﻿namespace Task3_DivideAndConquer.Helpers;
 
-namespace Task3_DivideAndConquer.Helpers;
+// Imported from Libray project.
 
 internal static class InputHelpers
 {
