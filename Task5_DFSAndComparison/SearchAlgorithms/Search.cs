@@ -126,7 +126,7 @@ internal static class Search
         stack.Push(startNode); // push the first element to the stack
         visited.Add(startNode); // immediately mark as visited
         
-        while (stack.Count > 0) // base case. if false, stop.
+        while (stack.Count > 0)
         {
             var current = stack.Pop(); // store the first element pop in a variable
             result.Add(current); // processed - now it can be added to result
