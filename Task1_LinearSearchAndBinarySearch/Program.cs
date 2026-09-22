@@ -39,13 +39,15 @@ class Program
                 ArrayIsSorted: false)
         };
 
-        AnsiConsole.Write(new Panel($"[green bold]Required Target Searches[/]"));
+        AnsiConsole.Write(new Panel($"[green bold]Required Target Searches[/]")
+            .RoundedBorder());
         DisplayResult.ShowTable(requiredSearchesResults);
         AnsiConsole.MarkupLine("[green]Shows targets, indexes, number of comparisons, " +
                                "and whether the input is sorted or not.[/]");
         
         Console.WriteLine();
-        AnsiConsole.Write(new Panel("[green bold]Duplicate Values Searches[/]"));
+        AnsiConsole.Write(new Panel("[green bold]Duplicate Values Searches[/]")
+            .RoundedBorder());
         DisplayResult.ShowTable(duplicateValuesResults);
         AnsiConsole.MarkupLine("[green]The README contains a hand trace proving the guarantee " +
                                "of BinarySearch leftmost target returned.\n" +
@@ -53,7 +55,8 @@ class Program
                                "at the next neighbor first.[/]");
         
         Console.WriteLine();
-        AnsiConsole.Write(new Panel("[green bold]Binary Search On Unsorted Array[/]"));
+        AnsiConsole.Write(new Panel("[green bold]Binary Search On Unsorted Array[/]")
+            .RoundedBorder());
         DisplayResult.ShowTable(binarySearchOnUnsortedArrayResults);
         AnsiConsole.MarkupLine("[green]The first search succeeds by accident, the second fails.[/]");
     }
