@@ -9,7 +9,7 @@ internal static class FlowHelpers
     /// </summary>
     internal static void Pause()
     {
-        Console.Write("\nPress any key to go back to the menu.");
+        Console.Write("\nPress any key to go back to the menu.\n");
         var key = Console.ReadKey(intercept: true);
     }
 }
