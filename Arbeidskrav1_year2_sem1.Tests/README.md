@@ -53,17 +53,15 @@ Total amount: 50
 **[CustomStackTests](CustomStackTests.cs)**  
 8 tests
 
+**[DfsTests](DfsTests.cs)**  
+15 tests
+
 **[LinearSearchTests](LinearSearchTests.cs)**  
 5 tests
 
 **[MergeSortTests](MergeSortTests.cs)**  
 6 tests
 
-**[BfsTests](BfsTests.cs)**  
-9 tests
-
-**[DfsTests](DfsTests.cs)**  
-15 tests
 
 ---
 
