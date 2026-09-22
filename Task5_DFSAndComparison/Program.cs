@@ -1,5 +1,7 @@
 ﻿using Spectre.Console;
 using Task4_GraphAndBFS.Models;
+using Task5_DFSAndComparison.Menu;
+using Task5_DFSAndComparison.Helpers;
 using Task5_DFSAndComparison.SearchAlgorithms;
 
 namespace Task5_DFSAndComparison;
@@ -19,51 +21,41 @@ class Program
         graph.AddConnection("Blindern", "Forskningsparken");
         graph.AddConnection("Forskningsparken", "Ullevål Stadion");
 
-        AnsiConsole.Write(new Panel("[green bold]Recursive DFS from 'Majorstuen':[/]")
-            .RoundedBorder());
-        var result = (Search.RecursiveDfs(graph.GetAdjacencyList(), "Majorstuen"));
-        int count = 1;
-        foreach (var item in result)
+        bool running = true;
+        while (running)
         {
-            AnsiConsole.MarkupLine($"[blue]{count++}: {item}[/]");
+            AnsiConsole.Write(new Panel("[green bold]DFS Demonstration[/]")
+                .RoundedBorder());
+            
+            AnsiConsole.MarkupLine("[green]1. Recursive DFS from 'Majorstuen'.[/]");
+            AnsiConsole.MarkupLine("[green]2. Iterative DFS from 'Majorstuen'.[/]");
+            AnsiConsole.MarkupLine("[green]3. Detect Cycles.[/]");
+            AnsiConsole.MarkupLine("[green]4. FindRoute - Isolated Node.[/]");
+            AnsiConsole.MarkupLine("[green]5. FindRoute - 'Majorstuen', 'Tøyen'.[/]");
+            AnsiConsole.MarkupLine("[green]0. Exit.[/]");
+
+            int choice = InputHelpers.ReadMenuChoice("Choice: ", 0, 5);
+            switch (choice)
+            {
+                case 1:
+                    MenuActions.RecursiveDfsFromMajorstuen(graph);
+                    break;
+                case 2:
+                    MenuActions.IterativeDfsFromMajorstuen(graph);
+                    break;
+                case 3:
+                    MenuActions.DetectCyclesExtension();
+                    break;
+                case 4:
+                    MenuActions.FindRouteIsolatedNode(graph);
+                    break;
+                case 5:
+                    MenuActions.FindRouteMajorstuenToyen(graph);
+                    break;
+                case 0:
+                    running = false;
+                    break;
+            }
         }
-
-        Console.WriteLine();
-        
-        AnsiConsole.Write(new Panel("[green bold]Iterative DFS from 'Majorstuen':[/]")
-            .RoundedBorder());;
-        var iterResult = Search.IterativeDfs(graph.GetAdjacencyList(), "Majorstuen");
-        var itCount = 1;
-        foreach (var item in iterResult)
-        {
-            AnsiConsole.MarkupLine($"[blue]{itCount++}: {item}[/]");
-        }
-
-        Console.WriteLine();
-        
-        AnsiConsole.Write(new Panel("[green bold]Detect Cycles:[/]")
-            .RoundedBorder());
-        AnsiConsole.MarkupLine("[green]Hypothetical extra edge test.\n" +
-                               "Adding Connection 'Tøyen', 'Majorstuen'.[/]");
-        graph.AddConnection("Tøyen", "Majorstuen");
-        AnsiConsole.MarkupLine("[green]Running DetectCycles test:[/]");
-        Search.DetectCycles(graph.GetAdjacencyList(), "Majorstuen", out var cycles);
-        foreach (var item in cycles)
-        {
-            AnsiConsole.MarkupLine($"[blue]Result: {item}[/]");
-        }
-
-        Console.WriteLine();
-        AnsiConsole.Write(new Panel("[green bold]Isolated Node Test[/]"));
-        AnsiConsole.MarkupLine("[green]Adding isolated node: 'Leirfjord'[/]");
-        graph.AddNode("Leirfjord");
-        AnsiConsole.MarkupLine("[green]Running FindRoute from 'Majorstuen' to 'Leirfjord':[/]");
-        bool isolatedRouteResult = Search.FindRoute(graph.GetAdjacencyList(), "Majorstuen", "Leirfjord");
-        AnsiConsole.MarkupLine($"[red]{isolatedRouteResult}[/]");
-
-        Console.WriteLine();
-        AnsiConsole.MarkupLine("[green]Running FindRoute from 'Majorstuen' to 'Tøyen':[/]");
-        bool shouldBeTrue  = Search.FindRoute(graph.GetAdjacencyList(), "Majorstuen", "Tøyen");
-        AnsiConsole.MarkupLine($"[blue]{shouldBeTrue}[/]");
     }
 }
