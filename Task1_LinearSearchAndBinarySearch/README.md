@@ -372,10 +372,12 @@ ensuring we can trust the algorithm. To be able to trust the algorithm, it needs
 - Implementing a tidier way to store and display the results
 - Hand-tracing for Binary Search
 - Counters for comparisons respectively for linear and binary search
+- I had just read about these when I got started, so with the information fresh in mind it went
+  pretty smoothly and did not have the same steep learning curve as the later tasks
+
 
 **What could've gone better?**  
-- I had just read about these when I got started, so with the information fresh in mind it went 
-pretty smoothly and did not have the same steep learning curve as the later tasks
+- Can't really think of anything for this one
 
 **What did I learn?**  
 - Placement of counters and in which branches
