@@ -12,6 +12,7 @@ internal static class DisplayResult
     {
         var table = new Table();
         table.Border(TableBorder.Rounded);
+        table.BorderStyle(Color.Blue);
         table.AddColumn("Algorithm");
         table.AddColumn("Target");
         table.AddColumn("Index Found");
