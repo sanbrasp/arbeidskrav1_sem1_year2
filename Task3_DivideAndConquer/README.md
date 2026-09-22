@@ -263,6 +263,10 @@ Fixes were applied to both methods and tested on several different arrays to ens
 
 **What could've gone better?**  
 - I should have started writing the reflection section way earlier
+- Had forgotten to actually include `mid` anywhere, and when fixed in one place, I forgot to fix in both, so I got a 
+pretty good bug hunt session from that.
+- I mixed up two different systems: plain indices vs exclusive-end slicing, several times, before I finally had learned 
+what not do to.
 
 **What did I learn?**  
 - Writing the algorithm itself
