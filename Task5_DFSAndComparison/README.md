@@ -398,7 +398,7 @@ to the heap instead.
 On very deep graphs, it is recommended to use `IterativeDfs()` to avoid `StackOverflowException`.
 
 ## Neighbor Order
-
+Document how neighbor order and stack insertion order affect visit order
 
 ---
 
