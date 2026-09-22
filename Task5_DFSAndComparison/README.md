@@ -405,7 +405,10 @@ and immediately recurses into `Nationaltheatret`. There it finds the first neigh
 `visited`, so it moves on to the next neighbor, `Stortinget`, and so on. Keeping the order by visited.  
 
 `IterativeDfs()`:  
-It uses the `for loop` which already reverses the order, 
+It uses the `foreach loop` that already reverses the order (`AsEmumerable().Reverse())`, which means it operates on 
+`Majorstuen -> Blindern, Nationaltheatret`. Due to the reversal, `Blindern` is placed below `Nationaltheatret`, 
+so the next `Pop()` pops `Nationaltheatret`. Without the reversal, it would pop `Blindern` first, as that would be the 
+element at the top of the stack.
 
 ---
 
