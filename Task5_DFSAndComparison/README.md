@@ -389,6 +389,12 @@ To mirror the order of `RecursiveDfs()`, we need to reverse the order that `Iter
 
 
 ### Risk of StackOverFlowException
+`RecursiveDfs()` risks running into a `StackOverflowException` in very deep graphs. Because the call stack holds the full
+depth of one single dive until the bottom is reached and the algorithm backtracks to the previous node, it can become 
+incredibly deep, which can exhaust the limited allocated space reserved for the call stack and cause the `StackOverflowException`.  
+This can be avoided by using `IterativeDfs()`, which makes it harder to hit the `StackOverflowException` as it saves 
+to the heap instead.  
+On very deep graphs, it is recommended to use `IterativeDfs()` to avoid `StackOverflowException`.
 
 ---
 
