@@ -13,11 +13,11 @@ class Program
         AnsiConsole.Write(new Panel("[bold green]Demonstration of Custom Generic Stack[/]"));
         
         AnsiConsole.MarkupLine("\n[green bold]Pushing elements to the stack:[/]");
-        AnsiConsole.MarkupLine("[blue]Pushing 'A' to the stack:[/]");
+        AnsiConsole.MarkupLine("[blue]Pushing 'A' to the stack[/]");
         stack.Push("A");
-        AnsiConsole.MarkupLine("[blue]Pushing 'B' to the stack:[/]");
+        AnsiConsole.MarkupLine("[blue]Pushing 'B' to the stack[/]");
         stack.Push("B");
-        AnsiConsole.MarkupLine("[blue]Pushing 'C' to the stack:[/]");
+        AnsiConsole.MarkupLine("[blue]Pushing 'C' to the stack[/]");
         stack.Push("C");
         
         AnsiConsole.MarkupLine("\n[green bold]Peeking at the top of the stack:[/]");
