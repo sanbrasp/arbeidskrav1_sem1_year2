@@ -17,9 +17,9 @@ Bullet list:
 14. ✅ Test: run both DFS variants from Majorstuen, compare their order against Task 4's BFS order.
 15. ✅ Test the isolated station — behavior depends on which extension you picked (no-route test if you chose connectivity; if you chose cycle detection, this isolated-station test isn't explicitly tied to it, worth noting).
 16. ✅ If you chose cycle detection: add an edge that creates a cycle, test that it's detected; also test a graph without a cycle for contrast.
-17. **Document how neighbor order and stack insertion order affect visit order — parallel to Task 4's neighbor-order documentation requirement.**
-18. **Explain recursive vs. iterative DFS — the differences between them.**
-19. **Explain stack overflow risk for very deep graphs (recursive-specific risk).**
+17. ✅ **Explain recursive vs. iterative DFS — the differences between them.**
+18. ✅ **Explain stack overflow risk for very deep graphs (recursive-specific risk).**
+19. **Document how neighbor order and stack insertion order affect visit order — parallel to Task 4's neighbor-order documentation requirement.**
 
 ---
 
@@ -310,7 +310,7 @@ To ensure the code can handle edge-cases without crashing.
 |-----------------|------------------------------------------------------------------------|--------------------------------------------------|
 | Data Structure  | Stack (implicit or explicit)                                           | Queue                                            |
 | Method of visit | LIFO (last in, first out)                                              | FIFO (first in, first out)                       |
-| Memory Use      | Stores the entire `depth` of one deep dive until bottom the is reached | Stores the entire `width` of its Queue in memory |
+| Memory Use      | Stores the entire `depth` of one deep dive until the bottom is reached | Stores the entire `width` of its Queue in memory |
 | Suited For      | Finding all possible paths from A to B                                 | Finding the shortest path from A to B            |
 
 **BFS visited results vs DFS visited results:**
