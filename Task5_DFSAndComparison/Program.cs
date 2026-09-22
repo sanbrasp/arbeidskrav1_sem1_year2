@@ -19,7 +19,7 @@ class Program
         graph.AddConnection("Blindern", "Forskningsparken");
         graph.AddConnection("Forskningsparken", "Ullevål Stadion");
 
-        AnsiConsole.Write(new Panel("[green bold]Run Recursive DFS from 'Majorstuen':[/]")
+        AnsiConsole.Write(new Panel("[green bold]Recursive DFS from 'Majorstuen':[/]")
             .RoundedBorder());
         var result = (Search.RecursiveDfs(graph.GetAdjacencyList(), "Majorstuen"));
         int count = 1;
