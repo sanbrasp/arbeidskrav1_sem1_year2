@@ -259,6 +259,7 @@ Fixes were applied to both methods and tested on several different arrays to ens
 - Learning about the sizing of left and right side
 - Learning about the slicing of the left and right array
 - Implementing the basic menu for this project
+- Hand-tracing different arrays to ensure the correct result from the code
 
 **What could've gone better?**  
 - I should have started writing the reflection section way earlier
