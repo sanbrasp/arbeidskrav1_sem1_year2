@@ -338,10 +338,21 @@ running the code.
 ---
 
 ## Reflection
-- What went well?
-- What could've gone better?
-- What did I learn?
-- Improvements for next time.
+**What went well?**  
+- I was able to learn a lot from this task
+- Seeing the BFS method work with my Graph class was fun and interesting
+- I was able to hand-trace the algorithm and see the results visualized in front of me, 
+making it easier to understand the logic itself
+
+**What could've gone better?**
+- I should have written the reflection section earlier instead of saving it for last
+
+**What did I learn?**
+- I learned how to write a BFS method in itself, and how to write a BFS-based method to find the shortest path between two
+- I learned about where to place increments in the code for the result to be correct
+- I learned how to store distances (`distances[neighbor] = distances[current] + 1`) in order to 
+use the data later
+- I learned about Queues, Enqueue and Dequeue
 
 ---
 
