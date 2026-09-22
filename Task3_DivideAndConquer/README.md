@@ -34,7 +34,6 @@ A very plain orchestrator to ensure the correct order of steps:
 - Run the `MergeSort()` algorithm
 - Ensure correct counter data between runs
 
-===============================================================
 
 **void MergeSort(int[] array, int left, int right)**:  
 ```csharp
@@ -61,7 +60,6 @@ Sectioning rule:
 Mid has to be included in the array so it's not skipped over, because that causes instability bugs and generates 
 invalid results. Both Merge and MergeSort abide by this rule.
 
-===============================================================
 
 **void Merge(int[] array, int left, int middle, int right)**:  
 ```csharp
@@ -105,11 +103,9 @@ and `mid+1` to `right +1` in `right`. The slices need the `+1` due to the end-ex
 It includes the start range, and excludes the end range. `+1` ensures we get the ends, and the `mid+1` for `right`'s start 
 ensures `mid` stays with `left`, and `right`'s start begins one step to the right of `mid`.
 
-===============================================================
 
 Helper methods: `void ResetComparisonCounter()` and `void ResetMergeCallCounter()` are very simple and do just that, nothing more.
 
-===============================================================
 
 **Choices**  
 `MergeSort()` set to `private`.  
@@ -257,11 +253,23 @@ Fixes were applied to both methods and tested on several different arrays to ens
 ---
 
 ## Reflection
-- What went well?
-- What could've gone better?
-- What did I learn?
-- Improvements for next time.
+**What went well?**  
+- Learning about how to set up the counters, and the algorithm itself
+- Seeing the use of a wrapper method to orchestrate the resetting of counters and running the algorithm
+- Learning about the sizing of left and right side
+- Learning about the slicing of the left and right array
 
+**What could've gone better?**  
+- I should have started writing the reflection section way earlier
+
+**What did I learn?**  
+- Writing the algorithm itself
+- Defining left and right side of the array
+- Defining left and right sub-arrays and sizing them correctly
+- Following a set rule `mid belongs to left` and enforce it
+- Moving the pointers of left, right, and original array
+- Counting the Merge calls and Comparisons effectively
+- Using the base case `if (left >= right) -> stop!` for `MergeSort()`
 
 ---
 
