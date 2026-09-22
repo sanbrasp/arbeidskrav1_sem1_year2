@@ -13,6 +13,10 @@
 ---
 
 ## Implementation
+This project uses a record `SearchResult` for storing search results.  
+It also uses `DisplayResult` to display the results in a readable, tidy manner.
+
+
 ### LinearSearch():
 ```csharp
 internal static int LinearSearch(int[] array, int target)
@@ -57,7 +61,8 @@ approach.
 
 **Resetting the Comparison Counter**  
 Initially I had a method accessor for resetting the counter. After some thinking, I decided that this was an
-unnecessary risk - forgetting to manually reset the counter would produce the wrong result, and nothing outside the class should bear that responsibility; not the developer, not Program.cs.  
+unnecessary risk - forgetting to manually reset the counter would produce the wrong result, and nothing outside the class 
+should bear that responsibility; not the developer, not Program.cs.  
 I instead wrote `LinearSearch()` to call `ResetComparisons()` at the very start of the method, ensuring the counter
 always starts with a state of 0. The method `ResetComparisons()` was then set to its appropriate access modifier: `private`.
 
@@ -363,10 +368,18 @@ ensuring we can trust the algorithm. To be able to trust the algorithm, it needs
 ---
 
 ## Reflection
-- What went well?
-- What could've gone better?
-- What did I learn?
-- Improvements for next time.
+**What went well?**  
+- Implementing a tidier way to store and display the results
+- Hand-tracing for Binary Search
+- Counters for comparisons respectively for linear and binary search
+
+**What could've gone better?**  
+- I had just read about these when I got started, so with the information fresh in mind it went 
+pretty smoothly and did not have the same steep learning curve as the later tasks
+
+**What did I learn?**  
+- Placement of counters and in which branches
+- Sizing of array for Binary Search
 
 ---
 
