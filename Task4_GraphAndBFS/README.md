@@ -343,9 +343,15 @@ running the code.
 - Seeing the BFS method work with my Graph class was fun and interesting
 - I was able to hand-trace the algorithm and see the results visualized in front of me, 
 making it easier to understand the logic itself
+- Got better at doing empirical verifications of code additions and/or removals throughout the entire `arbeidskrav`, and 
+had gotten quite good at it by Task 4.
+- Got much better at hand-tracing or simply visually tracing code and steps and confirming the correctness, also something 
+that improved throughout the `arbeidskrav` and had become much better by task 4
 
 **What could've gone better?**
 - I should have written the reflection section earlier instead of saving it for last
+- I absent-mindedly created a disconnected adjacency list when testing, instead of using `graph.GetAdjacencyList()`, which 
+took me a little too long to realize.
 
 **What did I learn?**
 - I learned how to write a BFS method in itself, and how to write a BFS-based method to find the shortest path between two
