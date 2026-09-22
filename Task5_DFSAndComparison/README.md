@@ -37,6 +37,7 @@ Bullet list:
   - [O(V + E)](#ov--e)
   - [Differences Between Recursive and Iterative DFS](#differences-between-recursive-and-iterative-dfs)
   - [Risk of StackOverFlowException](#risk-of-stackoverflowexception)
+  - [Neighboring Order](#neighbor-order)
 - [Reflection](#reflection)
 - [Sources](#sources)
 
@@ -395,6 +396,9 @@ incredibly deep, which can exhaust the limited allocated space reserved for the 
 This can be avoided by using `IterativeDfs()`, which makes it harder to hit the `StackOverflowException` as it saves 
 to the heap instead.  
 On very deep graphs, it is recommended to use `IterativeDfs()` to avoid `StackOverflowException`.
+
+## Neighbor Order
+
 
 ---
 
