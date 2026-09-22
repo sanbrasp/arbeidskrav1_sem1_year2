@@ -19,7 +19,7 @@ Bullet list:
 16. ✅ If you chose cycle detection: add an edge that creates a cycle, test that it's detected; also test a graph without a cycle for contrast.
 17. ✅ **Explain recursive vs. iterative DFS — the differences between them.**
 18. ✅ **Explain stack overflow risk for very deep graphs (recursive-specific risk).**
-19. **Document how neighbor order and stack insertion order affect visit order — parallel to Task 4's neighbor-order documentation requirement.**
+19. ✅ **Document how neighbor order and stack insertion order affect visit order — parallel to Task 4's neighbor-order documentation requirement.**
 
 ---
 
@@ -39,7 +39,6 @@ Bullet list:
   - [Risk of StackOverFlowException](#risk-of-stackoverflowexception)
   - [Neighboring Order](#neighbor-order)
 - [Reflection](#reflection)
-- [Sources](#sources)
 
 ---
 
@@ -413,11 +412,28 @@ element at the top of the stack.
 ---
 
 ## Reflection
-- What went well?
-- What could've gone better?
-- What did I learn?
-- Improvements for next time.
+**What went well?**  
+- I was able to climb the extremely steep learning curve and have my `Eureka` moments at the summit!
+- I got to see the progress of the results during the building of the code
+- I could use a lot of what I learned in the previous tasks in this one which simplified a lot of things
+
+
+**What could've gone better?**  
+- I should have started writing the reflection section earlier instead of saving it for last
+
+
+**What did I learn?**  
+- To write DFS methods, DFS extensions, hand-trace the algorithms and follow along with the code 
+to see the steps as they fired.  
+- I learned about `Shared Context` in `xUnit`
+- I got some more practice in extracting parts of code into new methods (as I had initially written 
+recursive DFS WITH the extension built in)
+- I got lots of practice using `TryGetValue` in order to pull out the data I wanted
+- I got a lot of practice visualizing the logic steps of each method, making it easier for me to see where 
+I had made mistakes and why they caused bugs (example, where to add a node to result, where to use `Pop()`)
+- I learned about the differences between iterative and recursive DFS, and also the similarities
+- I learned about recursive base cases and why they are important
+- I got a lot more practice writing unit tests and implementing `Theory` tests to test for several things 
+simultaneously where applicable
 
 ---
-
-## Sources
