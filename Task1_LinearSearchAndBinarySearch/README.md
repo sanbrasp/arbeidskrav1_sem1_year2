@@ -374,6 +374,7 @@ ensuring we can trust the algorithm. To be able to trust the algorithm, it needs
 - Counters for comparisons respectively for linear and binary search
 - I had just read about these when I got started, so with the information fresh in mind it went
   pretty smoothly and did not have the same steep learning curve as the later tasks
+- Leftmost-occurrence bug hunt, and solving it!
 
 
 **What could've gone better?**  
@@ -382,6 +383,7 @@ ensuring we can trust the algorithm. To be able to trust the algorithm, it needs
 **What did I learn?**  
 - Placement of counters and in which branches
 - Sizing of array for Binary Search
+- Ensuring the left-most occurrence when duplicates during a search
 
 ---
 
