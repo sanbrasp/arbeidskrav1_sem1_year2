@@ -231,6 +231,8 @@ have chosen to include both.)_
 - Implementing Spectre.Console to shine up the console outputs
 - Learning about re-assigning node values during the operations
 - Learning to write the Custom Stack class in itself
+- Discovered the redundant `visited.Add(current)` discovery pattern, and removed the unnecessary code
+  (this pattern was repeated a few times during this project, but was found and fixed)
 
 **What could've gone better?**  
 - It took me too long to realize I needed a `Node` class to use my Custom Stack
