@@ -9,6 +9,21 @@ Module 1: Algorithms
 
 ---
 
+## Project Structure
+```text
+Arbeidskrav1_year2_sem1_solution/
+├─ Arbeidskrav1_year2_sem1.Tests/
+├─ Docs/
+├─ Task1_LinearSearchAndBinarySearch/
+├─ Task2_CustomGenericDataStructure/
+├─ Task3_DivideAndConquer/
+├─ Task4_GraphAndBFS/
+├─ Task5_DFSAndComparison/
+├─ Task6_Video/
+├─ .gitignore
+├─ README.md
+```
+
 ## Solution Overview
 This solution contains tasks 1 - 6, each in their respective projects.
 - [Test Suite](Arbeidskrav1_year2_sem1.Tests)
